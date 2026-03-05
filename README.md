@@ -351,3 +351,7 @@ Example log entry:
 - Add response caching with Redis
 - Implement monitoring and analytics for AI outputs
 - PostgreSQL migration for production deployments
+
+## Live Demo
+- 🖥️ Frontend Dashboard: https://rayeva-ai-dashboard.vercel.app
+- ⚡ API Docs: https://rayeva-ai-assignment-79v5.onrender.com/docs
