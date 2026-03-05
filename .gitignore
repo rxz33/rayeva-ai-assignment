@@ -48,3 +48,4 @@ dist/
 # Coverage reports
 .coverage
 htmlcov/
+.vercel
