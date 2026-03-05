@@ -1,6 +1,6 @@
 from typing import List
 
-from pydantic import BaseModel
+from pydantic import BaseModel, ConfigDict, field_validator
 
 
 class ProductInput(BaseModel):
@@ -11,17 +11,18 @@ class ProductInput(BaseModel):
 
 
 class CategoryOutput(BaseModel):
-    primary_category: str
-    sub_category: str
-    seo_tags: List[str]
-    sustainability_filters: List[str]
-
-    class Config:
-        schema_extra = {
+    model_config = ConfigDict(
+        json_schema_extra={
             "example": {
                 "primary_category": "personal_care",
                 "sub_category": "oral_care",
-                "seo_tags": ["bamboo", "eco friendly", "sustainable", "oral care"],
+                "seo_tags": [
+                    "bamboo",
+                    "eco friendly",
+                    "sustainable",
+                    "plastic free",
+                    "oral care",
+                ],
                 "sustainability_filters": [
                     "biodegradable",
                     "renewable resources",
@@ -29,3 +30,16 @@ class CategoryOutput(BaseModel):
                 ],
             }
         }
+    )
+
+    primary_category: str
+    sub_category: str
+    seo_tags: List[str]
+    sustainability_filters: List[str]
+
+    @field_validator("seo_tags")
+    @classmethod
+    def validate_seo_tags_length(cls, v):
+        if len(v) < 5 or len(v) > 10:
+            raise ValueError("seo_tags must contain between 5 and 10 tags")
+        return v

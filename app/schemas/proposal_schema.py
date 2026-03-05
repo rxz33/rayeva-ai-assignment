@@ -1,6 +1,6 @@
 from typing import List
 
-from pydantic import BaseModel
+from pydantic import BaseModel, ConfigDict
 
 
 class ProposalInput(BaseModel):
@@ -13,6 +13,8 @@ class ProposalInput(BaseModel):
 class ProductMix(BaseModel):
     product: str
     quantity: int
+    unit_price: float
+    total_cost: float
 
 
 class BudgetAllocation(BaseModel):
@@ -22,16 +24,22 @@ class BudgetAllocation(BaseModel):
 
 
 class ProposalOutput(BaseModel):
-    product_mix: List[ProductMix]
-    budget_allocation: BudgetAllocation
-    impact_summary: str
-
-    class Config:
-        schema_extra = {
+    model_config = ConfigDict(
+        json_schema_extra={
             "example": {
                 "product_mix": [
-                    {"product": "reusable steel water bottle", "quantity": 200},
-                    {"product": "bamboo toothbrush", "quantity": 200},
+                    {
+                        "product": "reusable steel water bottle",
+                        "quantity": 200,
+                        "unit_price": 300,
+                        "total_cost": 60000,
+                    },
+                    {
+                        "product": "bamboo toothbrush",
+                        "quantity": 200,
+                        "unit_price": 50,
+                        "total_cost": 10000,
+                    },
                 ],
                 "budget_allocation": {
                     "products": 85000,
@@ -41,3 +49,8 @@ class ProposalOutput(BaseModel):
                 "impact_summary": "Reusable products reduce single-use plastic waste and encourage sustainable habits in the workplace.",
             }
         }
+    )
+
+    product_mix: List[ProductMix]
+    budget_allocation: BudgetAllocation
+    impact_summary: str
