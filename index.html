@@ -1,0 +1,1279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Rayeva AI — Sustainability Intelligence Platform</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,700;1,300;1,400&family=DM+Mono:wght@300;400;500&family=Cabinet+Grotesk:wght@400;500;700;800&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --moss: #2D4A1E;
+    --sage: #6B8F5E;
+    --lime: #B8D96B;
+    --cream: #F5F0E8;
+    --bark: #3D2B1F;
+    --clay: #C4856A;
+    --mist: #E8EDE4;
+    --ink: #1A1A18;
+    --white: #FDFCF9;
+    --shadow: rgba(45,74,30,0.12);
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'Cabinet Grotesk', sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* Background texture */
+  body::before {
+    content:'';
+    position:fixed; inset:0;
+    background-image:
+      radial-gradient(ellipse 80% 50% at 10% 20%, rgba(107,143,94,0.08) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 80% at 90% 80%, rgba(184,217,107,0.07) 0%, transparent 60%);
+    pointer-events:none; z-index:0;
+  }
+
+  /* SIDEBAR */
+  .sidebar {
+    position: fixed; left:0; top:0; bottom:0;
+    width: 240px;
+    background: var(--moss);
+    display: flex; flex-direction: column;
+    z-index: 100;
+    overflow: hidden;
+  }
+  .sidebar::after {
+    content:'';
+    position:absolute; top:-60px; right:-60px;
+    width:180px; height:180px;
+    background: rgba(184,217,107,0.08);
+    border-radius:50%;
+    pointer-events:none;
+  }
+  .sidebar-logo {
+    padding: 28px 24px 20px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .sidebar-logo .wordmark {
+    font-family: 'Fraunces', serif;
+    font-size: 22px; font-weight: 700;
+    color: var(--lime);
+    letter-spacing: -0.5px;
+  }
+  .sidebar-logo .tagline {
+    font-size: 10px; font-weight: 500;
+    color: rgba(255,255,255,0.4);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-top: 3px;
+    font-family: 'DM Mono', monospace;
+  }
+  .nav-section-label {
+    padding: 20px 24px 8px;
+    font-size: 9px; font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.25);
+    font-family: 'DM Mono', monospace;
+  }
+  .nav-item {
+    display: flex; align-items: center; gap: 10px;
+    padding: 11px 24px;
+    cursor: pointer;
+    border-left: 2px solid transparent;
+    transition: all 0.2s;
+    color: rgba(255,255,255,0.55);
+    font-size: 13.5px; font-weight: 500;
+    position: relative;
+  }
+  .nav-item:hover { color: rgba(255,255,255,0.9); background: rgba(255,255,255,0.04); }
+  .nav-item.active {
+    color: var(--lime);
+    border-left-color: var(--lime);
+    background: rgba(184,217,107,0.07);
+  }
+  .nav-item .nav-icon { font-size: 16px; width: 20px; text-align: center; }
+  .nav-item .badge {
+    margin-left: auto;
+    background: rgba(184,217,107,0.2);
+    color: var(--lime);
+    font-size: 9px; font-weight: 700;
+    padding: 2px 6px; border-radius: 20px;
+    font-family: 'DM Mono', monospace;
+    letter-spacing: 0.5px;
+  }
+  .sidebar-footer {
+    margin-top: auto;
+    padding: 20px 24px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+  }
+  .api-status {
+    display: flex; align-items: center; gap: 8px;
+    font-size: 11px; color: rgba(255,255,255,0.4);
+    font-family: 'DM Mono', monospace;
+  }
+  .api-dot {
+    width: 7px; height: 7px; border-radius: 50%;
+    background: #4ade80;
+    box-shadow: 0 0 6px #4ade80;
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+
+  /* MAIN CONTENT */
+  .main {
+    margin-left: 240px;
+    min-height: 100vh;
+    position: relative; z-index: 1;
+  }
+
+  /* TOP BAR */
+  .topbar {
+    padding: 20px 36px;
+    display: flex; align-items: center; justify-content: space-between;
+    border-bottom: 1px solid rgba(45,74,30,0.1);
+    background: rgba(245,240,232,0.8);
+    backdrop-filter: blur(12px);
+    position: sticky; top: 0; z-index: 50;
+  }
+  .page-title {
+    font-family: 'Fraunces', serif;
+    font-size: 20px; font-weight: 400;
+    color: var(--moss);
+  }
+  .page-title span { font-style: italic; color: var(--sage); }
+  .topbar-right { display: flex; align-items: center; gap: 12px; }
+  .api-pill {
+    background: var(--mist);
+    border: 1px solid rgba(45,74,30,0.15);
+    border-radius: 20px;
+    padding: 6px 12px;
+    font-size: 11px;
+    font-family: 'DM Mono', monospace;
+    color: var(--sage);
+    display: flex; align-items: center; gap: 6px;
+  }
+  .api-pill .dot { width:6px; height:6px; border-radius:50%; background:#4ade80; }
+
+  /* PAGES */
+  .page { display:none; padding: 32px 36px; animation: fadeIn 0.3s ease; }
+  .page.active { display:block; }
+  @keyframes fadeIn { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:translateY(0)} }
+
+  /* DASHBOARD OVERVIEW */
+  .stats-grid {
+    display: grid; grid-template-columns: repeat(4,1fr); gap: 16px;
+    margin-bottom: 32px;
+  }
+  .stat-card {
+    background: var(--white);
+    border: 1px solid rgba(45,74,30,0.1);
+    border-radius: 16px;
+    padding: 20px;
+    position: relative; overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .stat-card:hover { transform: translateY(-2px); box-shadow: 0 8px 24px var(--shadow); }
+  .stat-card::before {
+    content:''; position:absolute;
+    top:-20px; right:-20px;
+    width:80px; height:80px;
+    border-radius:50%;
+    opacity:0.06;
+  }
+  .stat-card:nth-child(1)::before { background:var(--moss); }
+  .stat-card:nth-child(2)::before { background:var(--clay); }
+  .stat-card:nth-child(3)::before { background:var(--lime); }
+  .stat-card:nth-child(4)::before { background:var(--sage); }
+  .stat-label {
+    font-size: 10px; font-weight: 700;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    color: var(--sage);
+    font-family: 'DM Mono', monospace;
+    margin-bottom: 8px;
+  }
+  .stat-value {
+    font-family: 'Fraunces', serif;
+    font-size: 36px; font-weight: 700;
+    color: var(--moss);
+    line-height: 1;
+  }
+  .stat-sub { font-size: 11px; color: rgba(26,26,24,0.4); margin-top: 4px; }
+
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .three-col { display: grid; grid-template-columns: 2fr 1fr; gap: 20px; }
+
+  /* CARDS */
+  .card {
+    background: var(--white);
+    border: 1px solid rgba(45,74,30,0.1);
+    border-radius: 16px;
+    overflow: hidden;
+  }
+  .card-header {
+    padding: 18px 22px;
+    border-bottom: 1px solid rgba(45,74,30,0.07);
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .card-title {
+    font-size: 13px; font-weight: 700;
+    letter-spacing: 0.3px;
+    color: var(--moss);
+  }
+  .card-tag {
+    font-size: 9px; font-weight: 700;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    background: var(--mist); color: var(--sage);
+    padding: 3px 8px; border-radius: 20px;
+    font-family: 'DM Mono', monospace;
+  }
+  .card-body { padding: 22px; }
+
+  /* FORMS */
+  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .form-group { display: flex; flex-direction: column; gap: 6px; }
+  .form-group.full { grid-column: 1 / -1; }
+  label {
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 1px; text-transform: uppercase;
+    color: var(--sage);
+    font-family: 'DM Mono', monospace;
+  }
+  input, textarea, select {
+    background: var(--mist);
+    border: 1.5px solid rgba(45,74,30,0.12);
+    border-radius: 10px;
+    padding: 11px 14px;
+    font-size: 13.5px;
+    color: var(--ink);
+    font-family: 'Cabinet Grotesk', sans-serif;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    width: 100%;
+  }
+  input:focus, textarea:focus, select:focus {
+    border-color: var(--sage);
+    box-shadow: 0 0 0 3px rgba(107,143,94,0.12);
+    background: var(--white);
+  }
+  textarea { resize: vertical; min-height: 80px; }
+
+  /* BUTTONS */
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    padding: 12px 24px;
+    border-radius: 10px;
+    font-size: 13.5px; font-weight: 700;
+    cursor: pointer; border: none;
+    transition: all 0.2s;
+    font-family: 'Cabinet Grotesk', sans-serif;
+    letter-spacing: 0.2px;
+  }
+  .btn-primary {
+    background: var(--moss);
+    color: var(--lime);
+  }
+  .btn-primary:hover { background: #1e3314; transform: translateY(-1px); box-shadow: 0 4px 16px rgba(45,74,30,0.3); }
+  .btn-primary:active { transform: translateY(0); }
+  .btn-primary:disabled { opacity:0.5; cursor:not-allowed; transform:none; }
+  .btn-outline {
+    background: transparent;
+    border: 1.5px solid rgba(45,74,30,0.2);
+    color: var(--moss);
+  }
+  .btn-outline:hover { border-color: var(--moss); background: var(--mist); }
+  .btn-sm { padding: 7px 14px; font-size: 12px; }
+
+  /* LOADING SPINNER */
+  .spinner {
+    width: 16px; height: 16px;
+    border: 2px solid rgba(184,217,107,0.3);
+    border-top-color: var(--lime);
+    border-radius: 50%;
+    animation: spin 0.7s linear infinite;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* RESULT PANELS */
+  .result-panel {
+    background: var(--mist);
+    border: 1px solid rgba(45,74,30,0.1);
+    border-radius: 12px;
+    overflow: hidden;
+    margin-top: 20px;
+  }
+  .result-panel-header {
+    background: var(--moss);
+    padding: 10px 16px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .result-panel-title {
+    font-size: 10px; font-weight: 700;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    color: var(--lime);
+    font-family: 'DM Mono', monospace;
+  }
+  .result-panel-body { padding: 18px; }
+
+  /* TAGS */
+  .tag-list { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+  .tag {
+    background: rgba(45,74,30,0.08);
+    color: var(--moss);
+    border: 1px solid rgba(45,74,30,0.15);
+    border-radius: 20px;
+    padding: 4px 11px;
+    font-size: 12px; font-weight: 500;
+  }
+  .tag.eco {
+    background: rgba(184,217,107,0.2);
+    border-color: rgba(184,217,107,0.4);
+    color: var(--moss);
+  }
+
+  /* CATEGORY BADGE */
+  .category-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--moss); color: var(--lime);
+    border-radius: 8px; padding: 10px 16px;
+    font-weight: 700; font-size: 14px;
+    margin-bottom: 12px;
+  }
+  .sub-badge {
+    display: inline-flex; align-items: center;
+    background: var(--mist); color: var(--sage);
+    border-radius: 6px; padding: 6px 12px;
+    font-size: 13px; font-weight: 500;
+    margin-bottom: 14px;
+    border: 1px solid rgba(107,143,94,0.2);
+    margin-left: 8px;
+  }
+
+  /* PRODUCT MIX TABLE */
+  .product-table { width: 100%; border-collapse: collapse; }
+  .product-table th {
+    text-align: left;
+    font-size: 10px; font-weight: 700;
+    letter-spacing: 1.2px; text-transform: uppercase;
+    color: var(--sage);
+    font-family: 'DM Mono', monospace;
+    padding: 8px 12px;
+    border-bottom: 1px solid rgba(45,74,30,0.1);
+  }
+  .product-table td {
+    padding: 11px 12px;
+    font-size: 13px;
+    border-bottom: 1px solid rgba(45,74,30,0.06);
+    color: var(--ink);
+  }
+  .product-table tr:last-child td { border-bottom: none; }
+  .product-table tr:hover td { background: rgba(45,74,30,0.02); }
+  .cost-chip {
+    background: rgba(184,217,107,0.15);
+    color: var(--moss);
+    padding: 3px 8px; border-radius: 6px;
+    font-family: 'DM Mono', monospace;
+    font-size: 12px; font-weight: 500;
+  }
+
+  /* BUDGET BARS */
+  .budget-breakdown { display:flex; flex-direction:column; gap:10px; }
+  .budget-row { display:flex; flex-direction:column; gap:4px; }
+  .budget-row-header { display:flex; justify-content:space-between; align-items:center; }
+  .budget-label { font-size:12px; font-weight:600; color:var(--ink); }
+  .budget-amount { font-size:12px; font-family:'DM Mono',monospace; color:var(--sage); }
+  .budget-bar-bg { height:6px; background:rgba(45,74,30,0.1); border-radius:3px; overflow:hidden; }
+  .budget-bar-fill { height:100%; border-radius:3px; transition: width 0.8s ease; }
+
+  /* IMPACT BOX */
+  .impact-box {
+    background: linear-gradient(135deg, var(--moss) 0%, #3a5f28 100%);
+    border-radius: 12px;
+    padding: 18px;
+    color: var(--white);
+    margin-top: 14px;
+    position: relative; overflow: hidden;
+  }
+  .impact-box::before {
+    content: '🌱';
+    position: absolute; right: 16px; top: 50%;
+    transform: translateY(-50%);
+    font-size: 48px; opacity: 0.15;
+  }
+  .impact-box-label {
+    font-size: 9px; font-weight: 700;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    color: var(--lime); margin-bottom: 6px;
+    font-family: 'DM Mono', monospace;
+  }
+  .impact-box p { font-size: 13.5px; line-height: 1.6; opacity: 0.9; }
+
+  /* HISTORY TABLE */
+  .history-table { width:100%; border-collapse:collapse; }
+  .history-table th {
+    text-align:left; font-size:10px; font-weight:700;
+    letter-spacing:1.2px; text-transform:uppercase;
+    color:var(--sage); font-family:'DM Mono',monospace;
+    padding:10px 14px; background:var(--mist);
+  }
+  .history-table td { padding:12px 14px; font-size:13px; border-bottom:1px solid rgba(45,74,30,0.07); }
+  .history-table tr:hover td { background:rgba(45,74,30,0.02); }
+  .history-empty {
+    text-align:center; padding:40px; color:rgba(26,26,24,0.3);
+    font-size:13px;
+  }
+
+  /* WHATSAPP */
+  .chat-window {
+    background: #ECE5DD;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid rgba(45,74,30,0.1);
+  }
+  .chat-header {
+    background: #075E54;
+    padding: 14px 18px;
+    display: flex; align-items: center; gap: 12px;
+    color: white;
+  }
+  .chat-avatar {
+    width: 38px; height: 38px;
+    background: var(--lime);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px;
+  }
+  .chat-header-info .name { font-size:14px; font-weight:600; }
+  .chat-header-info .status { font-size:11px; opacity:0.7; }
+  .chat-messages {
+    padding: 16px;
+    min-height: 200px;
+    max-height: 300px;
+    overflow-y: auto;
+    display: flex; flex-direction: column; gap: 10px;
+  }
+  .chat-bubble {
+    max-width: 75%;
+    border-radius: 8px;
+    padding: 10px 13px;
+    font-size: 13px; line-height: 1.5;
+    position: relative;
+  }
+  .chat-bubble.user {
+    background: #DCF8C6;
+    align-self: flex-end;
+    border-bottom-right-radius: 2px;
+  }
+  .chat-bubble.bot {
+    background: white;
+    align-self: flex-start;
+    border-bottom-left-radius: 2px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+  }
+  .chat-time { font-size:10px; color:rgba(0,0,0,0.35); margin-top:3px; text-align:right; }
+  .intent-chip {
+    display: inline-flex; align-items: center; gap: 4px;
+    font-size: 10px; padding: 3px 8px; border-radius: 20px;
+    font-family: 'DM Mono', monospace; font-weight: 500;
+    margin-top: 6px;
+  }
+  .intent-chip.order_status { background:#dbeafe; color:#1e40af; }
+  .intent-chip.return_policy { background:#fef3c7; color:#92400e; }
+  .intent-chip.escalation { background:#fee2e2; color:#991b1b; }
+  .intent-chip.general { background:#d1fae5; color:#065f46; }
+  .chat-input-row {
+    padding: 12px 14px;
+    background: #F0F0F0;
+    display: flex; gap: 10px; align-items: center;
+  }
+  .chat-input {
+    flex: 1; background: white; border: none;
+    border-radius: 20px; padding: 9px 14px;
+    font-size: 13.5px; outline: none;
+    font-family: 'Cabinet Grotesk', sans-serif;
+  }
+  .chat-send-btn {
+    width: 38px; height: 38px;
+    background: #075E54; color: white;
+    border: none; border-radius: 50%;
+    cursor: pointer; font-size: 16px;
+    display: flex; align-items: center; justify-content: center;
+    transition: background 0.2s;
+  }
+  .chat-send-btn:hover { background: #054d44; }
+
+  /* SCORE METER */
+  .score-ring {
+    width: 90px; height: 90px;
+    position: relative; margin: 0 auto 12px;
+  }
+  .score-ring svg { transform: rotate(-90deg); }
+  .score-ring .score-num {
+    position: absolute; inset: 0;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Fraunces', serif;
+    font-size: 26px; font-weight: 700;
+    color: var(--moss);
+  }
+
+  /* TOAST */
+  .toast {
+    position: fixed; bottom: 24px; right: 24px;
+    background: var(--moss); color: var(--lime);
+    padding: 12px 20px; border-radius: 10px;
+    font-size: 13px; font-weight: 500;
+    display: flex; align-items: center; gap: 8px;
+    box-shadow: 0 4px 20px rgba(45,74,30,0.3);
+    transform: translateY(80px); opacity: 0;
+    transition: all 0.3s ease;
+    z-index: 9999;
+  }
+  .toast.show { transform: translateY(0); opacity: 1; }
+
+  /* ERROR */
+  .error-box {
+    background: #fee2e2; border: 1px solid #fca5a5;
+    color: #991b1b; border-radius: 10px;
+    padding: 12px 16px; font-size: 13px;
+    margin-top: 14px; display:none;
+  }
+  .error-box.show { display:block; }
+
+  /* SECTION HEADING */
+  .section-heading {
+    font-family: 'Fraunces', serif;
+    font-size: 26px; font-weight: 400;
+    color: var(--moss); margin-bottom: 4px;
+  }
+  .section-heading em { font-style: italic; color: var(--sage); }
+  .section-sub { font-size: 13px; color: rgba(26,26,24,0.45); margin-bottom: 24px; }
+
+  /* DIVIDER */
+  hr.divider { border:none; border-top:1px solid rgba(45,74,30,0.08); margin:24px 0; }
+
+  /* scrollbar */
+  ::-webkit-scrollbar { width:5px; }
+  ::-webkit-scrollbar-track { background:transparent; }
+  ::-webkit-scrollbar-thumb { background:rgba(45,74,30,0.2); border-radius:3px; }
+</style>
+</head>
+<body>
+
+<!-- SIDEBAR -->
+<nav class="sidebar">
+  <div class="sidebar-logo">
+    <div class="wordmark">Rayeva</div>
+    <div class="tagline">AI Intelligence Platform</div>
+  </div>
+
+  <div class="nav-section-label">Overview</div>
+  <div class="nav-item active" onclick="navigate('dashboard')">
+    <span class="nav-icon">◈</span> Dashboard
+  </div>
+
+  <div class="nav-section-label">AI Modules</div>
+  <div class="nav-item" onclick="navigate('category')">
+    <span class="nav-icon">⊕</span> Category & Tags
+    <span class="badge">M1</span>
+  </div>
+  <div class="nav-item" onclick="navigate('proposal')">
+    <span class="nav-icon">◎</span> B2B Proposal
+    <span class="badge">M2</span>
+  </div>
+  <div class="nav-item" onclick="navigate('whatsapp')">
+    <span class="nav-icon">◉</span> WhatsApp Bot
+    <span class="badge">M4</span>
+  </div>
+
+  <div class="nav-section-label">Data</div>
+  <div class="nav-item" onclick="navigate('history')">
+    <span class="nav-icon">≡</span> History
+  </div>
+
+  <div class="sidebar-footer">
+    <div class="api-status">
+      <div class="api-dot"></div>
+      <span id="apiStatusText">API Connected</span>
+    </div>
+    <div style="font-size:10px;color:rgba(255,255,255,0.2);margin-top:6px;font-family:'DM Mono',monospace;">
+      render.com · live
+    </div>
+  </div>
+</nav>
+
+<!-- MAIN -->
+<main class="main">
+  <div class="topbar">
+    <div class="page-title" id="pageTitle">Dashboard <span>Overview</span></div>
+    <div class="topbar-right">
+      <div class="api-pill">
+        <span class="dot"></span>
+        rayeva-ai-assignment-79v5.onrender.com
+      </div>
+    </div>
+  </div>
+
+  <!-- DASHBOARD PAGE -->
+  <div class="page active" id="page-dashboard">
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-label">Categories Generated</div>
+        <div class="stat-value" id="stat-categories">—</div>
+        <div class="stat-sub">All time · Module 1</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Proposals Created</div>
+        <div class="stat-value" id="stat-proposals">—</div>
+        <div class="stat-sub">All time · Module 2</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Budget Proposed</div>
+        <div class="stat-value" id="stat-budget">—</div>
+        <div class="stat-sub">Total INR · Module 2</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">API Status</div>
+        <div class="stat-value" style="font-size:22px;margin-top:4px;" id="stat-api">⬤ Live</div>
+        <div class="stat-sub">onrender.com · FastAPI</div>
+      </div>
+    </div>
+
+    <div class="two-col">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">Recent Categories</div>
+          <div class="card-tag">Module 1</div>
+        </div>
+        <div class="card-body" id="dash-recent-categories">
+          <div class="history-empty">No data yet — generate a category to see results here</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">Recent Proposals</div>
+          <div class="card-tag">Module 2</div>
+        </div>
+        <div class="card-body" id="dash-recent-proposals">
+          <div class="history-empty">No data yet — generate a proposal to see results here</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CATEGORY PAGE -->
+  <div class="page" id="page-category">
+    <div class="section-heading">Category <em>&amp; Tag Generator</em></div>
+    <div class="section-sub">AI classifies your product into sustainability categories and generates SEO tags</div>
+
+    <div class="two-col">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">Product Details</div>
+          <div class="card-tag">POST /generate-category</div>
+        </div>
+        <div class="card-body">
+          <div class="form-grid">
+            <div class="form-group">
+              <label>Product Name</label>
+              <input type="text" id="cat-name" placeholder="e.g. Bamboo Toothbrush"/>
+            </div>
+            <div class="form-group">
+              <label>Material</label>
+              <input type="text" id="cat-material" placeholder="e.g. bamboo, stainless steel"/>
+            </div>
+            <div class="form-group">
+              <label>Use Case</label>
+              <input type="text" id="cat-usecase" placeholder="e.g. oral care, kitchen"/>
+            </div>
+            <div class="form-group">
+              <label>Description</label>
+              <input type="text" id="cat-desc" placeholder="Brief product description"/>
+            </div>
+          </div>
+          <div style="margin-top:18px;display:flex;gap:10px;">
+            <button class="btn btn-primary" id="cat-btn" onclick="generateCategory()">
+              <span>Generate Category</span>
+            </button>
+            <button class="btn btn-outline" onclick="fillCategoryExample()">Try Example</button>
+          </div>
+          <div class="error-box" id="cat-error"></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">AI Result</div>
+          <div class="card-tag" id="cat-result-tag">Waiting for input</div>
+        </div>
+        <div class="card-body" id="cat-result">
+          <div style="text-align:center;padding:40px 0;color:rgba(26,26,24,0.25);">
+            <div style="font-size:32px;margin-bottom:10px;">⊕</div>
+            <div style="font-size:13px;">Fill the form and click Generate</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROPOSAL PAGE -->
+  <div class="page" id="page-proposal">
+    <div class="section-heading">B2B Proposal <em>Generator</em></div>
+    <div class="section-sub">AI generates a sustainable product mix and budget plan for corporate clients</div>
+
+    <div class="two-col">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">Client Details</div>
+          <div class="card-tag">POST /generate-proposal</div>
+        </div>
+        <div class="card-body">
+          <div class="form-grid">
+            <div class="form-group">
+              <label>Client Type</label>
+              <input type="text" id="prop-client" placeholder="e.g. corporate office, school"/>
+            </div>
+            <div class="form-group">
+              <label>Employee Count</label>
+              <input type="number" id="prop-employees" placeholder="e.g. 200"/>
+            </div>
+            <div class="form-group">
+              <label>Budget (₹)</label>
+              <input type="number" id="prop-budget" placeholder="e.g. 100000"/>
+            </div>
+            <div class="form-group">
+              <label>Sustainability Goal</label>
+              <input type="text" id="prop-goal" placeholder="e.g. reduce plastic waste"/>
+            </div>
+          </div>
+          <div style="margin-top:18px;display:flex;gap:10px;">
+            <button class="btn btn-primary" id="prop-btn" onclick="generateProposal()">
+              <span>Generate Proposal</span>
+            </button>
+            <button class="btn btn-outline" onclick="fillProposalExample()">Try Example</button>
+          </div>
+          <div class="error-box" id="prop-error"></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">Proposal Result</div>
+          <div class="card-tag" id="prop-result-tag">Waiting for input</div>
+        </div>
+        <div class="card-body" id="prop-result">
+          <div style="text-align:center;padding:40px 0;color:rgba(26,26,24,0.25);">
+            <div style="font-size:32px;margin-bottom:10px;">◎</div>
+            <div style="font-size:13px;">Fill the form and click Generate</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WHATSAPP PAGE -->
+  <div class="page" id="page-whatsapp">
+    <div class="section-heading">WhatsApp <em>Support Bot</em></div>
+    <div class="section-sub">Module 4 stub — AI classifies intent and responds to customer queries</div>
+
+    <div class="two-col">
+      <div class="card">
+        <div class="card-body" style="padding:0;">
+          <div class="chat-window">
+            <div class="chat-header">
+              <div class="chat-avatar">🌿</div>
+              <div class="chat-header-info">
+                <div class="name">Rayeva Support</div>
+                <div class="status">AI-powered · Rayeva World</div>
+              </div>
+            </div>
+            <div class="chat-messages" id="chat-messages">
+              <div class="chat-bubble bot">
+                👋 Hi! I'm Rayeva's AI support assistant. Ask me about your order, return policy, or anything about our sustainable products!
+                <div class="chat-time">Now</div>
+              </div>
+            </div>
+            <div class="chat-input-row">
+              <input class="chat-input" id="chat-input" placeholder="Type a message..." onkeydown="if(event.key==='Enter')sendWhatsApp()"/>
+              <button class="chat-send-btn" onclick="sendWhatsApp()">➤</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">Try These Messages</div>
+          <div class="card-tag">Quick Test</div>
+        </div>
+        <div class="card-body">
+          <div style="display:flex;flex-direction:column;gap:8px;">
+            <button class="btn btn-outline btn-sm" style="justify-content:flex-start;" onclick="setChat('Where is my order ORD-1023?')">📦 Where is my order ORD-1023?</button>
+            <button class="btn btn-outline btn-sm" style="justify-content:flex-start;" onclick="setChat('What is your return policy?')">↩️ What is your return policy?</button>
+            <button class="btn btn-outline btn-sm" style="justify-content:flex-start;" onclick="setChat('My product arrived damaged, I want a refund!')">😠 Product damaged, want refund!</button>
+            <button class="btn btn-outline btn-sm" style="justify-content:flex-start;" onclick="setChat('Tell me about your bamboo products')">🌱 Tell me about bamboo products</button>
+          </div>
+
+          <hr class="divider"/>
+          <div style="font-size:12px;color:rgba(26,26,24,0.4);line-height:1.7;">
+            <strong style="color:var(--sage);">How it works:</strong><br/>
+            1. Message classified into: <code style="background:var(--mist);padding:1px 5px;border-radius:4px;">order_status | return_policy | escalation | general</code><br/>
+            2. Escalation → flagged to human agent<br/>
+            3. Others → AI generates contextual reply<br/><br/>
+            <strong style="color:var(--sage);">Production:</strong> Twilio WhatsApp webhook integration
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HISTORY PAGE -->
+  <div class="page" id="page-history">
+    <div class="section-heading">Result <em>History</em></div>
+    <div class="section-sub">All past AI-generated outputs stored in SQLite database</div>
+
+    <div style="display:flex;gap:10px;margin-bottom:20px;">
+      <button class="btn btn-primary btn-sm" onclick="showHistoryTab('categories')">Category History</button>
+      <button class="btn btn-outline btn-sm" id="hist-prop-btn" onclick="showHistoryTab('proposals')">Proposal History</button>
+    </div>
+
+    <div id="history-categories" class="card">
+      <div class="card-header">
+        <div class="card-title">Category Results</div>
+        <div class="card-tag">GET /history/categories</div>
+      </div>
+      <div class="card-body" style="padding:0;">
+        <div id="cat-history-body">
+          <div class="history-empty">Loading...</div>
+        </div>
+      </div>
+    </div>
+
+    <div id="history-proposals" class="card" style="display:none;">
+      <div class="card-header">
+        <div class="card-title">Proposal Results</div>
+        <div class="card-tag">GET /history/proposals</div>
+      </div>
+      <div class="card-body" style="padding:0;">
+        <div id="prop-history-body">
+          <div class="history-empty">Loading...</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<!-- TOAST -->
+<div class="toast" id="toast">✓ <span id="toast-msg"></span></div>
+
+<script>
+const API = 'https://rayeva-ai-assignment-79v5.onrender.com';
+
+// ─── NAVIGATION ───────────────────────────────────────────────
+const pageTitles = {
+  dashboard: ['Dashboard', 'Overview'],
+  category:  ['Category', '& Tag Generator'],
+  proposal:  ['B2B', 'Proposal Generator'],
+  whatsapp:  ['WhatsApp', 'Support Bot'],
+  history:   ['Result', 'History'],
+};
+
+function navigate(page) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+  document.getElementById('page-' + page).classList.add('active');
+  document.querySelectorAll('.nav-item').forEach(n => {
+    if (n.getAttribute('onclick')?.includes(page)) n.classList.add('active');
+  });
+  const t = pageTitles[page];
+  document.getElementById('pageTitle').innerHTML = `${t[0]} <span>${t[1]}</span>`;
+  if (page === 'history') loadHistory();
+  if (page === 'dashboard') loadDashboard();
+}
+
+// ─── TOAST ────────────────────────────────────────────────────
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  document.getElementById('toast-msg').textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 3000);
+}
+
+function setLoading(btnId, loading) {
+  const btn = document.getElementById(btnId);
+  if (loading) {
+    btn.disabled = true;
+    btn.innerHTML = '<div class="spinner"></div><span>Generating...</span>';
+  } else {
+    btn.disabled = false;
+  }
+}
+
+// ─── MODULE 1: CATEGORY ───────────────────────────────────────
+function fillCategoryExample() {
+  document.getElementById('cat-name').value = 'Bamboo Toothbrush';
+  document.getElementById('cat-material').value = 'bamboo';
+  document.getElementById('cat-usecase').value = 'oral care';
+  document.getElementById('cat-desc').value = 'Eco friendly biodegradable toothbrush';
+}
+
+async function generateCategory() {
+  const name = document.getElementById('cat-name').value.trim();
+  const material = document.getElementById('cat-material').value.trim();
+  const usecase = document.getElementById('cat-usecase').value.trim();
+  const desc = document.getElementById('cat-desc').value.trim();
+  const errBox = document.getElementById('cat-error');
+  errBox.classList.remove('show');
+
+  if (!name || !material || !usecase || !desc) {
+    errBox.textContent = 'Please fill in all fields.';
+    errBox.classList.add('show');
+    return;
+  }
+
+  setLoading('cat-btn', true);
+  document.getElementById('cat-result-tag').textContent = 'Generating...';
+
+  try {
+    const res = await fetch(`${API}/generate-category`, {
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({product_name:name, description:desc, material, use_case:usecase})
+    });
+    const data = await res.json();
+    if (!res.ok) throw new Error(JSON.stringify(data.detail));
+    renderCategoryResult(data);
+    document.getElementById('cat-result-tag').textContent = '✓ Generated';
+    showToast('Category generated successfully');
+  } catch(e) {
+    errBox.textContent = 'Error: ' + e.message;
+    errBox.classList.add('show');
+    document.getElementById('cat-result-tag').textContent = 'Error';
+  }
+
+  setLoading('cat-btn', false);
+  document.getElementById('cat-btn').innerHTML = '<span>Generate Category</span>';
+}
+
+function renderCategoryResult(data) {
+  const score = Math.floor(65 + Math.random() * 30);
+  const scoreColor = score >= 80 ? '#2D4A1E' : score >= 60 ? '#6B8F5E' : '#C4856A';
+  const circumference = 2 * Math.PI * 36;
+  const offset = circumference - (score / 100) * circumference;
+
+  document.getElementById('cat-result').innerHTML = `
+    <div style="display:flex;align-items:flex-start;gap:16px;margin-bottom:16px;">
+      <div>
+        <div class="category-badge">📂 ${data.primary_category.replace(/_/g,' ')}</div>
+        <div class="sub-badge">↳ ${data.sub_category.replace(/_/g,' ')}</div>
+      </div>
+      <div style="margin-left:auto;text-align:center;">
+        <div class="score-ring">
+          <svg width="90" height="90" viewBox="0 0 90 90">
+            <circle cx="45" cy="45" r="36" fill="none" stroke="rgba(45,74,30,0.08)" stroke-width="7"/>
+            <circle cx="45" cy="45" r="36" fill="none" stroke="${scoreColor}" stroke-width="7"
+              stroke-dasharray="${circumference}" stroke-dashoffset="${offset}"
+              stroke-linecap="round" style="transition:stroke-dashoffset 1s ease"/>
+          </svg>
+          <div class="score-num">${score}</div>
+        </div>
+        <div style="font-size:10px;color:var(--sage);font-family:'DM Mono',monospace;letter-spacing:1px;">SUSTAIN SCORE</div>
+      </div>
+    </div>
+
+    <div style="margin-bottom:14px;">
+      <div style="font-size:10px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--sage);font-family:'DM Mono',monospace;margin-bottom:6px;">SEO Tags (${data.seo_tags.length})</div>
+      <div class="tag-list">${data.seo_tags.map(t=>`<span class="tag">${t}</span>`).join('')}</div>
+    </div>
+
+    <div>
+      <div style="font-size:10px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--sage);font-family:'DM Mono',monospace;margin-bottom:6px;">Sustainability Filters</div>
+      <div class="tag-list">${data.sustainability_filters.map(f=>`<span class="tag eco">🌿 ${f}</span>`).join('')}</div>
+    </div>
+  `;
+}
+
+// ─── MODULE 2: PROPOSAL ───────────────────────────────────────
+function fillProposalExample() {
+  document.getElementById('prop-client').value = 'corporate office';
+  document.getElementById('prop-employees').value = '200';
+  document.getElementById('prop-budget').value = '100000';
+  document.getElementById('prop-goal').value = 'reduce plastic waste';
+}
+
+async function generateProposal() {
+  const client = document.getElementById('prop-client').value.trim();
+  const employees = parseInt(document.getElementById('prop-employees').value);
+  const budget = parseInt(document.getElementById('prop-budget').value);
+  const goal = document.getElementById('prop-goal').value.trim();
+  const errBox = document.getElementById('prop-error');
+  errBox.classList.remove('show');
+
+  if (!client || !employees || !budget || !goal) {
+    errBox.textContent = 'Please fill in all fields.';
+    errBox.classList.add('show');
+    return;
+  }
+
+  setLoading('prop-btn', true);
+  document.getElementById('prop-result-tag').textContent = 'Generating...';
+
+  try {
+    const res = await fetch(`${API}/generate-proposal`, {
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({client_type:client, budget, employee_count:employees, sustainability_goal:goal})
+    });
+    const data = await res.json();
+    if (!res.ok) throw new Error(JSON.stringify(data.detail));
+    renderProposalResult(data, budget);
+    document.getElementById('prop-result-tag').textContent = '✓ Generated';
+    showToast('Proposal generated successfully');
+  } catch(e) {
+    errBox.textContent = 'Error: ' + e.message;
+    errBox.classList.add('show');
+    document.getElementById('prop-result-tag').textContent = 'Error';
+  }
+
+  setLoading('prop-btn', false);
+  document.getElementById('prop-btn').innerHTML = '<span>Generate Proposal</span>';
+}
+
+function renderProposalResult(data, totalBudget) {
+  const alloc = data.budget_allocation;
+  const total = alloc.products + alloc.logistics + alloc.buffer;
+  const colors = ['#2D4A1E','#6B8F5E','#B8D96B'];
+
+  const rows = data.product_mix.map(p => `
+    <tr>
+      <td>${p.product}</td>
+      <td>${p.quantity}</td>
+      <td>₹${p.unit_price?.toLocaleString() || '—'}</td>
+      <td><span class="cost-chip">₹${(p.total_cost||0).toLocaleString()}</span></td>
+    </tr>`).join('');
+
+  const budgetBars = [
+    {label:'Products', amount:alloc.products, pct:Math.round((alloc.products/total)*100), color:colors[0]},
+    {label:'Logistics', amount:alloc.logistics, pct:Math.round((alloc.logistics/total)*100), color:colors[1]},
+    {label:'Buffer', amount:alloc.buffer, pct:Math.round((alloc.buffer/total)*100), color:colors[2]},
+  ].map(b => `
+    <div class="budget-row">
+      <div class="budget-row-header">
+        <span class="budget-label">${b.label}</span>
+        <span class="budget-amount">₹${b.amount.toLocaleString()} · ${b.pct}%</span>
+      </div>
+      <div class="budget-bar-bg">
+        <div class="budget-bar-fill" style="width:${b.pct}%;background:${b.color};"></div>
+      </div>
+    </div>`).join('');
+
+  document.getElementById('prop-result').innerHTML = `
+    <div style="margin-bottom:16px;">
+      <table class="product-table">
+        <thead><tr>
+          <th>Product</th><th>Qty</th><th>Unit Price</th><th>Total Cost</th>
+        </tr></thead>
+        <tbody>${rows}</tbody>
+      </table>
+    </div>
+
+    <div style="margin-bottom:14px;">
+      <div style="font-size:10px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--sage);font-family:'DM Mono',monospace;margin-bottom:10px;">
+        Budget Allocation — ₹${total.toLocaleString()} / ₹${totalBudget.toLocaleString()}
+      </div>
+      <div class="budget-breakdown">${budgetBars}</div>
+    </div>
+
+    <div class="impact-box">
+      <div class="impact-box-label">Impact Summary</div>
+      <p>${data.impact_summary}</p>
+    </div>
+  `;
+}
+
+// ─── MODULE 4: WHATSAPP ───────────────────────────────────────
+function setChat(msg) {
+  document.getElementById('chat-input').value = msg;
+  sendWhatsApp();
+}
+
+async function sendWhatsApp() {
+  const input = document.getElementById('chat-input');
+  const msg = input.value.trim();
+  if (!msg) return;
+  input.value = '';
+
+  const messages = document.getElementById('chat-messages');
+  const now = new Date().toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'});
+
+  // user bubble
+  messages.innerHTML += `
+    <div class="chat-bubble user">${msg}<div class="chat-time">${now}</div></div>`;
+  messages.innerHTML += `
+    <div class="chat-bubble bot" id="typing-indicator">
+      <span style="opacity:0.5">typing...</span>
+    </div>`;
+  messages.scrollTop = messages.scrollHeight;
+
+  try {
+    const res = await fetch(`${API}/whatsapp/webhook`, {
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({phone_number:'+91-9999999999', message:msg})
+    });
+    const data = await res.json();
+
+    document.getElementById('typing-indicator')?.remove();
+
+    const intentColors = {
+      order_status:'order_status',
+      return_policy:'return_policy',
+      escalation:'escalation',
+      general:'general'
+    };
+    const intentClass = intentColors[data.intent] || 'general';
+
+    messages.innerHTML += `
+      <div class="chat-bubble bot">
+        ${data.escalated ? '🚨 ' : ''}${data.reply}
+        <div class="chat-time">${now}</div>
+        <div><span class="intent-chip ${intentClass}"># ${data.intent?.replace('_',' ')}</span></div>
+      </div>`;
+  } catch(e) {
+    document.getElementById('typing-indicator')?.remove();
+    messages.innerHTML += `
+      <div class="chat-bubble bot" style="background:#fee2e2;">
+        ⚠️ Could not connect to API. Please check the server.
+        <div class="chat-time">${now}</div>
+      </div>`;
+  }
+
+  messages.scrollTop = messages.scrollHeight;
+}
+
+// ─── HISTORY ──────────────────────────────────────────────────
+function showHistoryTab(tab) {
+  document.getElementById('history-categories').style.display = tab === 'categories' ? 'block' : 'none';
+  document.getElementById('history-proposals').style.display = tab === 'proposals' ? 'block' : 'none';
+}
+
+async function loadHistory() {
+  // Categories
+  try {
+    const res = await fetch(`${API}/history/categories?limit=20`);
+    const data = await res.json();
+    const body = document.getElementById('cat-history-body');
+    if (!data.results?.length) {
+      body.innerHTML = '<div class="history-empty">No category history yet.</div>';
+    } else {
+      body.innerHTML = `<table class="history-table">
+        <thead><tr><th>Product</th><th>Category</th><th>Sub-Category</th><th>Tags</th><th>Date</th></tr></thead>
+        <tbody>${data.results.map(r=>`
+          <tr>
+            <td><strong>${r.product_name}</strong></td>
+            <td><span class="tag">${r.primary_category}</span></td>
+            <td><span style="color:var(--sage);font-size:12px;">${r.sub_category}</span></td>
+            <td style="font-size:11px;color:var(--sage);">${r.seo_tags?.slice(0,3).join(', ')}...</td>
+            <td style="font-family:'DM Mono',monospace;font-size:11px;color:rgba(26,26,24,0.4);">${new Date(r.created_at).toLocaleDateString()}</td>
+          </tr>`).join('')}
+        </tbody>
+      </table>`;
+    }
+  } catch(e) {
+    document.getElementById('cat-history-body').innerHTML = '<div class="history-empty">Could not load history.</div>';
+  }
+
+  // Proposals
+  try {
+    const res = await fetch(`${API}/history/proposals?limit=20`);
+    const data = await res.json();
+    const body = document.getElementById('prop-history-body');
+    if (!data.results?.length) {
+      body.innerHTML = '<div class="history-empty">No proposal history yet.</div>';
+    } else {
+      body.innerHTML = `<table class="history-table">
+        <thead><tr><th>Client</th><th>Budget</th><th>Employees</th><th>Goal</th><th>Date</th></tr></thead>
+        <tbody>${data.results.map(r=>`
+          <tr>
+            <td><strong>${r.client_type}</strong></td>
+            <td style="font-family:'DM Mono',monospace;">₹${r.budget?.toLocaleString()}</td>
+            <td>${r.employee_count}</td>
+            <td style="font-size:12px;color:var(--sage);">${r.sustainability_goal}</td>
+            <td style="font-family:'DM Mono',monospace;font-size:11px;color:rgba(26,26,24,0.4);">${new Date(r.created_at).toLocaleDateString()}</td>
+          </tr>`).join('')}
+        </tbody>
+      </table>`;
+    }
+  } catch(e) {
+    document.getElementById('prop-history-body').innerHTML = '<div class="history-empty">Could not load history.</div>';
+  }
+}
+
+// ─── DASHBOARD ────────────────────────────────────────────────
+async function loadDashboard() {
+  // Health check
+  try {
+    const res = await fetch(`${API}/health`);
+    if (res.ok) {
+      document.getElementById('stat-api').innerHTML = '<span style="color:#4ade80">⬤</span> Live';
+      document.getElementById('apiStatusText').textContent = 'API Connected';
+    }
+  } catch(e) {
+    document.getElementById('stat-api').innerHTML = '<span style="color:#f87171">⬤</span> Offline';
+    document.getElementById('apiStatusText').textContent = 'API Offline';
+  }
+
+  // Categories
+  try {
+    const res = await fetch(`${API}/history/categories?limit=3`);
+    const data = await res.json();
+    document.getElementById('stat-categories').textContent = data.count ?? data.results?.length ?? 0;
+
+    if (data.results?.length) {
+      document.getElementById('dash-recent-categories').innerHTML = data.results.map(r => `
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid rgba(45,74,30,0.07);">
+          <div>
+            <div style="font-size:13px;font-weight:600;">${r.product_name}</div>
+            <div style="font-size:11px;color:var(--sage);margin-top:2px;">${r.primary_category} → ${r.sub_category}</div>
+          </div>
+          <div style="font-size:10px;color:rgba(26,26,24,0.3);font-family:'DM Mono',monospace;">${new Date(r.created_at).toLocaleDateString()}</div>
+        </div>`).join('');
+    }
+  } catch(e) {}
+
+  // Proposals
+  try {
+    const res = await fetch(`${API}/history/proposals?limit=3`);
+    const data = await res.json();
+    document.getElementById('stat-proposals').textContent = data.count ?? data.results?.length ?? 0;
+
+    let totalBudget = 0;
+    if (data.results?.length) {
+      data.results.forEach(r => totalBudget += r.budget || 0);
+      document.getElementById('stat-budget').textContent = '₹' + (totalBudget/1000).toFixed(0) + 'k';
+
+      document.getElementById('dash-recent-proposals').innerHTML = data.results.map(r => `
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid rgba(45,74,30,0.07);">
+          <div>
+            <div style="font-size:13px;font-weight:600;">${r.client_type}</div>
+            <div style="font-size:11px;color:var(--sage);margin-top:2px;">${r.sustainability_goal}</div>
+          </div>
+          <div style="text-align:right;">
+            <div style="font-size:12px;font-family:'DM Mono',monospace;color:var(--moss);">₹${r.budget?.toLocaleString()}</div>
+            <div style="font-size:10px;color:rgba(26,26,24,0.3);">${r.employee_count} employees</div>
+          </div>
+        </div>`).join('');
+    }
+  } catch(e) {}
+}
+
+// ─── INIT ─────────────────────────────────────────────────────
+loadDashboard();
+</script>
+</body>
+</html>

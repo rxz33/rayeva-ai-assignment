@@ -24,6 +24,9 @@ class CategoryResult(Base):
         return {
             "id": self.id,
             "product_name": self.product_name,
+            "description": self.description,   
+            "material": self.material,         
+            "use_case": self.use_case,          
             "primary_category": self.primary_category,
             "sub_category": self.sub_category,
             "seo_tags": json.loads(self.seo_tags),
