@@ -1,0 +1,50 @@
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pyc.*
+
+# Virtual environment
+venv/
+.env/
+.env
+
+# Environment variables
+.env.local
+.env.*.local
+
+# Logs
+*.log
+ai_logs.json
+
+# VS Code
+.vscode/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Python packaging
+build/
+dist/
+*.egg-info/
+
+# Pytest cache
+.pytest_cache/
+
+# Mypy cache
+.mypy_cache/
+
+# Ruff cache
+.ruff_cache/
+
+# Pre-commit
+.pre-commit-cache/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Coverage reports
+.coverage
+htmlcov/
