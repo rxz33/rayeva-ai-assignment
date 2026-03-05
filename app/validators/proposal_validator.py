@@ -31,13 +31,23 @@ def validate_proposal_output(parsed_json, client_budget):
 
                 # validate new cost breakdown fields
                 if "unit_price" not in item:
-                    errors.append(f"Missing unit_price for product: {item.get('product', '?')}")
-                elif not isinstance(item["unit_price"], (int, float)) or item["unit_price"] <= 0:
+                    errors.append(
+                        f"Missing unit_price for product: {item.get('product', '?')}"
+                    )
+                elif (
+                    not isinstance(item["unit_price"], (int, float))
+                    or item["unit_price"] <= 0
+                ):
                     errors.append("unit_price must be a positive number")
 
                 if "total_cost" not in item:
-                    errors.append(f"Missing total_cost for product: {item.get('product', '?')}")
-                elif not isinstance(item["total_cost"], (int, float)) or item["total_cost"] <= 0:
+                    errors.append(
+                        f"Missing total_cost for product: {item.get('product', '?')}"
+                    )
+                elif (
+                    not isinstance(item["total_cost"], (int, float))
+                    or item["total_cost"] <= 0
+                ):
                     errors.append("total_cost must be a positive number")
 
     # budget validation — type-safe check before summing
@@ -66,7 +76,9 @@ def validate_proposal_output(parsed_json, client_budget):
     if "impact_summary" in parsed_json:
         impact_summary = parsed_json["impact_summary"]
         if not isinstance(impact_summary, str) or len(impact_summary.strip()) < 10:
-            errors.append("Impact summary must be meaningful text (at least 10 characters)")
+            errors.append(
+                "Impact summary must be meaningful text (at least 10 characters)"
+            )
 
     if errors:
         raise HTTPException(

@@ -1,7 +1,7 @@
 import json
 from datetime import datetime
 
-from sqlalchemy import Column, DateTime, Float, Integer, String, Text
+from sqlalchemy import Column, DateTime, Integer, String, Text
 
 from app.database.db import Base
 
@@ -16,7 +16,7 @@ class CategoryResult(Base):
     use_case = Column(String, nullable=False)
     primary_category = Column(String, nullable=False)
     sub_category = Column(String, nullable=False)
-    seo_tags = Column(Text, nullable=False)           # stored as JSON string
+    seo_tags = Column(Text, nullable=False)  # stored as JSON string
     sustainability_filters = Column(Text, nullable=False)  # stored as JSON string
     created_at = Column(DateTime, default=datetime.utcnow)
 
@@ -24,9 +24,9 @@ class CategoryResult(Base):
         return {
             "id": self.id,
             "product_name": self.product_name,
-            "description": self.description,   
-            "material": self.material,         
-            "use_case": self.use_case,          
+            "description": self.description,
+            "material": self.material,
+            "use_case": self.use_case,
             "primary_category": self.primary_category,
             "sub_category": self.sub_category,
             "seo_tags": json.loads(self.seo_tags),
@@ -43,7 +43,7 @@ class ProposalResult(Base):
     budget = Column(Integer, nullable=False)
     employee_count = Column(Integer, nullable=False)
     sustainability_goal = Column(Text, nullable=False)
-    product_mix = Column(Text, nullable=False)        # stored as JSON string
+    product_mix = Column(Text, nullable=False)  # stored as JSON string
     budget_allocation = Column(Text, nullable=False)  # stored as JSON string
     impact_summary = Column(Text, nullable=False)
     created_at = Column(DateTime, default=datetime.utcnow)

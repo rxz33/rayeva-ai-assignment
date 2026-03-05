@@ -21,11 +21,13 @@ def log_ai_interaction(module: str, prompt: str, response: str) -> None:
     else:
         logs = []
 
-    logs.append({
-        "timestamp": datetime.utcnow().isoformat(),
-        "module": module,
-        "prompt": prompt,
-        "response": response,
-    })
+    logs.append(
+        {
+            "timestamp": datetime.utcnow().isoformat(),
+            "module": module,
+            "prompt": prompt,
+            "response": response,
+        }
+    )
 
     path.write_text(json.dumps(logs, indent=2))

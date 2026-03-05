@@ -49,7 +49,9 @@ def validate_category_output(parsed_json):
         if not isinstance(seo_tags, list) or len(seo_tags) == 0:
             errors.append("seo_tags must be a non-empty list")
         elif len(seo_tags) < 5 or len(seo_tags) > 10:
-            errors.append(f"seo_tags must contain between 5 and 10 tags, got {len(seo_tags)}")
+            errors.append(
+                f"seo_tags must contain between 5 and 10 tags, got {len(seo_tags)}"
+            )
         else:
             for tag in seo_tags:
                 if not isinstance(tag, str) or not tag.strip():

@@ -100,7 +100,9 @@ Keep the reply under 3 sentences. Be friendly and professional.
     try:
         reply_result = generate_ai_response(reply_prompt)
         reply_json = json.loads(reply_result)
-        reply = reply_json.get("reply", "Thank you for reaching out! How can we help you today?")
+        reply = reply_json.get(
+            "reply", "Thank you for reaching out! How can we help you today?"
+        )
     except Exception as e:
         raise HTTPException(
             status_code=status.HTTP_502_BAD_GATEWAY,
