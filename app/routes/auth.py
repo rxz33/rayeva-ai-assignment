@@ -5,8 +5,12 @@ from sqlalchemy.orm import Session
 
 from app.database.db import get_db
 from app.database.models import User
-from app.services.auth_service import (create_access_token, decode_token,
-                                       hash_password, verify_password)
+from app.services.auth_service import (
+    create_access_token,
+    decode_token,
+    hash_password,
+    verify_password,
+)
 
 router = APIRouter()
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/auth/login")

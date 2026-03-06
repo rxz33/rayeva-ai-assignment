@@ -21,20 +21,29 @@ def get_stats(db: Session = Depends(get_db)):
     avg_score = round(avg_score, 1) if avg_score else None
 
     most_common_category = (
-        db.query(CategoryResult.primary_category, func.count(CategoryResult.primary_category).label("cnt"))
+        db.query(
+            CategoryResult.primary_category,
+            func.count(CategoryResult.primary_category).label("cnt"),
+        )
         .group_by(CategoryResult.primary_category)
         .order_by(func.count(CategoryResult.primary_category).desc())
         .first()
     )
 
-    total_plastic_saved = db.query(func.sum(ImpactReport.plastic_saved_kg)).scalar() or 0
-    total_carbon_avoided = db.query(func.sum(ImpactReport.carbon_avoided_kg)).scalar() or 0
+    total_plastic_saved = (
+        db.query(func.sum(ImpactReport.plastic_saved_kg)).scalar() or 0
+    )
+    total_carbon_avoided = (
+        db.query(func.sum(ImpactReport.carbon_avoided_kg)).scalar() or 0
+    )
 
     return {
         "categories": {
             "total": total_categories,
             "avg_sustainability_score": avg_score,
-            "most_common_category": most_common_category[0] if most_common_category else None,
+            "most_common_category": (
+                most_common_category[0] if most_common_category else None
+            ),
         },
         "proposals": {
             "total": total_proposals,
