@@ -1,129 +1,171 @@
-# Rayeva AI Systems Assignment
+# Rayeva AI Systems — Internship Assignment
 
-AI-powered backend services for sustainable product categorization and B2B proposal generation.
+> **AI-powered sustainability intelligence platform** built with FastAPI, Groq LLM, SQLite, and a custom investment-grade frontend dashboard.
 
-## Overview
+**Live Backend:** https://rayeva-ai-assignment-79v5.onrender.com/docs  
+**Frontend:** Deploy via `npx vercel --prod` from `rayeva-dashboard/`
 
-This project implements four AI-powered backend modules for an ecommerce sustainability platform.
+---
 
-- **Module 1:** AI Auto-Category & Tag Generator — Classifies products and generates SEO tags
-- **Module 2:** AI B2B Proposal Generator — Generates sustainable product proposals for corporate clients
-- **Module 3:** AI Impact Reporting Generator *(Architecture outlined)*
-- **Module 4:** AI WhatsApp Support Bot *(Stub implemented + Architecture outlined)*
+## Table of Contents
 
-The system ensures structured AI outputs, logging, validation, database storage, and clear separation of AI and business logic.
+- [Project Overview](#project-overview)
+- [Tech Stack](#tech-stack)
+- [Architecture](#architecture)
+- [Modules](#modules)
+  - [Module 1 — Category & Tag Generator](#module-1--category--tag-generator)
+  - [Module 2 — B2B Proposal Generator](#module-2--b2b-proposal-generator)
+  - [Module 3 — Impact Report Generator](#module-3--impact-report-generator)
+  - [Module 4 — WhatsApp Support Bot](#module-4--whatsapp-support-bot)
+- [Authentication](#authentication)
+- [Admin Dashboard](#admin-dashboard)
+- [History & Search](#history--search)
+- [Frontend Dashboard](#frontend-dashboard)
+- [API Reference](#api-reference)
+- [Setup & Deployment](#setup--deployment)
+- [Environment Variables](#environment-variables)
+- [Project Structure](#project-structure)
+
+---
+
+## Project Overview
+
+Rayeva AI is a full-stack AI platform for sustainable ecommerce. It automates product categorization, generates B2B sustainability proposals, calculates environmental impact, and provides AI-powered customer support — all backed by a Groq LLM and a persistent SQLite database.
+
+Built as part of an AI Engineer internship assignment for Rayeva AI Systems (Internshala).
+
+### What's been implemented
+
+| Feature | Status |
+|---|---|
+| Module 1: AI Category & Tag Generator | ✅ Complete |
+| Module 2: AI B2B Proposal Generator | ✅ Complete |
+| Module 3: AI Environmental Impact Report | ✅ Complete |
+| Module 4: WhatsApp Support Bot (stub) | ✅ Complete |
+| JWT Authentication (register / login) | ✅ Complete |
+| Admin Stats Dashboard | ✅ Complete |
+| History endpoints with search/filter | ✅ Complete |
+| Sustainability Score (0–100) in Module 1 | ✅ Complete |
+| Per-product cost breakdown in Module 2 | ✅ Complete |
+| SQLite database with full ORM | ✅ Complete |
+| Keep-alive scheduler (Render free tier) | ✅ Complete |
+| Structured JSON logging | ✅ Complete |
+| Input validation (Pydantic v2) | ✅ Complete |
+| Frontend dashboard (single-file, no build) | ✅ Complete |
 
 ---
 
 ## Tech Stack
 
-- Python 3.11
-- FastAPI
-- Groq (LLaMA 3.1 via API)
-- Pydantic v2
-- SQLAlchemy + SQLite
-- Uvicorn
+**Backend**
+- Python 3.11+
+- FastAPI — REST API framework
+- Groq SDK — LLM inference (llama-3.1-8b-instant)
+- SQLAlchemy — ORM with SQLite
+- Pydantic v2 — request/response validation
+- python-jose + passlib — JWT authentication (bcrypt)
+- APScheduler — background keep-alive scheduler
+- httpx — async HTTP for keep-alive pings
+
+**Frontend**
+- Vanilla HTML/CSS/JS (single file, no build step)
+- Cormorant Garamond + Barlow Condensed + JetBrains Mono
+- Investment-grade UI (Bloomberg Terminal aesthetic)
+
+**Infrastructure**
+- Render — backend hosting (free tier)
+- Vercel — frontend hosting
+- SQLite — persistent storage (file-based)
 
 ---
 
-## Features
-
-- AI-powered product categorization with validated category enforcement
-- B2B sustainability proposal generation with per-product cost breakdown
-- Structured JSON outputs with strict schema validation
-- SQLite database storage for all AI outputs
-- Prompt and response logging to `ai_logs.json`
-- `/history` endpoints to retrieve past results
-- Retry logic for resilient AI responses
-- WhatsApp bot stub (Module 4)
-- Modular backend architecture
-- Error handling and validation
-
----
-
-## Project Architecture
+## Architecture
 
 ```
-app/
-├── main.py
-├── database/
-│   ├── db.py              # SQLAlchemy engine and session
-│   └── models.py          # ORM models for categories and proposals
-│
-├── routes/
-│   ├── category.py        # POST /generate-category, GET /history/categories
-│   ├── proposal.py        # POST /generate-proposal, GET /history/proposals
-│   └── whatsapp.py        # POST /whatsapp/webhook (Module 4 stub)
-│
-├── services/
-│   ├── ai_client.py       # Groq API wrapper with retry logic
-│   ├── category_service.py
-│   └── proposal_service.py
-│
-├── validators/
-│   ├── category_validator.py
-│   └── proposal_validator.py
-│
-├── schemas/
-│   ├── category_schema.py
-│   └── proposal_schema.py
-│
-└── utils/
-    └── logger.py          # Prompt + response logging
+┌─────────────────────────────────────────────────────┐
+│                   Frontend (Vercel)                  │
+│              index.html — single file app            │
+│    Dashboard · M1 · M2 · M3 · M4 · Admin · History  │
+└────────────────────────┬────────────────────────────┘
+                         │ HTTPS API calls
+┌────────────────────────▼────────────────────────────┐
+│               FastAPI Backend (Render)               │
+│                                                      │
+│  /auth          JWT register · login · /me           │
+│  /generate-*    AI modules 1, 2, 3                   │
+│  /whatsapp      Module 4 webhook                     │
+│  /admin/stats   Aggregate analytics                  │
+│  /history/*     Persistent result history            │
+│  /health        Keep-alive + health check            │
+│                                                      │
+│  ┌───────────────┐    ┌──────────────────────────┐  │
+│  │  ai_client.py │    │     SQLite (rayeva.db)    │  │
+│  │  Groq LLM     │    │  CategoryResult          │  │
+│  │  + retry(2x)  │    │  ProposalResult          │  │
+│  └───────────────┘    │  ImpactReport            │  │
+│                       │  User                    │  │
+│  APScheduler          └──────────────────────────┘  │
+│  Pings /health every 10 min (prevents sleep)         │
+└─────────────────────────────────────────────────────┘
 ```
 
-### Architecture Explanation
+### Module Data Flow
 
-- **Routes** handle API endpoints and HTTP request/response processing.
-- **Services** interact with the AI model and construct prompts — all AI logic lives here.
-- **Validators** enforce that AI responses match expected JSON schemas and business rules.
-- **Schemas** define request and response models using Pydantic v2.
-- **Database** stores all AI outputs persistently via SQLAlchemy ORM.
-- **Logger** writes raw prompts and responses to `ai_logs.json` for debugging.
-
----
-
-## API Modules
+```
+User Input → Pydantic Schema (validate) → AI Service (Groq prompt)
+    → JSON parse → Validator (business rules) → SQLite (store)
+    → Pydantic Response → JSON to client
+```
 
 ---
 
-## Module 1: AI Auto-Category & Tag Generator
+## Modules
 
-Classifies a product into sustainability-focused categories and generates SEO tags.
+### Module 1 — Category & Tag Generator
 
 **Endpoint:** `POST /generate-category`
 
-**Example request:**
+Classifies any sustainable product into a predefined taxonomy, generates SEO keywords, sustainability attributes, and an ESG score.
+
+**Input:**
 ```json
 {
   "product_name": "Bamboo Toothbrush",
-  "description": "Eco friendly toothbrush",
+  "description": "Eco-friendly biodegradable toothbrush",
   "material": "bamboo",
   "use_case": "oral care"
 }
 ```
 
-**Example response:**
+**Output:**
 ```json
 {
   "primary_category": "personal_care",
   "sub_category": "oral_care",
-  "seo_tags": ["bamboo", "eco friendly", "sustainable", "plastic free", "oral care"],
-  "sustainability_filters": ["biodegradable", "renewable resources"]
+  "seo_tags": ["bamboo toothbrush", "eco friendly", "biodegradable", "plastic free", "sustainable oral care"],
+  "sustainability_filters": ["biodegradable", "renewable resources", "plastic-free"],
+  "sustainability_score": 88,
+  "score_reasoning": "Bamboo is a fast-growing renewable material that is fully biodegradable and replaces single-use plastic."
 }
 ```
 
-**Retrieve history:** `GET /history/categories`
+**Valid categories:** `personal_care`, `kitchen`, `office_supplies`, `packaging`, `home_products`
+
+**Validations:**
+- `primary_category` must be one of the 5 valid values
+- `seo_tags` must contain 5–10 tags
+- `sustainability_score` must be 0–100 integer
+- All required fields enforced
 
 ---
 
-## Module 2: AI B2B Proposal Generator
-
-Generates sustainable product proposals for corporate clients based on budget, employee count, and sustainability goals.
+### Module 2 — B2B Proposal Generator
 
 **Endpoint:** `POST /generate-proposal`
 
-**Example request:**
+Generates a complete sustainable procurement proposal for corporate clients, including product mix, per-unit pricing, capital allocation breakdown, and ESG impact summary.
+
+**Input:**
 ```json
 {
   "client_type": "corporate office",
@@ -133,33 +175,40 @@ Generates sustainable product proposals for corporate clients based on budget, e
 }
 ```
 
-**Example response:**
+**Output:**
 ```json
 {
   "product_mix": [
-    {"product": "steel water bottle", "quantity": 200, "unit_price": 300, "total_cost": 60000},
-    {"product": "bamboo toothbrush", "quantity": 200, "unit_price": 50, "total_cost": 10000}
+    {
+      "product": "Stainless Steel Water Bottle",
+      "quantity": 200,
+      "unit_price": 350,
+      "total_cost": 70000
+    }
   ],
   "budget_allocation": {
     "products": 85000,
     "logistics": 10000,
     "buffer": 5000
   },
-  "impact_summary": "Reusable products reduce single-use plastic waste."
+  "impact_summary": "This procurement will eliminate approximately 73,000 single-use plastic items annually across the organization."
 }
 ```
 
-**Retrieve history:** `GET /history/proposals`
+**Validations:**
+- Total budget allocation must not exceed client budget
+- `unit_price` and `total_cost` must be positive numbers
+- `impact_summary` must be meaningful text
 
 ---
 
-## Module 3: AI Impact Reporting Generator *(Architecture)*
+### Module 3 — Impact Report Generator
 
-This module generates an impact report for a completed order, estimating environmental metrics.
+**Endpoint:** `POST /generate-impact-report`
 
-**Planned Endpoint:** `POST /generate-impact-report`
+Calculates the environmental impact of a sustainability order — plastic diverted from landfill, carbon emissions avoided, and local sourcing analysis.
 
-**Planned Request:**
+**Input:**
 ```json
 {
   "order_id": "ORD-1023",
@@ -170,188 +219,331 @@ This module generates an impact report for a completed order, estimating environ
 }
 ```
 
-**Planned Response:**
+**Output:**
 ```json
 {
   "order_id": "ORD-1023",
   "plastic_saved_kg": 12.4,
   "carbon_avoided_kg": 8.2,
-  "local_sourcing_summary": "60% of products sourced from within 500km",
-  "impact_statement": "This order prevented approximately 12.4kg of plastic from entering landfill and avoided 8.2kg of CO2 equivalent emissions."
+  "local_sourcing_summary": "Approximately 60% of selected materials are likely sourced within 500km based on material type.",
+  "impact_statement": "This order prevented 12.4kg of plastic from entering landfill and avoided 8.2kg of CO₂ equivalent emissions."
 }
 ```
 
-**Planned Architecture:**
+**Logic:** AI estimates plastic saved by comparing eco materials to their single-use plastic equivalents (e.g. bamboo toothbrush saves ~15g plastic vs plastic equivalent × quantity).
 
-```
-routes/impact.py
-  └── POST /generate-impact-report
-        └── services/impact_service.py
-              ├── Builds prompt with product list and material data
-              ├── Calls generate_ai_response()
-              └── Logs and stores result
-
-validators/impact_validator.py
-  └── Validates plastic_saved_kg, carbon_avoided_kg > 0
-  └── Validates impact_statement is meaningful text
-
-database/models.py
-  └── ImpactReport model (order_id, plastic_saved_kg, carbon_avoided_kg, impact_statement, created_at)
-```
-
-**Prompt Design for Module 3:**
-
-The prompt will provide product names, quantities, and materials, then instruct the AI to apply logic-based estimations (e.g., average plastic saved per bamboo toothbrush vs. plastic equivalent). The AI is instructed to return only numeric fields and a human-readable summary — no markdown, no explanations.
+**History endpoint:** `GET /history/impact-reports?limit=20`
 
 ---
 
-## Module 4: AI WhatsApp Support Bot *(Stub + Architecture)*
+### Module 4 — WhatsApp Support Bot
 
-This module handles WhatsApp messages via a webhook, routing queries to the AI for order status, return policy, and escalation.
+**Endpoint:** `POST /whatsapp/webhook`
 
-**Implemented Stub Endpoint:** `POST /whatsapp/webhook`
+Two-step AI pipeline: first classifies intent, then generates an appropriate reply. Escalation bypasses AI entirely and flags for human agent.
 
-The stub accepts an incoming WhatsApp message body, sends it to the AI with a sustainability support context, and returns a structured response. In production, this would integrate with Twilio's WhatsApp API.
-
-**Planned Architecture:**
-
-```
-routes/whatsapp.py
-  └── POST /whatsapp/webhook
-        ├── Parses incoming Twilio WhatsApp payload
-        └── services/whatsapp_service.py
-              ├── Classifies intent: order_status | return_policy | escalation | general
-              ├── For order_status: queries database for real order data
-              ├── For escalation: flags message and alerts human agent
-              └── Logs full AI conversation
-
-validators/whatsapp_validator.py
-  └── Validates intent is one of known types
-  └── Validates response text is non-empty
-
-database/models.py
-  └── WhatsAppConversation model (phone_number, intent, user_message, ai_response, escalated, created_at)
-```
-
-**Intent Classification Prompt Design:**
-
-The AI is first asked to classify the user's message into one of four intents: `order_status`, `return_policy`, `escalation`, or `general`. Based on the classified intent, a second prompt is generated with relevant context (e.g., injecting real order data for order_status queries). This two-step prompting ensures the AI always has the right context before generating a response.
-
-**Escalation Logic:**
-
-If the AI classifies intent as `escalation`, the system skips the AI response and instead triggers a human agent alert (email/Slack notification) and logs the conversation with `escalated: true`.
-
-**Production Integration:**
-
-In production, Twilio's WhatsApp sandbox sends POST requests to this webhook. The response is formatted as TwiML and sent back to the user's WhatsApp number. A Twilio account SID and auth token would be stored as environment variables.
-
----
-
-## AI Prompt Design Explanation
-
-### Design Philosophy
-
-All prompts in this system follow three principles:
-
-1. **Strict output constraints** — Every prompt instructs the AI to return *only* valid JSON with an exact schema provided inline. This eliminates the need to parse natural language.
-
-2. **Enumerated valid values** — Where applicable (e.g., `primary_category`), the prompt lists all valid options explicitly. This reduces hallucination and makes validation deterministic.
-
-3. **Low temperature (0.2)** — All AI calls use `temperature=0.2` to favour consistent, predictable outputs over creative variation. This is critical for structured data generation.
-
-### Module 1 Prompt Design
-
-The prompt provides product details (name, description, material, use case) and instructs the AI to classify into one of five predefined categories. The category list is embedded directly in the prompt to prevent out-of-scope outputs. SEO tags are constrained to 5–10 keywords to match the spec.
-
-### Module 2 Prompt Design
-
-The prompt embeds the exact JSON schema the AI must return, including the new `unit_price` and `total_cost` fields per product. The client budget is passed explicitly, and the AI is instructed that total budget allocation must not exceed it. The impact summary is scoped to sustainability language to maintain brand consistency.
-
-### Retry Logic
-
-If the AI returns invalid JSON (e.g., due to a rare hallucination), `ai_client.py` retries the call once before raising an error. This is implemented with a configurable `max_retries` parameter.
-
----
-
-## Technical Requirements Implementation
-
-| Requirement | Implementation |
-|---|---|
-| Structured JSON Outputs | Explicit schema in every prompt + Pydantic validation |
-| Prompt + Response Logging | `utils/logger.py` → `ai_logs.json` |
-| Environment-based API Key Management | `.env` + `python-dotenv` |
-| Clear Separation of AI and Business Logic | Services handle AI; Routes handle HTTP |
-| Error Handling and Validation | Validators + HTTPException with detailed errors |
-| Database Storage | SQLAlchemy + SQLite for all module outputs |
-
----
-
-## Setup and Run
-
-**Clone the repository:**
-```bash
-git clone https://github.com/rxz33/rayeva-ai-assignment.git
-cd rayeva-ai-assignment
-```
-
-**Create and activate a virtual environment:**
-```bash
-python -m venv venv
-# Windows:
-venv\Scripts\activate
-# Mac/Linux:
-source venv/bin/activate
-```
-
-**Install dependencies:**
-```bash
-pip install -r requirements.txt
-```
-
-**Set environment variables:**
-```bash
-cp .env.example .env
-# Open .env and add your API key:
-# GROQ_API_KEY=your_api_key_here
-```
-
-**Run the server:**
-```bash
-uvicorn app.main:app --reload
-```
-
-**Open Swagger docs:**
-```
-http://127.0.0.1:8000/docs
-```
-
----
-
-## AI Logging
-
-All AI prompts and responses are stored in `ai_logs.json`.
-
-Example log entry:
+**Input:**
 ```json
 {
-  "timestamp": "2024-01-01T12:00:00",
-  "module": "category_generator",
-  "prompt": "...",
-  "response": "..."
+  "phone_number": "+91-9999999999",
+  "message": "My product arrived damaged, I want a refund!"
+}
+```
+
+**Output:**
+```json
+{
+  "intent": "escalation",
+  "reply": "We've escalated your query to a human agent. Someone will contact you shortly.",
+  "escalated": true
+}
+```
+
+**Intent classes:** `order_status`, `return_policy`, `escalation`, `general`
+
+**Production path:** Connect Twilio WhatsApp Business API to this webhook URL. Twilio sends POST requests on incoming messages; this endpoint handles classification, response generation, and escalation routing.
+
+**Architecture for full implementation:**
+```
+WhatsApp User → Twilio → POST /whatsapp/webhook
+    → Step 1: Groq classifies intent
+    → Step 2: Groq generates reply (or escalation)
+    → Twilio sends reply back to user
+    → Escalations → notify human agent via Slack/email
+```
+
+---
+
+## Authentication
+
+JWT-based authentication using OAuth2 password flow.
+
+### Register
+```http
+POST /auth/register
+Content-Type: application/json
+
+{
+  "email": "analyst@firm.com",
+  "password": "securepassword"
+}
+```
+
+### Login
+```http
+POST /auth/login
+Content-Type: application/x-www-form-urlencoded
+
+username=analyst@firm.com&password=securepassword
+```
+
+Both return:
+```json
+{
+  "access_token": "eyJ...",
+  "token_type": "bearer",
+  "email": "analyst@firm.com"
+}
+```
+
+### Get current user
+```http
+GET /auth/me
+Authorization: Bearer <token>
+```
+
+**Token:** 24-hour expiry, HS256 signed. Set `SECRET_KEY` in environment variables (minimum 32 characters, change in production).
+
+---
+
+## Admin Dashboard
+
+**Endpoint:** `GET /admin/stats`
+
+Returns platform-wide aggregate statistics across all AI modules.
+
+**Response:**
+```json
+{
+  "categories": {
+    "total": 42,
+    "avg_sustainability_score": 76.3,
+    "most_common_category": "personal_care"
+  },
+  "proposals": {
+    "total": 18,
+    "total_budget_proposed_inr": 1850000
+  },
+  "impact_reports": {
+    "total": 11,
+    "total_plastic_saved_kg": 148.6,
+    "total_carbon_avoided_kg": 92.4
+  }
 }
 ```
 
 ---
 
-## Future Improvements
+## History & Search
 
-- Full Twilio WhatsApp integration for Module 4
-- Full implementation of Module 3 impact reporting
-- Improve prompt optimization with few-shot examples
-- Add response caching with Redis
-- Implement monitoring and analytics for AI outputs
-- PostgreSQL migration for production deployments
+All AI outputs are stored persistently in SQLite and queryable via history endpoints.
 
-## Live Demo
-- 🖥️ Frontend Dashboard: https://rayeva-ai-dashboard.vercel.app
-- ⚡ API Docs: https://rayeva-ai-assignment-79v5.onrender.com/docs
+| Endpoint | Filter params |
+|---|---|
+| `GET /history/categories` | `?category=personal_care&limit=20` |
+| `GET /history/proposals` | `?client_type=office&limit=20` |
+| `GET /history/impact-reports` | `?limit=20` |
+
+All return `{ "count": N, "results": [...] }`.
+
+---
+
+## Frontend Dashboard
+
+A single-file dashboard (`index.html`) with no build step required. Drop it into any static host.
+
+**Design:** Investment-grade "ESG Terminal" aesthetic — white background, cobalt blue accents, gold prestige markers, Cormorant Garamond serif headings, JetBrains Mono for all data.
+
+**Pages:**
+- **Dashboard** — live stats from all 4 modules + recent activity feed
+- **Module 1** — product classification form with ESG grade (A/B/C/D), score bar, SEO tags, sustainability filters
+- **Module 2** — proposal form with product mix table, capital allocation bars, impact summary
+- **Module 3** — order impact form with plastic/carbon metrics, local sourcing analysis
+- **Module 4** — live WhatsApp chat simulation with intent badges
+- **Admin** — aggregate ESG metrics, API reference
+- **History** — tabbed audit trail for all 3 data types
+
+**Auth:** JWT login/register modal, token stored in localStorage, persists across sessions.
+
+---
+
+## API Reference
+
+```
+Auth
+  POST   /auth/register          Register new user
+  POST   /auth/login             Login (OAuth2 form)
+  GET    /auth/me                Get current user
+
+AI Modules
+  POST   /generate-category      Module 1: classify product
+  POST   /generate-proposal      Module 2: generate B2B proposal
+  POST   /generate-impact-report Module 3: calculate impact
+  POST   /whatsapp/webhook       Module 4: support bot
+
+History
+  GET    /history/categories     Category results (filterable)
+  GET    /history/proposals      Proposal results (filterable)
+  GET    /history/impact-reports Impact report results
+
+Analytics
+  GET    /admin/stats            Platform-wide statistics
+
+System
+  GET    /health                 Health check + keep-alive target
+  GET    /docs                   Swagger UI (auto-generated)
+  GET    /redoc                  ReDoc documentation
+```
+
+---
+
+## Setup & Deployment
+
+### Local Development
+
+```bash
+# Clone and install
+git clone <repo-url>
+cd rayeva-ai-assignment
+pip install -r requirements.txt
+
+# Set environment variables
+cp .env.example .env
+# Edit .env with your GROQ_API_KEY and SECRET_KEY
+
+# Run
+uvicorn app.main:app --reload
+
+# API docs available at:
+# http://localhost:8000/docs
+```
+
+### Deploy Backend to Render
+
+1. Push code to GitHub
+2. Create new **Web Service** on Render
+3. Connect your GitHub repo
+4. Set build command: `pip install -r requirements.txt`
+5. Set start command: `uvicorn app.main:app --host 0.0.0.0 --port $PORT`
+6. Add environment variables (see below)
+7. Deploy
+
+### Deploy Frontend to Vercel
+
+```bash
+cd rayeva-dashboard
+npx vercel --prod
+```
+
+Or drag-and-drop `index.html` to vercel.com.
+
+---
+
+## Environment Variables
+
+| Variable | Required | Description |
+|---|---|---|
+| `GROQ_API_KEY` | ✅ | Groq API key from console.groq.com |
+| `SECRET_KEY` | ✅ | JWT signing secret (min 32 chars, change in production) |
+
+**.env.example:**
+```
+GROQ_API_KEY=your_api_key_here
+SECRET_KEY=your-secret-key-min-32-chars-change-this
+```
+
+---
+
+## Project Structure
+
+```
+rayeva-ai-assignment/
+│
+├── app/
+│   ├── main.py                    # FastAPI app, CORS, keep-alive scheduler
+│   │
+│   ├── database/
+│   │   ├── db.py                  # SQLAlchemy engine, session, init_db()
+│   │   └── models.py              # ORM models: CategoryResult, ProposalResult,
+│   │                              #   ImpactReport, User
+│   │
+│   ├── routes/
+│   │   ├── auth.py                # JWT register, login, /me
+│   │   ├── category.py            # POST /generate-category + history
+│   │   ├── proposal.py            # POST /generate-proposal + history
+│   │   ├── impact.py              # POST /generate-impact-report + history
+│   │   ├── whatsapp.py            # POST /whatsapp/webhook
+│   │   └── admin.py               # GET /admin/stats
+│   │
+│   ├── services/
+│   │   ├── ai_client.py           # Groq LLM client with retry logic
+│   │   ├── auth_service.py        # JWT encode/decode, bcrypt hashing
+│   │   ├── category_service.py    # Module 1 prompt engineering
+│   │   ├── proposal_service.py    # Module 2 prompt engineering
+│   │   └── impact_service.py      # Module 3 prompt engineering
+│   │
+│   ├── schemas/
+│   │   ├── category_schema.py     # ProductInput, CategoryOutput (Pydantic v2)
+│   │   ├── proposal_schema.py     # ProposalInput, ProposalOutput
+│   │   └── impact_schema.py       # ImpactInput, ImpactOutput
+│   │
+│   ├── validators/
+│   │   ├── category_validator.py  # Category whitelist, SEO tag count, score range
+│   │   ├── proposal_validator.py  # Budget constraint, unit price, total cost
+│   │   └── impact_validator.py    # Float validation, text quality checks
+│   │
+│   └── utils/
+│       └── logger.py              # JSON file logger (ai_logs.json)
+│
+├── rayeva-dashboard/
+│   └── index.html                 # Complete frontend (single file, no build)
+│
+├── requirements.txt               # All Python dependencies
+├── .env.example                   # Environment variable template
+└── README.md                      # This file
+```
+
+---
+
+## Key Design Decisions
+
+**Why SQLite over PostgreSQL?**  
+Zero configuration, no external service required, perfectly adequate for demo scale. Easily swappable to PostgreSQL by changing `DATABASE_URL` in `db.py`.
+
+**Why Groq over OpenAI?**  
+Free tier, ultra-low latency (llama-3.1-8b-instant), and sufficient quality for structured JSON generation tasks.
+
+**Why single-file frontend?**  
+No build step, no Node.js required, instant deployment to any static host. The entire UI is one `index.html` — drop it anywhere.
+
+**Why APScheduler for keep-alive?**  
+Render's free tier spins down after 15 minutes of inactivity. The scheduler pings `/health` every 10 minutes from within the process itself, keeping the service warm during demos without an external cron.
+
+**Why prompt-level JSON enforcement?**  
+The AI is instructed to return only raw JSON with no markdown or explanation. This combined with the `ai_client.py` stripping of backtick fences ensures reliable parsing without fragile regex.
+
+---
+
+## Code Quality Highlights
+
+- **Pydantic v2** syntax throughout (`model_config = ConfigDict(...)`, `@field_validator`)
+- **Separation of concerns** — route → service → validator → schema → DB, no logic leakage
+- **Retry logic** in `ai_client.py` — 2 attempts with 1s backoff before raising
+- **Startup validation** — API key checked on import, fails fast with clear error
+- **HTTP error preservation** — Groq error details passed through to client response
+- **Type-safe budget checks** — explicit `isinstance()` guards before arithmetic
+- **Searchable history** — query parameters on all history endpoints
+
+---
+
+*Submitted for Rayeva AI Systems internship assignment — Internshala*
