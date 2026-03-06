@@ -21,7 +21,7 @@ Return ONLY valid JSON in EXACTLY this format:
 {{
   "primary_category": "",
   "sub_category": "",
-  "seo_tags": [],
+  "seo_tags": ["example tag 1", "example tag 2", "example tag 3", "example tag 4", "example tag 5"],
   "sustainability_filters": [],
   "sustainability_score": 0,
   "score_reasoning": ""
@@ -31,10 +31,11 @@ Rules:
 - Do NOT add explanations or markdown
 - Do NOT add extra fields
 - primary_category must be one of the five values listed above
-- seo_tags must contain between 5 and 10 relevant keywords
-- sustainability_filters: eco attributes (biodegradable, plastic-free, compostable, vegan, recycled, renewable, etc.)
-- sustainability_score: integer 0-100 based on eco-friendliness of material, use case, and lifecycle
-- score_reasoning: 1 sentence explaining why this score was given
+- seo_tags MUST be an array of 5–10 strings
+- NEVER return null values
+- sustainability_filters must be an array of eco attributes (biodegradable, plastic-free, compostable, vegan, recycled, renewable, etc.)
+- sustainability_score must be an integer between 0 and 100
+- score_reasoning must be exactly one sentence
 
 Product Details:
 Name: {product.product_name}

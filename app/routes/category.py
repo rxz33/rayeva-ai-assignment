@@ -9,14 +9,10 @@ from app.schemas.category_schema import CategoryOutput, ProductInput
 from app.services.category_service import generate_category_tags
 from app.validators.category_validator import validate_category_output
 
-router = APIRouter()
+router = APIRouter(tags=["Module 1: AI Auto-Category & Tag Generator"])
 
 
-@router.post(
-    "/generate-category",
-    response_model=CategoryOutput,
-    tags=["Module 1: AI Auto-Category & Tag Generator"],
-)
+@router.post("/generate-category", response_model=CategoryOutput)
 def category_generator(product: ProductInput, db: Session = Depends(get_db)):
     try:
         result = generate_category_tags(product)
@@ -53,7 +49,7 @@ def category_generator(product: ProductInput, db: Session = Depends(get_db)):
     return parsed_json
 
 
-@router.get("/history/categories", tags=["Module 1: AI Auto-Category & Tag Generator"])
+@router.get("/history/categories")
 def get_category_history(
     limit: int = 20, category: str = None, db: Session = Depends(get_db)
 ):
