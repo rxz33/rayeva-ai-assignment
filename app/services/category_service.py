@@ -2,48 +2,47 @@ from app.services.ai_client import generate_ai_response
 from app.utils.logger import log_ai_interaction
 
 
-def generate_impact_report(data):
-
-    product_list = "\n".join(
-        [
-            f"- {p.product_name} (qty: {p.quantity}, material: {p.material})"
-            for p in data.products
-        ]
-    )
+def generate_category_tags(product):
 
     prompt = f"""
-You are an AI sustainability analyst for an ecommerce platform.
+You are an AI for an ecommerce sustainability platform.
 
-Generate an environmental impact report for this order.
+Classify the product and score its sustainability.
+
+Choose primary_category ONLY from this list:
+- personal_care
+- kitchen
+- office_supplies
+- packaging
+- home_products
 
 Return ONLY valid JSON in EXACTLY this format:
 
 {{
-  "order_id": "{data.order_id}",
-  "plastic_saved_kg": 0.0,
-  "carbon_avoided_kg": 0.0,
-  "local_sourcing_summary": "example sentence",
-  "impact_statement": "example impact summary"
+  "primary_category": "",
+  "sub_category": "",
+  "seo_tags": [],
+  "sustainability_filters": [],
+  "sustainability_score": 0,
+  "score_reasoning": ""
 }}
 
 Rules:
-- Return ONLY JSON (no markdown, no explanation)
+- Do NOT add explanations or markdown
 - Do NOT add extra fields
-- NEVER return null values
-- plastic_saved_kg must be a number (float) >= 0
-- carbon_avoided_kg must be a number (float) >= 0
-- local_sourcing_summary must be exactly 1 sentence
-- impact_statement must be 1-2 sentences summarizing the environmental benefit
-- Use reasonable estimation logic (e.g. bamboo toothbrush avoids ~15g plastic vs plastic equivalent)
+- primary_category must be one of the five values listed above
+- seo_tags must contain between 5 and 10 relevant keywords
+- sustainability_filters: eco attributes (biodegradable, plastic-free, compostable, vegan, recycled, renewable, etc.)
+- sustainability_score: integer 0-100 based on eco-friendliness of material, use case, and lifecycle
+- score_reasoning: 1 sentence explaining why this score was given
 
-Order ID: {data.order_id}
-
-Products:
-{product_list}
+Product Details:
+Name: {product.product_name}
+Description: {product.description}
+Material: {product.material}
+Use Case: {product.use_case}
 """
 
     response = generate_ai_response(prompt)
-
-    log_ai_interaction(module="impact_generator", prompt=prompt, response=response)
-
+    log_ai_interaction(module="category_generator", prompt=prompt, response=response)
     return response
