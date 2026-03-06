@@ -2,7 +2,7 @@ import json
 from datetime import datetime
 from pathlib import Path
 
-LOG_FILE = "ai_logs.json"
+LOG_FILE = "/tmp/ai_logs.json"
 
 
 def log_ai_interaction(module: str, prompt: str, response: str) -> None:
