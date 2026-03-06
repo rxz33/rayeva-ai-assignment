@@ -46,4 +46,4 @@ class CategoryOutput(BaseModel):
     def validate_seo_tags_length(cls, v):
         if len(v) < 5 or len(v) > 10:
             raise ValueError("seo_tags must contain between 5 and 10 tags")
-        return
+        return v
