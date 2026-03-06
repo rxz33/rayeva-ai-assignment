@@ -12,7 +12,12 @@ VALID_CATEGORIES = {
 def validate_category_output(parsed_json):
     errors = []
 
-    required_fields = ["primary_category", "sub_category", "seo_tags", "sustainability_filters"]
+    required_fields = [
+        "primary_category",
+        "sub_category",
+        "seo_tags",
+        "sustainability_filters",
+    ]
     for field in required_fields:
         if field not in parsed_json:
             errors.append(f"Missing field: {field}")
@@ -27,7 +32,10 @@ def validate_category_output(parsed_json):
             )
 
     if "sub_category" in parsed_json:
-        if not isinstance(parsed_json["sub_category"], str) or not parsed_json["sub_category"].strip():
+        if (
+            not isinstance(parsed_json["sub_category"], str)
+            or not parsed_json["sub_category"].strip()
+        ):
             errors.append("sub_category must be a valid string")
 
     if "seo_tags" in parsed_json:
@@ -35,7 +43,9 @@ def validate_category_output(parsed_json):
         if not isinstance(seo_tags, list) or len(seo_tags) == 0:
             errors.append("seo_tags must be a non-empty list")
         elif len(seo_tags) < 5 or len(seo_tags) > 10:
-            errors.append(f"seo_tags must contain between 5 and 10 tags, got {len(seo_tags)}")
+            errors.append(
+                f"seo_tags must contain between 5 and 10 tags, got {len(seo_tags)}"
+            )
         else:
             for tag in seo_tags:
                 if not isinstance(tag, str) or not tag.strip():
@@ -51,10 +61,15 @@ def validate_category_output(parsed_json):
                     errors.append("sustainability_filters must contain valid strings")
 
     # sustainability score — optional but validated if present
-    if "sustainability_score" in parsed_json and parsed_json["sustainability_score"] is not None:
+    if (
+        "sustainability_score" in parsed_json
+        and parsed_json["sustainability_score"] is not None
+    ):
         score = parsed_json["sustainability_score"]
         if not isinstance(score, int) or not (0 <= score <= 100):
             errors.append("sustainability_score must be an integer between 0 and 100")
 
     if errors:
-        raise HTTPException(status_code=status.HTTP_422_UNPROCESSABLE_ENTITY, detail=errors)
+        raise HTTPException(
+            status_code=status.HTTP_422_UNPROCESSABLE_ENTITY, detail=errors
+        )

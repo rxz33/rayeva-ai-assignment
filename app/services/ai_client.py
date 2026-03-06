@@ -20,7 +20,10 @@ def generate_ai_response(prompt: str, max_retries: int = 2) -> str:
             completion = client.chat.completions.create(
                 model="llama-3.1-8b-instant",
                 messages=[
-                    {"role": "system", "content": "Return only JSON. No markdown, no explanation."},
+                    {
+                        "role": "system",
+                        "content": "Return only JSON. No markdown, no explanation.",
+                    },
                     {"role": "user", "content": prompt},
                 ],
                 temperature=0.2,
@@ -31,4 +34,6 @@ def generate_ai_response(prompt: str, max_retries: int = 2) -> str:
             last_error = e
             if attempt < max_retries - 1:
                 time.sleep(1)
-    raise RuntimeError(f"AI call failed after {max_retries} attempts: {str(last_error)}")
+    raise RuntimeError(
+        f"AI call failed after {max_retries} attempts: {str(last_error)}"
+    )

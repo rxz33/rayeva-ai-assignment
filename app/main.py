@@ -22,6 +22,7 @@ app.add_middleware(
 
 init_db()
 
+
 def _keep_alive():
     try:
         httpx.get(
@@ -31,16 +32,17 @@ def _keep_alive():
     except Exception:
         pass
 
+
 scheduler = BackgroundScheduler()
 scheduler.add_job(_keep_alive, "interval", minutes=10)
 scheduler.start()
 
-app.include_router(auth.router,    prefix="/auth",  tags=["Auth"])
+app.include_router(auth.router, prefix="/auth", tags=["Auth"])
 app.include_router(category.router)
 app.include_router(proposal.router)
 app.include_router(impact.router)
 app.include_router(whatsapp.router)
-app.include_router(admin.router,   prefix="/admin", tags=["Admin"])
+app.include_router(admin.router, prefix="/admin", tags=["Admin"])
 
 
 @app.get("/health", tags=["Health"])

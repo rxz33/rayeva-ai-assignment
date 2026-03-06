@@ -5,7 +5,10 @@ from app.utils.logger import log_ai_interaction
 def generate_impact_report(data):
 
     product_list = "\n".join(
-        [f"- {p.product_name} (qty: {p.quantity}, material: {p.material})" for p in data.products]
+        [
+            f"- {p.product_name} (qty: {p.quantity}, material: {p.material})"
+            for p in data.products
+        ]
     )
 
     prompt = f"""

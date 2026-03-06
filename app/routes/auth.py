@@ -1,16 +1,12 @@
 from fastapi import APIRouter, Depends, HTTPException, status
 from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
-from pydantic import BaseModel, EmailStr
+from pydantic import BaseModel
 from sqlalchemy.orm import Session
 
 from app.database.db import get_db
 from app.database.models import User
-from app.services.auth_service import (
-    create_access_token,
-    decode_token,
-    hash_password,
-    verify_password,
-)
+from app.services.auth_service import (create_access_token, decode_token,
+                                       hash_password, verify_password)
 
 router = APIRouter()
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/auth/login")
@@ -29,7 +25,9 @@ class TokenResponse(BaseModel):
 
 
 # ── DEPENDENCY: get current user from JWT ──
-def get_current_user(token: str = Depends(oauth2_scheme), db: Session = Depends(get_db)):
+def get_current_user(
+    token: str = Depends(oauth2_scheme), db: Session = Depends(get_db)
+):
     payload = decode_token(token)
     if not payload:
         raise HTTPException(
@@ -39,12 +37,16 @@ def get_current_user(token: str = Depends(oauth2_scheme), db: Session = Depends(
         )
     user = db.query(User).filter(User.email == payload.get("sub")).first()
     if not user:
-        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="User not found")
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED, detail="User not found"
+        )
     return user
 
 
 # ── REGISTER ──
-@router.post("/register", response_model=TokenResponse, status_code=status.HTTP_201_CREATED)
+@router.post(
+    "/register", response_model=TokenResponse, status_code=status.HTTP_201_CREATED
+)
 def register(data: RegisterInput, db: Session = Depends(get_db)):
     existing = db.query(User).filter(User.email == data.email).first()
     if existing:

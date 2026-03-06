@@ -16,8 +16,18 @@ class CategoryOutput(BaseModel):
             "example": {
                 "primary_category": "personal_care",
                 "sub_category": "oral_care",
-                "seo_tags": ["bamboo", "eco friendly", "sustainable", "plastic free", "oral care"],
-                "sustainability_filters": ["biodegradable", "renewable resources", "plastic free"],
+                "seo_tags": [
+                    "bamboo",
+                    "eco friendly",
+                    "sustainable",
+                    "plastic free",
+                    "oral care",
+                ],
+                "sustainability_filters": [
+                    "biodegradable",
+                    "renewable resources",
+                    "plastic free",
+                ],
                 "sustainability_score": 88,
                 "score_reasoning": "Bamboo is a fast-growing renewable material that is fully biodegradable and replaces single-use plastic.",
             }
@@ -36,4 +46,4 @@ class CategoryOutput(BaseModel):
     def validate_seo_tags_length(cls, v):
         if len(v) < 5 or len(v) > 10:
             raise ValueError("seo_tags must contain between 5 and 10 tags")
-        return 
+        return

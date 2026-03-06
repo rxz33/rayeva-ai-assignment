@@ -23,11 +23,17 @@ def validate_proposal_output(parsed_json, client_budget):
                     errors.append("Quantity must be a positive integer")
                 if "unit_price" not in item:
                     errors.append(f"Missing unit_price for: {item.get('product','?')}")
-                elif not isinstance(item["unit_price"], (int, float)) or item["unit_price"] <= 0:
+                elif (
+                    not isinstance(item["unit_price"], (int, float))
+                    or item["unit_price"] <= 0
+                ):
                     errors.append("unit_price must be a positive number")
                 if "total_cost" not in item:
                     errors.append(f"Missing total_cost for: {item.get('product','?')}")
-                elif not isinstance(item["total_cost"], (int, float)) or item["total_cost"] <= 0:
+                elif (
+                    not isinstance(item["total_cost"], (int, float))
+                    or item["total_cost"] <= 0
+                ):
                     errors.append("total_cost must be a positive number")
 
     if "budget_allocation" in parsed_json:
@@ -38,14 +44,24 @@ def validate_proposal_output(parsed_json, client_budget):
                 errors.append(f"Missing budget field: {field}")
             elif not isinstance(budget[field], (int, float)) or budget[field] < 0:
                 errors.append(f"{field} must be a positive number")
-        if all(field in budget and isinstance(budget[field], (int, float)) for field in required_budget_fields):
+        if all(
+            field in budget and isinstance(budget[field], (int, float))
+            for field in required_budget_fields
+        ):
             total = sum(budget[f] for f in required_budget_fields)
             if total > client_budget:
-                errors.append(f"Proposal total ({total}) exceeds client budget ({client_budget})")
+                errors.append(
+                    f"Proposal total ({total}) exceeds client budget ({client_budget})"
+                )
 
     if "impact_summary" in parsed_json:
-        if not isinstance(parsed_json["impact_summary"], str) or len(parsed_json["impact_summary"].strip()) < 10:
+        if (
+            not isinstance(parsed_json["impact_summary"], str)
+            or len(parsed_json["impact_summary"].strip()) < 10
+        ):
             errors.append("Impact summary must be meaningful text")
 
     if errors:
-        raise HTTPException(status_code=status.HTTP_422_UNPROCESSABLE_ENTITY, detail=errors)
+        raise HTTPException(
+            status_code=status.HTTP_422_UNPROCESSABLE_ENTITY, detail=errors
+        )
