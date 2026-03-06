@@ -7,7 +7,7 @@ def generate_category_tags(product):
     prompt = f"""
 You are an AI for an ecommerce sustainability platform.
 
-Classify the product into sustainability-friendly categories.
+Classify the product and score its sustainability.
 
 Choose primary_category ONLY from this list:
 - personal_care
@@ -22,7 +22,9 @@ Return ONLY valid JSON in EXACTLY this format:
   "primary_category": "",
   "sub_category": "",
   "seo_tags": [],
-  "sustainability_filters": []
+  "sustainability_filters": [],
+  "sustainability_score": 0,
+  "score_reasoning": ""
 }}
 
 Rules:
@@ -30,7 +32,9 @@ Rules:
 - Do NOT add extra fields
 - primary_category must be one of the five values listed above
 - seo_tags must contain between 5 and 10 relevant keywords
-- sustainability_filters should describe eco attributes (e.g. biodegradable, plastic-free, compostable, vegan, recycled, renewable)
+- sustainability_filters: eco attributes (biodegradable, plastic-free, compostable, vegan, recycled, renewable, etc.)
+- sustainability_score: integer 0-100 based on eco-friendliness of material, use case, and lifecycle
+- score_reasoning: 1 sentence explaining why this score was given
 
 Product Details:
 Name: {product.product_name}

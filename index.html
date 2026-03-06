@@ -2,1278 +2,858 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Rayeva AI — Sustainability Intelligence Platform</title>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,700;1,300;1,400&family=DM+Mono:wght@300;400;500&family=Cabinet+Grotesk:wght@400;500;700;800&display=swap" rel="stylesheet"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<link rel="icon" type="image/png" href="data:image/png;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCAAtAI4DASIAAhEBAxEB/8QAHAABAAICAwEAAAAAAAAAAAAAAAMFAgQBBwgG/8QALhAAAQQCAQMDAgYCAwAAAAAAAQACAwQFERIGEyEUMUEiMjRRYXFygTORQrHw/8QAFgEBAQEAAAAAAAAAAAAAAAAAAAEC/8QAFREBAQAAAAAAAAAAAAAAAAAAAAH/2gAMAwEAAhEDEQA/APUCKW40MtStb4Aedf7US2CIqbOdU9PYSUQ5TK168pG+2SXP1+ZaNkILlFXYPOYjNwmbE5CC21v3dt3lv7j3H9qxQEREBERAREQEREBERARFw5waNlBsX/xs38yoFPf/ABs38yoEFT1jkpMP0xkMlENyQQlzN/Dj4B/2V13h6uPb0v3cJkMJkurL2nyy2bEckjXO8kAOJ1r20uzc7jocth7WNn8R2Iiwn8t+x/o6K87x9HO6d6oMXU4yNanGeUFunD3GvcDsaP8A4qxK0MHJ1F0n1h6p9exFLXnDbQDTxc0u0QfjR+F6ihfziY/WuTQV1xZs3uv7VOhSx9ypgK8rZbFq0zg6wW+zWj5H5n/pdkMaGtDQNADQSkfN9aTMjv4WKeXIMrS2JBM2k6YPeBE4gah+sjYB8LHB3rFfpy1kIZRapmw59KS7b4htc68ySO5OAB5/cC4DQIHxc38f6rJY653uHopHv48d8+Ubma3vx92/lVVrpqV0z31L8UUbb7b8EMtbuMjl4uD9jkNtJdyA8EO87+FBxiOqWX5KbfTwcJ7UtR80FkSxNlY3m0NcAOQc3fnxojWlFb6vhhEYMdKF080za77l0QRPjicGl5cWnRLvZoB2PPtvUGVxVulh7VWKexdyl++23XliqkNilBj8kjbWsHHf1EbbseT72suCfAMc/E22VJqEBrsMsPdZJEQ3Yc0Oad7a0ggjyD77QRYXqeDJSVB2WRRWIZnCUTB7O5E8NewEDRb/AMg7fkAnQUFzqiaDB1ct6SjDFYjdK0XMgIOTfdgbth25zfOjoDetlbmbwc+XxENWzkeFpjy42IouPhwc17Wt34BY8tHkkeD5IWGTwM8+Rdao3oqYkpCk8OrdxzYwXHcZ5Difq+Q4HTfHhBb0bUVyhBdi2Ip4mys5e/Fw2N/0V8301euPy7blqxM+rmmPlqxvdtsPbP0Bo+OcRDz+rSrV+JlHSbcHBd7T21G1fUCPZADQ0uDd+DrevPj9VBJ0th4/Ty4yhSx1mvMyRk0NZocQ0+WkjRIc3YPn52itvp2WSTHyvlkc8i1YG3O3oCV4A/YAaW7HZryf47ET/wCLwVFi6foqzoe53OU0ku+OvveXa/reltICwm+0fus1hN9o/dBNYf3Z3ye3JxKwREBERAREQEREBERAREQEREBERAXBAI0VyiD/2Q=="/>
+<title>Rayeva AI — Sustainability Intelligence</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet"/>
 <style>
-  :root {
-    --moss: #2D4A1E;
-    --sage: #6B8F5E;
-    --lime: #B8D96B;
-    --cream: #F5F0E8;
-    --bark: #3D2B1F;
-    --clay: #C4856A;
-    --mist: #E8EDE4;
-    --ink: #1A1A18;
-    --white: #FDFCF9;
-    --shadow: rgba(45,74,30,0.12);
-  }
-  * { margin:0; padding:0; box-sizing:border-box; }
+:root{
+  --ink:#0A0A0F;
+  --ink2:#1A1A24;
+  --ink3:#3D3D50;
+  --muted:#7A7A96;
+  --faint:#BABACF;
+  --line:#E2E2EC;
+  --line2:#CCCCE0;
+  --bg:#FAFAFE;
+  --bg2:#F2F2FA;
+  --bg3:#EAEAF5;
+  --cobalt:#1A3AFF;
+  --cobalt2:#3D5CFF;
+  --cobalt3:#6678FF;
+  --cobaltbg:rgba(26,58,255,0.06);
+  --cobaltbg2:rgba(26,58,255,0.12);
+  --gold:#B8860B;
+  --gold2:#D4A017;
+  --goldbg:rgba(184,134,11,0.08);
+  --emerald:#007A5E;
+  --emerald2:#00A87F;
+  --emeraldbg:rgba(0,122,94,0.08);
+  --red:#CC1A2E;
+  --redbg:rgba(204,26,46,0.08);
+  --amber:#C86400;
+  --amberbg:rgba(200,100,0,0.08);
+  --r:4px;
+  --shadow:0 1px 3px rgba(10,10,15,0.08),0 4px 16px rgba(10,10,15,0.05);
+  --shadow2:0 2px 8px rgba(10,10,15,0.1),0 8px 32px rgba(10,10,15,0.08);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--ink);font-family:'Barlow',sans-serif;min-height:100vh;overflow-x:hidden;}
 
-  body {
-    background: var(--cream);
-    color: var(--ink);
-    font-family: 'Cabinet Grotesk', sans-serif;
-    min-height: 100vh;
-    overflow-x: hidden;
-  }
+/* SIDEBAR */
+.sb{
+  position:fixed;left:0;top:0;bottom:0;width:220px;
+  background:#FFFFFF;
+  border-right:1px solid var(--line);
+  display:flex;flex-direction:column;
+  z-index:100;
+  box-shadow:2px 0 20px rgba(10,10,15,0.04);
+}
+.sb::after{
+  content:'';position:absolute;top:0;left:0;bottom:0;width:3px;
+  background:linear-gradient(180deg,var(--cobalt) 0%,var(--cobalt3) 60%,transparent 100%);
+}
+.logo-area{
+  padding:20px 18px 16px;
+  border-bottom:1px solid var(--line);
+}
+.logo-img{height:28px;width:auto;border-radius:3px;}
+.logo-sub{
+  font-family:'JetBrains Mono',monospace;
+  font-size:8px;letter-spacing:2.5px;text-transform:uppercase;
+  color:var(--cobalt);margin-top:7px;font-weight:400;
+}
+.logo-tagline{font-size:10.5px;color:var(--muted);margin-top:3px;font-weight:300;}
+.ng{padding:10px 0 0;flex:1;overflow-y:auto;}
+.ng::-webkit-scrollbar{width:0;}
+.nl{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:9px;letter-spacing:2px;text-transform:uppercase;
+  color:var(--faint);padding:12px 18px 4px;font-weight:600;
+}
+.ni{
+  display:flex;align-items:center;gap:9px;
+  padding:8px 18px;
+  font-size:12.5px;font-weight:400;
+  color:var(--muted);cursor:pointer;
+  border-left:3px solid transparent;
+  margin-left:-3px;
+  transition:all 0.15s;
+}
+.ni:hover{color:var(--ink);background:var(--bg2);}
+.ni.on{
+  color:var(--cobalt);
+  border-left-color:var(--cobalt);
+  background:var(--cobaltbg);
+  font-weight:600;
+}
+.ni .ico{font-size:12px;width:16px;text-align:center;}
+.nb{
+  margin-left:auto;
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:9px;font-weight:700;letter-spacing:1px;
+  background:var(--cobaltbg2);
+  color:var(--cobalt);
+  padding:2px 6px;border-radius:2px;
+}
+.sf{
+  padding:12px 18px;
+  border-top:1px solid var(--line);
+  background:var(--bg2);
+}
+.live-row{display:flex;align-items:center;gap:6px;}
+.ld{width:6px;height:6px;border-radius:50%;background:var(--emerald2);animation:pulse 2.2s ease-in-out infinite;}
+@keyframes pulse{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(0,168,127,0.4)}50%{opacity:0.6;box-shadow:0 0 0 4px rgba(0,168,127,0)}}
+.lt{font-family:'JetBrains Mono',monospace;font-size:9.5px;color:var(--muted);}
+.sb-version{font-family:'JetBrains Mono',monospace;font-size:8.5px;color:var(--faint);margin-top:5px;}
 
-  /* Background texture */
-  body::before {
-    content:'';
-    position:fixed; inset:0;
-    background-image:
-      radial-gradient(ellipse 80% 50% at 10% 20%, rgba(107,143,94,0.08) 0%, transparent 60%),
-      radial-gradient(ellipse 60% 80% at 90% 80%, rgba(184,217,107,0.07) 0%, transparent 60%);
-    pointer-events:none; z-index:0;
-  }
+/* MAIN */
+.main{margin-left:220px;min-height:100vh;}
 
-  /* SIDEBAR */
-  .sidebar {
-    position: fixed; left:0; top:0; bottom:0;
-    width: 240px;
-    background: var(--moss);
-    display: flex; flex-direction: column;
-    z-index: 100;
-    overflow: hidden;
-  }
-  .sidebar::after {
-    content:'';
-    position:absolute; top:-60px; right:-60px;
-    width:180px; height:180px;
-    background: rgba(184,217,107,0.08);
-    border-radius:50%;
-    pointer-events:none;
-  }
-  .sidebar-logo {
-    padding: 28px 24px 20px;
-    border-bottom: 1px solid rgba(255,255,255,0.08);
-  }
-  .sidebar-logo .wordmark {
-    font-family: 'Fraunces', serif;
-    font-size: 22px; font-weight: 700;
-    color: var(--lime);
-    letter-spacing: -0.5px;
-  }
-  .sidebar-logo .tagline {
-    font-size: 10px; font-weight: 500;
-    color: rgba(255,255,255,0.4);
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    margin-top: 3px;
-    font-family: 'DM Mono', monospace;
-  }
-  .nav-section-label {
-    padding: 20px 24px 8px;
-    font-size: 9px; font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.25);
-    font-family: 'DM Mono', monospace;
-  }
-  .nav-item {
-    display: flex; align-items: center; gap: 10px;
-    padding: 11px 24px;
-    cursor: pointer;
-    border-left: 2px solid transparent;
-    transition: all 0.2s;
-    color: rgba(255,255,255,0.55);
-    font-size: 13.5px; font-weight: 500;
-    position: relative;
-  }
-  .nav-item:hover { color: rgba(255,255,255,0.9); background: rgba(255,255,255,0.04); }
-  .nav-item.active {
-    color: var(--lime);
-    border-left-color: var(--lime);
-    background: rgba(184,217,107,0.07);
-  }
-  .nav-item .nav-icon { font-size: 16px; width: 20px; text-align: center; }
-  .nav-item .badge {
-    margin-left: auto;
-    background: rgba(184,217,107,0.2);
-    color: var(--lime);
-    font-size: 9px; font-weight: 700;
-    padding: 2px 6px; border-radius: 20px;
-    font-family: 'DM Mono', monospace;
-    letter-spacing: 0.5px;
-  }
-  .sidebar-footer {
-    margin-top: auto;
-    padding: 20px 24px;
-    border-top: 1px solid rgba(255,255,255,0.08);
-  }
-  .api-status {
-    display: flex; align-items: center; gap: 8px;
-    font-size: 11px; color: rgba(255,255,255,0.4);
-    font-family: 'DM Mono', monospace;
-  }
-  .api-dot {
-    width: 7px; height: 7px; border-radius: 50%;
-    background: #4ade80;
-    box-shadow: 0 0 6px #4ade80;
-    animation: pulse 2s infinite;
-  }
-  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+/* TOPBAR */
+.topbar{
+  height:50px;display:flex;align-items:center;justify-content:space-between;
+  padding:0 28px;
+  border-bottom:1px solid var(--line);
+  background:rgba(255,255,255,0.95);
+  backdrop-filter:blur(20px);
+  position:sticky;top:0;z-index:50;
+}
+.bc{display:flex;align-items:center;gap:6px;font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:500;color:var(--muted);letter-spacing:1.5px;text-transform:uppercase;}
+.bc .sep{color:var(--line2);}
+.bc .cur{color:var(--cobalt);font-weight:700;}
+.tb-right{display:flex;align-items:center;gap:10px;}
+.api-badge{
+  display:flex;align-items:center;gap:5px;
+  background:var(--emeraldbg);border:1px solid rgba(0,122,94,0.2);
+  border-radius:3px;padding:4px 10px;
+  font-family:'JetBrains Mono',monospace;font-size:9px;
+  color:var(--emerald);letter-spacing:0.5px;font-weight:500;
+}
+.user-chip{
+  display:flex;align-items:center;gap:6px;
+  background:var(--goldbg);border:1px solid rgba(184,134,11,0.2);
+  border-radius:3px;padding:4px 10px;
+  font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:600;
+  color:var(--gold);cursor:pointer;letter-spacing:0.5px;
+  transition:all 0.15s;
+}
+.user-chip:hover{background:rgba(184,134,11,0.14);}
 
-  /* MAIN CONTENT */
-  .main {
-    margin-left: 240px;
-    min-height: 100vh;
-    position: relative; z-index: 1;
-  }
+/* AUTH WALL */
+.auth-wall{
+  position:fixed;inset:0;z-index:300;
+  background:rgba(10,10,15,0.7);
+  backdrop-filter:blur(24px);
+  display:flex;align-items:center;justify-content:center;
+}
+.auth-box{
+  background:#FFFFFF;
+  border:1px solid var(--line);
+  border-radius:8px;
+  width:400px;padding:36px;
+  box-shadow:var(--shadow2);
+  position:relative;overflow:hidden;
+}
+.auth-box::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg,var(--cobalt),var(--cobalt3));
+}
+.auth-eyebrow{
+  font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:700;
+  letter-spacing:2.5px;text-transform:uppercase;color:var(--cobalt);margin-bottom:5px;
+}
+.auth-title{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:600;color:var(--ink);margin-bottom:4px;}
+.auth-sub{font-size:12.5px;color:var(--muted);margin-bottom:24px;font-weight:300;}
+.auth-tabs{display:flex;gap:0;margin-bottom:20px;border:1px solid var(--line);border-radius:3px;overflow:hidden;}
+.auth-tab{flex:1;padding:8px;text-align:center;font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;transition:all 0.18s;color:var(--muted);background:transparent;border:none;}
+.auth-tab.on{background:var(--cobalt);color:#FFF;}
+.auth-ff{display:flex;flex-direction:column;gap:12px;margin-bottom:16px;}
+.auth-er{background:var(--redbg);border:1px solid rgba(204,26,46,0.2);color:var(--red);border-radius:3px;padding:9px 12px;font-size:11.5px;font-family:'JetBrains Mono',monospace;display:none;margin-bottom:10px;}
+.auth-er.on{display:block;}
+.auth-skip{text-align:center;margin-top:12px;font-size:11.5px;color:var(--muted);cursor:pointer;font-weight:400;}
+.auth-skip:hover{color:var(--cobalt);}
+.auth-skip span{text-decoration:underline;}
 
-  /* TOP BAR */
-  .topbar {
-    padding: 20px 36px;
-    display: flex; align-items: center; justify-content: space-between;
-    border-bottom: 1px solid rgba(45,74,30,0.1);
-    background: rgba(245,240,232,0.8);
-    backdrop-filter: blur(12px);
-    position: sticky; top: 0; z-index: 50;
-  }
-  .page-title {
-    font-family: 'Fraunces', serif;
-    font-size: 20px; font-weight: 400;
-    color: var(--moss);
-  }
-  .page-title span { font-style: italic; color: var(--sage); }
-  .topbar-right { display: flex; align-items: center; gap: 12px; }
-  .api-pill {
-    background: var(--mist);
-    border: 1px solid rgba(45,74,30,0.15);
-    border-radius: 20px;
-    padding: 6px 12px;
-    font-size: 11px;
-    font-family: 'DM Mono', monospace;
-    color: var(--sage);
-    display: flex; align-items: center; gap: 6px;
-  }
-  .api-pill .dot { width:6px; height:6px; border-radius:50%; background:#4ade80; }
+/* PAGES */
+.pg{display:none;padding:26px 28px;animation:rise 0.25s cubic-bezier(0.16,1,0.3,1);}
+.pg.on{display:block;}
+@keyframes rise{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
 
-  /* PAGES */
-  .page { display:none; padding: 32px 36px; animation: fadeIn 0.3s ease; }
-  .page.active { display:block; }
-  @keyframes fadeIn { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:translateY(0)} }
+/* PAGE HEADER */
+.ph{margin-bottom:22px;padding-bottom:18px;border-bottom:1px solid var(--line);}
+.ey{font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--cobalt);margin-bottom:5px;}
+.ptxt{font-family:'Cormorant Garamond',serif;font-size:34px;font-weight:600;color:var(--ink);line-height:1.1;}
+.ptxt em{font-style:italic;color:var(--cobalt);}
+.pdesc{font-size:12.5px;color:var(--muted);margin-top:5px;line-height:1.6;font-weight:300;}
 
-  /* DASHBOARD OVERVIEW */
-  .stats-grid {
-    display: grid; grid-template-columns: repeat(4,1fr); gap: 16px;
-    margin-bottom: 32px;
-  }
-  .stat-card {
-    background: var(--white);
-    border: 1px solid rgba(45,74,30,0.1);
-    border-radius: 16px;
-    padding: 20px;
-    position: relative; overflow: hidden;
-    transition: transform 0.2s, box-shadow 0.2s;
-  }
-  .stat-card:hover { transform: translateY(-2px); box-shadow: 0 8px 24px var(--shadow); }
-  .stat-card::before {
-    content:''; position:absolute;
-    top:-20px; right:-20px;
-    width:80px; height:80px;
-    border-radius:50%;
-    opacity:0.06;
-  }
-  .stat-card:nth-child(1)::before { background:var(--moss); }
-  .stat-card:nth-child(2)::before { background:var(--clay); }
-  .stat-card:nth-child(3)::before { background:var(--lime); }
-  .stat-card:nth-child(4)::before { background:var(--sage); }
-  .stat-label {
-    font-size: 10px; font-weight: 700;
-    letter-spacing: 1.5px; text-transform: uppercase;
-    color: var(--sage);
-    font-family: 'DM Mono', monospace;
-    margin-bottom: 8px;
-  }
-  .stat-value {
-    font-family: 'Fraunces', serif;
-    font-size: 36px; font-weight: 700;
-    color: var(--moss);
-    line-height: 1;
-  }
-  .stat-sub { font-size: 11px; color: rgba(26,26,24,0.4); margin-top: 4px; }
+/* STAT CARDS */
+.sg{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:20px;}
+.sc{
+  background:#FFFFFF;border:1px solid var(--line);
+  border-radius:var(--r);padding:16px 18px;
+  position:relative;overflow:hidden;
+  transition:border-color 0.18s,box-shadow 0.18s,transform 0.18s;
+  box-shadow:var(--shadow);
+}
+.sc:hover{border-color:var(--cobalt3);box-shadow:var(--shadow2);transform:translateY(-2px);}
+.sc::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--cobalt);transform:scaleX(0);transform-origin:left;transition:transform 0.3s cubic-bezier(0.16,1,0.3,1);}
+.sc:hover::after{transform:scaleX(1);}
+.sc-label{font-family:'Barlow Condensed',sans-serif;font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:8px;}
+.sc-val{font-family:'Cormorant Garamond',serif;font-size:40px;line-height:1;color:var(--ink);font-weight:700;}
+.sc-sub{font-size:11px;color:var(--muted);margin-top:4px;font-weight:300;}
+.sc .corner{position:absolute;top:12px;right:12px;font-family:'Barlow Condensed',sans-serif;font-size:9px;font-weight:600;letter-spacing:1px;color:var(--cobaltbg2);color:var(--cobalt3);opacity:0.4;}
 
-  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-  .three-col { display: grid; grid-template-columns: 2fr 1fr; gap: 20px; }
+/* GRID */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
 
-  /* CARDS */
-  .card {
-    background: var(--white);
-    border: 1px solid rgba(45,74,30,0.1);
-    border-radius: 16px;
-    overflow: hidden;
-  }
-  .card-header {
-    padding: 18px 22px;
-    border-bottom: 1px solid rgba(45,74,30,0.07);
-    display: flex; align-items: center; justify-content: space-between;
-  }
-  .card-title {
-    font-size: 13px; font-weight: 700;
-    letter-spacing: 0.3px;
-    color: var(--moss);
-  }
-  .card-tag {
-    font-size: 9px; font-weight: 700;
-    letter-spacing: 1.5px; text-transform: uppercase;
-    background: var(--mist); color: var(--sage);
-    padding: 3px 8px; border-radius: 20px;
-    font-family: 'DM Mono', monospace;
-  }
-  .card-body { padding: 22px; }
+/* PANEL */
+.pn{background:#FFFFFF;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow);transition:border-color 0.18s;}
+.pn:focus-within{border-color:var(--cobalt3);}
+.pnh{padding:12px 18px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;background:var(--bg2);}
+.pntl{font-size:12px;font-weight:600;color:var(--ink);letter-spacing:0.2px;font-family:'Barlow',sans-serif;}
+.pntag{font-family:'JetBrains Mono',monospace;font-size:8.5px;color:var(--cobalt);background:var(--cobaltbg);border:1px solid rgba(26,58,255,0.15);border-radius:2px;padding:2px 7px;letter-spacing:0.5px;}
+.pnb{padding:18px;}
 
-  /* FORMS */
-  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-  .form-group { display: flex; flex-direction: column; gap: 6px; }
-  .form-group.full { grid-column: 1 / -1; }
-  label {
-    font-size: 11px; font-weight: 700;
-    letter-spacing: 1px; text-transform: uppercase;
-    color: var(--sage);
-    font-family: 'DM Mono', monospace;
-  }
-  input, textarea, select {
-    background: var(--mist);
-    border: 1.5px solid rgba(45,74,30,0.12);
-    border-radius: 10px;
-    padding: 11px 14px;
-    font-size: 13.5px;
-    color: var(--ink);
-    font-family: 'Cabinet Grotesk', sans-serif;
-    outline: none;
-    transition: border-color 0.2s, box-shadow 0.2s;
-    width: 100%;
-  }
-  input:focus, textarea:focus, select:focus {
-    border-color: var(--sage);
-    box-shadow: 0 0 0 3px rgba(107,143,94,0.12);
-    background: var(--white);
-  }
-  textarea { resize: vertical; min-height: 80px; }
+/* FORM */
+.fg{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.ff{display:flex;flex-direction:column;gap:4px;}
+label{font-family:'Barlow Condensed',sans-serif;font-size:9px;font-weight:700;letter-spacing:1.8px;text-transform:uppercase;color:var(--muted);}
+input,textarea,select{
+  background:var(--bg);border:1px solid var(--line2);border-radius:3px;
+  padding:8px 11px;font-size:13px;color:var(--ink);
+  font-family:'Barlow',sans-serif;outline:none;
+  transition:border-color 0.15s,box-shadow 0.15s;width:100%;
+}
+input::placeholder,textarea::placeholder{color:var(--faint);}
+input:focus,textarea:focus{border-color:var(--cobalt);box-shadow:0 0 0 3px rgba(26,58,255,0.08);background:#FFFFFF;}
+textarea{resize:vertical;min-height:64px;}
 
-  /* BUTTONS */
-  .btn {
-    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
-    padding: 12px 24px;
-    border-radius: 10px;
-    font-size: 13.5px; font-weight: 700;
-    cursor: pointer; border: none;
-    transition: all 0.2s;
-    font-family: 'Cabinet Grotesk', sans-serif;
-    letter-spacing: 0.2px;
-  }
-  .btn-primary {
-    background: var(--moss);
-    color: var(--lime);
-  }
-  .btn-primary:hover { background: #1e3314; transform: translateY(-1px); box-shadow: 0 4px 16px rgba(45,74,30,0.3); }
-  .btn-primary:active { transform: translateY(0); }
-  .btn-primary:disabled { opacity:0.5; cursor:not-allowed; transform:none; }
-  .btn-outline {
-    background: transparent;
-    border: 1.5px solid rgba(45,74,30,0.2);
-    color: var(--moss);
-  }
-  .btn-outline:hover { border-color: var(--moss); background: var(--mist); }
-  .btn-sm { padding: 7px 14px; font-size: 12px; }
+/* BUTTONS */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;padding:9px 20px;border-radius:3px;font-size:12px;font-weight:700;cursor:pointer;border:none;transition:all 0.18s;font-family:'Barlow Condensed',sans-serif;letter-spacing:1.5px;text-transform:uppercase;}
+.bg{background:var(--cobalt);color:#FFF;}
+.bg:hover{background:var(--cobalt2);transform:translateY(-1px);box-shadow:0 4px 16px rgba(26,58,255,0.3);}
+.bg:disabled{opacity:0.35;cursor:not-allowed;transform:none;box-shadow:none;}
+.bgh{background:transparent;border:1px solid var(--line2);color:var(--ink3);}
+.bgh:hover{border-color:var(--cobalt3);color:var(--cobalt);background:var(--cobaltbg);}
+.btn-em{background:var(--emerald);color:#FFF;}
+.btn-em:hover{background:var(--emerald2);transform:translateY(-1px);box-shadow:0 4px 16px rgba(0,122,94,0.25);}
+.btn-em:disabled{opacity:0.35;cursor:not-allowed;transform:none;box-shadow:none;}
+.bsm{padding:6px 12px;font-size:10px;}
+.br{display:flex;gap:8px;margin-top:14px;align-items:center;}
 
-  /* LOADING SPINNER */
-  .spinner {
-    width: 16px; height: 16px;
-    border: 2px solid rgba(184,217,107,0.3);
-    border-top-color: var(--lime);
-    border-radius: 50%;
-    animation: spin 0.7s linear infinite;
-  }
-  @keyframes spin { to { transform: rotate(360deg); } }
+/* SPINNER */
+.sp{width:13px;height:13px;border:2px solid rgba(255,255,255,0.3);border-top-color:#FFF;border-radius:50%;animation:spin 0.55s linear infinite;}
+@keyframes spin{to{transform:rotate(360deg)}}
 
-  /* RESULT PANELS */
-  .result-panel {
-    background: var(--mist);
-    border: 1px solid rgba(45,74,30,0.1);
-    border-radius: 12px;
-    overflow: hidden;
-    margin-top: 20px;
-  }
-  .result-panel-header {
-    background: var(--moss);
-    padding: 10px 16px;
-    display: flex; align-items: center; justify-content: space-between;
-  }
-  .result-panel-title {
-    font-size: 10px; font-weight: 700;
-    letter-spacing: 1.5px; text-transform: uppercase;
-    color: var(--lime);
-    font-family: 'DM Mono', monospace;
-  }
-  .result-panel-body { padding: 18px; }
+/* ERROR */
+.er{background:var(--redbg);border:1px solid rgba(204,26,46,0.2);color:var(--red);border-radius:3px;padding:9px 12px;font-size:11.5px;margin-top:10px;font-family:'JetBrains Mono',monospace;display:none;}
+.er.on{display:block;}
 
-  /* TAGS */
-  .tag-list { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
-  .tag {
-    background: rgba(45,74,30,0.08);
-    color: var(--moss);
-    border: 1px solid rgba(45,74,30,0.15);
-    border-radius: 20px;
-    padding: 4px 11px;
-    font-size: 12px; font-weight: 500;
-  }
-  .tag.eco {
-    background: rgba(184,217,107,0.2);
-    border-color: rgba(184,217,107,0.4);
-    color: var(--moss);
-  }
+/* RESULT EMPTY */
+.re{text-align:center;padding:44px 16px;color:var(--faint);}
+.re .ei{font-size:28px;margin-bottom:8px;opacity:0.3;}
+.re p{font-size:11px;font-family:'JetBrains Mono',monospace;letter-spacing:0.5px;}
 
-  /* CATEGORY BADGE */
-  .category-badge {
-    display: inline-flex; align-items: center; gap: 8px;
-    background: var(--moss); color: var(--lime);
-    border-radius: 8px; padding: 10px 16px;
-    font-weight: 700; font-size: 14px;
-    margin-bottom: 12px;
-  }
-  .sub-badge {
-    display: inline-flex; align-items: center;
-    background: var(--mist); color: var(--sage);
-    border-radius: 6px; padding: 6px 12px;
-    font-size: 13px; font-weight: 500;
-    margin-bottom: 14px;
-    border: 1px solid rgba(107,143,94,0.2);
-    margin-left: 8px;
-  }
+/* TAGS */
+.tw{display:flex;flex-wrap:wrap;gap:5px;margin-top:5px;}
+.tseo{background:var(--cobaltbg);border:1px solid rgba(26,58,255,0.15);color:var(--cobalt);border-radius:2px;padding:3px 9px;font-size:11px;font-weight:500;}
+.teco{background:var(--emeraldbg);border:1px solid rgba(0,122,94,0.2);color:var(--emerald);border-radius:2px;padding:3px 9px;font-size:11px;font-weight:500;}
+.tgold{background:var(--goldbg);border:1px solid rgba(184,134,11,0.2);color:var(--gold);border-radius:2px;padding:3px 9px;font-size:11px;font-weight:500;}
 
-  /* PRODUCT MIX TABLE */
-  .product-table { width: 100%; border-collapse: collapse; }
-  .product-table th {
-    text-align: left;
-    font-size: 10px; font-weight: 700;
-    letter-spacing: 1.2px; text-transform: uppercase;
-    color: var(--sage);
-    font-family: 'DM Mono', monospace;
-    padding: 8px 12px;
-    border-bottom: 1px solid rgba(45,74,30,0.1);
-  }
-  .product-table td {
-    padding: 11px 12px;
-    font-size: 13px;
-    border-bottom: 1px solid rgba(45,74,30,0.06);
-    color: var(--ink);
-  }
-  .product-table tr:last-child td { border-bottom: none; }
-  .product-table tr:hover td { background: rgba(45,74,30,0.02); }
-  .cost-chip {
-    background: rgba(184,217,107,0.15);
-    color: var(--moss);
-    padding: 3px 8px; border-radius: 6px;
-    font-family: 'DM Mono', monospace;
-    font-size: 12px; font-weight: 500;
-  }
+/* SCORE */
+.grade-box{text-align:center;min-width:90px;}
+.grade-letter{font-family:'Cormorant Garamond',serif;font-size:64px;font-weight:700;line-height:1;}
+.grade-num{font-family:'JetBrains Mono',monospace;font-size:16px;margin-top:-4px;}
+.grade-lbl{font-family:'Barlow Condensed',sans-serif;font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-top:2px;}
 
-  /* BUDGET BARS */
-  .budget-breakdown { display:flex; flex-direction:column; gap:10px; }
-  .budget-row { display:flex; flex-direction:column; gap:4px; }
-  .budget-row-header { display:flex; justify-content:space-between; align-items:center; }
-  .budget-label { font-size:12px; font-weight:600; color:var(--ink); }
-  .budget-amount { font-size:12px; font-family:'DM Mono',monospace; color:var(--sage); }
-  .budget-bar-bg { height:6px; background:rgba(45,74,30,0.1); border-radius:3px; overflow:hidden; }
-  .budget-bar-fill { height:100%; border-radius:3px; transition: width 0.8s ease; }
+/* SCORE BAR */
+.sbar-track{height:4px;background:var(--bg3);border-radius:2px;overflow:hidden;margin-top:5px;}
+.sbar-fill{height:100%;border-radius:2px;transition:width 1.2s cubic-bezier(0.16,1,0.3,1);}
 
-  /* IMPACT BOX */
-  .impact-box {
-    background: linear-gradient(135deg, var(--moss) 0%, #3a5f28 100%);
-    border-radius: 12px;
-    padding: 18px;
-    color: var(--white);
-    margin-top: 14px;
-    position: relative; overflow: hidden;
-  }
-  .impact-box::before {
-    content: '🌱';
-    position: absolute; right: 16px; top: 50%;
-    transform: translateY(-50%);
-    font-size: 48px; opacity: 0.15;
-  }
-  .impact-box-label {
-    font-size: 9px; font-weight: 700;
-    letter-spacing: 1.5px; text-transform: uppercase;
-    color: var(--lime); margin-bottom: 6px;
-    font-family: 'DM Mono', monospace;
-  }
-  .impact-box p { font-size: 13.5px; line-height: 1.6; opacity: 0.9; }
+/* PROPOSAL TABLE */
+.ptb{width:100%;border-collapse:collapse;}
+.ptb th{text-align:left;padding:8px 12px;font-family:'Barlow Condensed',sans-serif;font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);border-bottom:1px solid var(--line);background:var(--bg2);}
+.ptb td{padding:10px 12px;font-size:12.5px;border-bottom:1px solid var(--line);color:var(--ink);}
+.ptb tr:last-child td{border-bottom:none;}
+.ptb tr:hover td{background:var(--bg2);}
+.cc{background:var(--emeraldbg);border:1px solid rgba(0,122,94,0.2);color:var(--emerald);padding:2px 7px;border-radius:2px;font-family:'JetBrains Mono',monospace;font-size:10.5px;font-weight:500;}
 
-  /* HISTORY TABLE */
-  .history-table { width:100%; border-collapse:collapse; }
-  .history-table th {
-    text-align:left; font-size:10px; font-weight:700;
-    letter-spacing:1.2px; text-transform:uppercase;
-    color:var(--sage); font-family:'DM Mono',monospace;
-    padding:10px 14px; background:var(--mist);
-  }
-  .history-table td { padding:12px 14px; font-size:13px; border-bottom:1px solid rgba(45,74,30,0.07); }
-  .history-table tr:hover td { background:rgba(45,74,30,0.02); }
-  .history-empty {
-    text-align:center; padding:40px; color:rgba(26,26,24,0.3);
-    font-size:13px;
-  }
+/* BUDGET BARS */
+.brow{margin-bottom:10px;}
+.brh{display:flex;justify-content:space-between;margin-bottom:4px;}
+.brn{font-size:12px;font-weight:500;color:var(--ink);}
+.brv{font-family:'JetBrains Mono',monospace;font-size:10.5px;color:var(--muted);}
+.brt{height:4px;background:var(--bg3);border-radius:2px;overflow:hidden;}
+.brf{height:100%;border-radius:2px;transition:width 1s cubic-bezier(0.16,1,0.3,1);}
 
-  /* WHATSAPP */
-  .chat-window {
-    background: #ECE5DD;
-    border-radius: 12px;
-    overflow: hidden;
-    border: 1px solid rgba(45,74,30,0.1);
-  }
-  .chat-header {
-    background: #075E54;
-    padding: 14px 18px;
-    display: flex; align-items: center; gap: 12px;
-    color: white;
-  }
-  .chat-avatar {
-    width: 38px; height: 38px;
-    background: var(--lime);
-    border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 18px;
-  }
-  .chat-header-info .name { font-size:14px; font-weight:600; }
-  .chat-header-info .status { font-size:11px; opacity:0.7; }
-  .chat-messages {
-    padding: 16px;
-    min-height: 200px;
-    max-height: 300px;
-    overflow-y: auto;
-    display: flex; flex-direction: column; gap: 10px;
-  }
-  .chat-bubble {
-    max-width: 75%;
-    border-radius: 8px;
-    padding: 10px 13px;
-    font-size: 13px; line-height: 1.5;
-    position: relative;
-  }
-  .chat-bubble.user {
-    background: #DCF8C6;
-    align-self: flex-end;
-    border-bottom-right-radius: 2px;
-  }
-  .chat-bubble.bot {
-    background: white;
-    align-self: flex-start;
-    border-bottom-left-radius: 2px;
-    box-shadow: 0 1px 2px rgba(0,0,0,0.1);
-  }
-  .chat-time { font-size:10px; color:rgba(0,0,0,0.35); margin-top:3px; text-align:right; }
-  .intent-chip {
-    display: inline-flex; align-items: center; gap: 4px;
-    font-size: 10px; padding: 3px 8px; border-radius: 20px;
-    font-family: 'DM Mono', monospace; font-weight: 500;
-    margin-top: 6px;
-  }
-  .intent-chip.order_status { background:#dbeafe; color:#1e40af; }
-  .intent-chip.return_policy { background:#fef3c7; color:#92400e; }
-  .intent-chip.escalation { background:#fee2e2; color:#991b1b; }
-  .intent-chip.general { background:#d1fae5; color:#065f46; }
-  .chat-input-row {
-    padding: 12px 14px;
-    background: #F0F0F0;
-    display: flex; gap: 10px; align-items: center;
-  }
-  .chat-input {
-    flex: 1; background: white; border: none;
-    border-radius: 20px; padding: 9px 14px;
-    font-size: 13.5px; outline: none;
-    font-family: 'Cabinet Grotesk', sans-serif;
-  }
-  .chat-send-btn {
-    width: 38px; height: 38px;
-    background: #075E54; color: white;
-    border: none; border-radius: 50%;
-    cursor: pointer; font-size: 16px;
-    display: flex; align-items: center; justify-content: center;
-    transition: background 0.2s;
-  }
-  .chat-send-btn:hover { background: #054d44; }
+/* IMPACT BOX */
+.ibox{background:var(--emeraldbg);border:1px solid rgba(0,122,94,0.18);border-radius:3px;padding:14px;margin-top:12px;position:relative;overflow:hidden;}
+.ibox::before{content:'◈';position:absolute;right:12px;top:50%;transform:translateY(-50%);font-size:44px;opacity:0.05;color:var(--emerald);}
+.ibox-ey{font-family:'Barlow Condensed',sans-serif;font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--emerald);margin-bottom:4px;}
+.ibox p{font-size:12.5px;line-height:1.65;color:var(--ink);opacity:0.85;}
 
-  /* SCORE METER */
-  .score-ring {
-    width: 90px; height: 90px;
-    position: relative; margin: 0 auto 12px;
-  }
-  .score-ring svg { transform: rotate(-90deg); }
-  .score-ring .score-num {
-    position: absolute; inset: 0;
-    display: flex; align-items: center; justify-content: center;
-    font-family: 'Fraunces', serif;
-    font-size: 26px; font-weight: 700;
-    color: var(--moss);
-  }
+/* IMPACT METRICS */
+.im-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px;}
+.im-card{background:var(--bg2);border:1px solid var(--line);border-radius:3px;padding:16px;text-align:center;position:relative;overflow:hidden;}
+.im-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;}
+.im-card.plastic::before{background:var(--cobalt);}
+.im-card.carbon::before{background:var(--emerald);}
+.im-val{font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:700;line-height:1;color:var(--ink);}
+.im-unit{font-size:14px;}
+.im-lbl{font-family:'Barlow Condensed',sans-serif;font-size:8.5px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-top:5px;}
 
-  /* TOAST */
-  .toast {
-    position: fixed; bottom: 24px; right: 24px;
-    background: var(--moss); color: var(--lime);
-    padding: 12px 20px; border-radius: 10px;
-    font-size: 13px; font-weight: 500;
-    display: flex; align-items: center; gap: 8px;
-    box-shadow: 0 4px 20px rgba(45,74,30,0.3);
-    transform: translateY(80px); opacity: 0;
-    transition: all 0.3s ease;
-    z-index: 9999;
-  }
-  .toast.show { transform: translateY(0); opacity: 1; }
+/* WHATSAPP */
+.was{border-radius:3px;overflow:hidden;border:1px solid var(--line);}
+.wah{background:#075E54;padding:12px 15px;display:flex;align-items:center;gap:10px;}
+.waa{width:32px;height:32px;border-radius:50%;background:var(--emerald2);display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;}
+.wahn{font-size:13px;font-weight:600;color:white;}
+.wahs{font-size:10px;color:rgba(255,255,255,0.6);}
+.wam{background:#ECE5DD;padding:12px;min-height:200px;max-height:280px;overflow-y:auto;display:flex;flex-direction:column;gap:7px;}
+.wam::-webkit-scrollbar{width:3px;}
+.wam::-webkit-scrollbar-thumb{background:rgba(0,0,0,0.15);border-radius:2px;}
+.bb{max-width:78%;border-radius:5px;padding:8px 12px;font-size:12.5px;line-height:1.5;box-shadow:0 1px 2px rgba(0,0,0,0.08);}
+.bb.u{background:#DCF8C6;color:var(--ink2);align-self:flex-end;border-bottom-right-radius:1px;}
+.bb.b{background:#FFFFFF;color:var(--ink2);align-self:flex-start;border-bottom-left-radius:1px;}
+.bt{font-size:9px;color:var(--muted);margin-top:3px;text-align:right;font-family:'JetBrains Mono',monospace;}
+.it{display:inline-flex;align-items:center;font-size:8.5px;padding:2px 6px;border-radius:2px;margin-top:4px;font-family:'JetBrains Mono',monospace;letter-spacing:0.5px;font-weight:500;}
+.it.order_status{background:var(--cobaltbg);color:var(--cobalt);}
+.it.return_policy{background:var(--amberbg);color:var(--amber);}
+.it.escalation{background:var(--redbg);color:var(--red);}
+.it.general{background:var(--emeraldbg);color:var(--emerald);}
+.wai{background:#F0F0F0;padding:9px 12px;display:flex;gap:7px;align-items:center;border-top:1px solid #DDD;}
+.wain{flex:1;background:#FFFFFF;border:1px solid #DDD;border-radius:18px;padding:7px 13px;font-size:13px;color:var(--ink);outline:none;font-family:'Barlow',sans-serif;}
+.wain:focus{border-color:#4CAF50;}
+.was2{width:34px;height:34px;background:#25D366;border:none;border-radius:50%;cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center;transition:all 0.18s;color:white;flex-shrink:0;}
+.was2:hover{background:#20B954;transform:scale(1.05);}
+.qb{width:100%;text-align:left;background:var(--bg2);border:1px solid var(--line);border-radius:3px;padding:8px 12px;font-size:12px;color:var(--ink3);cursor:pointer;transition:all 0.18s;font-family:'Barlow',sans-serif;margin-bottom:5px;font-weight:400;}
+.qb:hover{border-color:var(--cobalt3);color:var(--cobalt);background:var(--cobaltbg);}
 
-  /* ERROR */
-  .error-box {
-    background: #fee2e2; border: 1px solid #fca5a5;
-    color: #991b1b; border-radius: 10px;
-    padding: 12px 16px; font-size: 13px;
-    margin-top: 14px; display:none;
-  }
-  .error-box.show { display:block; }
+/* ADMIN */
+.admin-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:20px;}
+.ag{background:#FFFFFF;border:1px solid var(--line);border-radius:var(--r);padding:18px 20px;position:relative;overflow:hidden;box-shadow:var(--shadow);}
+.ag::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;}
+.ag.green::before{background:var(--emerald);}
+.ag.blue::before{background:var(--cobalt);}
+.ag.gold::before{background:var(--gold);}
+.ag-label{font-family:'Barlow Condensed',sans-serif;font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:6px;}
+.ag-val{font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:700;color:var(--ink);line-height:1;}
+.ag-sub{font-size:11px;color:var(--muted);margin-top:3px;font-weight:300;}
 
-  /* SECTION HEADING */
-  .section-heading {
-    font-family: 'Fraunces', serif;
-    font-size: 26px; font-weight: 400;
-    color: var(--moss); margin-bottom: 4px;
-  }
-  .section-heading em { font-style: italic; color: var(--sage); }
-  .section-sub { font-size: 13px; color: rgba(26,26,24,0.45); margin-bottom: 24px; }
+/* HISTORY TABLE */
+.ht{width:100%;border-collapse:collapse;}
+.ht th{text-align:left;padding:9px 14px;font-family:'Barlow Condensed',sans-serif;font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);background:var(--bg2);border-bottom:1px solid var(--line);}
+.ht td{padding:10px 14px;font-size:12.5px;border-bottom:1px solid var(--line);color:var(--ink);}
+.ht tr:hover td{background:var(--bg2);}
+.hem{padding:36px;text-align:center;color:var(--faint);font-family:'JetBrains Mono',monospace;font-size:11px;}
 
-  /* DIVIDER */
-  hr.divider { border:none; border-top:1px solid rgba(45,74,30,0.08); margin:24px 0; }
+/* TABS */
+.tb2{padding:6px 14px;border-radius:3px;font-size:10px;font-weight:700;cursor:pointer;border:1px solid var(--line);font-family:'Barlow Condensed',sans-serif;transition:all 0.18s;letter-spacing:1.5px;text-transform:uppercase;}
+.tb2.on{background:var(--cobalt);color:#FFF;border-color:var(--cobalt);}
+.tb2:not(.on){background:#FFF;color:var(--muted);}
+.tb2:not(.on):hover{color:var(--cobalt);border-color:var(--cobalt3);}
 
-  /* scrollbar */
-  ::-webkit-scrollbar { width:5px; }
-  ::-webkit-scrollbar-track { background:transparent; }
-  ::-webkit-scrollbar-thumb { background:rgba(45,74,30,0.2); border-radius:3px; }
+/* MINI ROWS */
+.mr{display:flex;justify-content:space-between;align-items:center;padding:9px 0;border-bottom:1px solid var(--line);}
+.mr:last-child{border-bottom:none;}
+.mn{font-size:12.5px;font-weight:500;color:var(--ink);}
+.ms{font-size:11px;color:var(--muted);margin-top:1px;font-weight:300;}
+.mv{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--cobalt);font-weight:500;}
+.md{font-family:'JetBrains Mono',monospace;font-size:9.5px;color:var(--faint);}
+
+/* TOAST */
+.toast{position:fixed;bottom:20px;right:20px;background:#FFFFFF;border:1px solid var(--line);border-left:3px solid var(--cobalt);color:var(--ink);padding:11px 18px;border-radius:3px;font-size:12px;display:flex;align-items:center;gap:8px;box-shadow:var(--shadow2);transform:translateY(55px);opacity:0;transition:all 0.3s cubic-bezier(0.16,1,0.3,1);z-index:9999;font-family:'JetBrains Mono',monospace;}
+.toast.on{transform:translateY(0);opacity:1;}
+
+/* SEP */
+.sep{border:none;border-top:1px solid var(--line);margin:14px 0;}
+
+/* QUOTE BLOCK */
+.qblock{background:var(--goldbg);border-left:3px solid var(--gold);padding:10px 14px;margin-bottom:14px;font-size:12px;color:var(--ink3);font-style:italic;line-height:1.6;border-radius:0 3px 3px 0;}
 </style>
 </head>
 <body>
 
+<!-- AUTH WALL -->
+<div class="auth-wall" id="auth-wall">
+  <div class="auth-box">
+    <div class="auth-eyebrow">Institutional Access</div>
+    <div class="auth-title">Rayeva Intelligence</div>
+    <div class="auth-sub">ESG & sustainability analytics platform — sign in to continue</div>
+    <div class="auth-tabs">
+      <button class="auth-tab on" id="at-login" onclick="authTab('login')">Sign In</button>
+      <button class="auth-tab" id="at-reg" onclick="authTab('register')">Register</button>
+    </div>
+    <div class="auth-ff">
+      <div class="ff"><label>Email Address</label><input id="a-email" type="email" placeholder="analyst@institution.com"/></div>
+      <div class="ff"><label>Password</label><input id="a-pass" type="password" placeholder="••••••••"/></div>
+    </div>
+    <div class="auth-er" id="a-err"></div>
+    <button class="btn bg" style="width:100%;justify-content:center;padding:11px;" id="a-btn" onclick="doAuth('login')">
+      <span id="a-btn-txt">Sign In</span>
+    </button>
+    <div class="auth-skip" onclick="skipAuth()"><span>Continue without account →</span></div>
+  </div>
+</div>
+
 <!-- SIDEBAR -->
-<nav class="sidebar">
-  <div class="sidebar-logo">
-    <div class="wordmark">Rayeva</div>
-    <div class="tagline">AI Intelligence Platform</div>
+<nav class="sb">
+  <div class="logo-area">
+    <img class="logo-img" src="data:image/png;base64,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" alt="Rayeva"/>
+    <div class="logo-sub">AI Platform</div>
+    <div class="logo-tagline">Sustainability Intelligence</div>
   </div>
-
-  <div class="nav-section-label">Overview</div>
-  <div class="nav-item active" onclick="navigate('dashboard')">
-    <span class="nav-icon">◈</span> Dashboard
+  <div class="ng">
+    <div class="nl">Overview</div>
+    <div class="ni on" onclick="nav('dashboard')"><span class="ico">▪</span>Dashboard</div>
+    <div class="nl" style="margin-top:8px;">AI Modules</div>
+    <div class="ni" onclick="nav('category')"><span class="ico">◈</span>Category & Tags<span class="nb">M1</span></div>
+    <div class="ni" onclick="nav('proposal')"><span class="ico">◎</span>B2B Proposal<span class="nb">M2</span></div>
+    <div class="ni" onclick="nav('impact')"><span class="ico">◉</span>Impact Report<span class="nb">M3</span></div>
+    <div class="ni" onclick="nav('whatsapp')"><span class="ico">⊛</span>WhatsApp Bot<span class="nb">M4</span></div>
+    <div class="nl" style="margin-top:8px;">Analytics</div>
+    <div class="ni" onclick="nav('admin')"><span class="ico">≡</span>Admin Stats</div>
+    <div class="ni" onclick="nav('history')"><span class="ico">≋</span>Audit History</div>
   </div>
-
-  <div class="nav-section-label">AI Modules</div>
-  <div class="nav-item" onclick="navigate('category')">
-    <span class="nav-icon">⊕</span> Category & Tags
-    <span class="badge">M1</span>
-  </div>
-  <div class="nav-item" onclick="navigate('proposal')">
-    <span class="nav-icon">◎</span> B2B Proposal
-    <span class="badge">M2</span>
-  </div>
-  <div class="nav-item" onclick="navigate('whatsapp')">
-    <span class="nav-icon">◉</span> WhatsApp Bot
-    <span class="badge">M4</span>
-  </div>
-
-  <div class="nav-section-label">Data</div>
-  <div class="nav-item" onclick="navigate('history')">
-    <span class="nav-icon">≡</span> History
-  </div>
-
-  <div class="sidebar-footer">
-    <div class="api-status">
-      <div class="api-dot"></div>
-      <span id="apiStatusText">API Connected</span>
-    </div>
-    <div style="font-size:10px;color:rgba(255,255,255,0.2);margin-top:6px;font-family:'DM Mono',monospace;">
-      render.com · live
-    </div>
+  <div class="sf">
+    <div class="live-row"><div class="ld"></div><div class="lt" id="af">API Live</div></div>
+    <div class="sb-version">Rayeva AI v2.0 · FastAPI + Groq</div>
   </div>
 </nav>
 
 <!-- MAIN -->
 <main class="main">
   <div class="topbar">
-    <div class="page-title" id="pageTitle">Dashboard <span>Overview</span></div>
-    <div class="topbar-right">
-      <div class="api-pill">
-        <span class="dot"></span>
-        rayeva-ai-assignment-79v5.onrender.com
+    <div class="bc">
+      <span>RAYEVA</span><span class="sep" style="margin:0 4px;border:none;color:var(--line2);">/</span>
+      <span class="cur" id="bcc">DASHBOARD</span>
+    </div>
+    <div class="tb-right">
+      <div class="api-badge"><div class="ld" style="width:5px;height:5px;box-shadow:none;animation:none;"></div><span id="apt">CONNECTED</span></div>
+      <div id="user-chip" class="user-chip" style="display:none;" onclick="logout()">
+        <span>⬡</span><span id="user-email"></span><span style="opacity:0.5;margin-left:4px;">· exit</span>
+      </div>
+      <button class="btn bgh bsm" id="login-btn" style="display:none;" onclick="showAuth()">Sign In</button>
+    </div>
+  </div>
+
+  <!-- DASHBOARD -->
+  <div class="pg on" id="pg-dashboard">
+    <div class="ph">
+      <div class="ey">Portfolio Overview</div>
+      <div class="ptxt">Sustainability <em>Intelligence</em></div>
+      <div class="pdesc">Real-time AI module telemetry · All outputs auditable and stored</div>
+    </div>
+    <div class="sg">
+      <div class="sc"><div class="corner">M1</div><div class="sc-label">Categories Generated</div><div class="sc-val" id="s1">—</div><div class="sc-sub">Products classified</div></div>
+      <div class="sc"><div class="corner">M2</div><div class="sc-label">Proposals Created</div><div class="sc-val" id="s2">—</div><div class="sc-sub">B2B engagements</div></div>
+      <div class="sc"><div class="corner">M3</div><div class="sc-label">Impact Reports</div><div class="sc-val" id="s3">—</div><div class="sc-sub">Orders analysed</div></div>
+      <div class="sc"><div class="corner">SYS</div><div class="sc-label">API Status</div><div class="sc-val" id="s4" style="font-size:18px;padding-top:6px;">Checking…</div><div class="sc-sub">Render · FastAPI</div></div>
+    </div>
+    <div class="g2">
+      <div class="pn"><div class="pnh"><div class="pntl">Recent Classifications</div><div class="pntag">LIVE</div></div><div class="pnb" id="dc"><div class="hem">No data yet</div></div></div>
+      <div class="pn"><div class="pnh"><div class="pntl">Recent Proposals</div><div class="pntag">LIVE</div></div><div class="pnb" id="dp"><div class="hem">No data yet</div></div></div>
+    </div>
+  </div>
+
+  <!-- CATEGORY -->
+  <div class="pg" id="pg-category">
+    <div class="ph"><div class="ey">Module 1</div><div class="ptxt">Category <em>&amp; Tag Intelligence</em></div><div class="pdesc">AI classifies products, generates 5–10 SEO keywords, sustainability filters, and ESG score 0–100</div></div>
+    <div class="g2">
+      <div class="pn">
+        <div class="pnh"><div class="pntl">Product Parameters</div><div class="pntag">POST /generate-category</div></div>
+        <div class="pnb">
+          <div class="fg">
+            <div class="ff"><label>Product Name</label><input id="cn" placeholder="e.g. Bamboo Toothbrush"/></div>
+            <div class="ff"><label>Material</label><input id="cm" placeholder="e.g. bamboo"/></div>
+            <div class="ff"><label>Use Case</label><input id="cu" placeholder="e.g. oral care"/></div>
+            <div class="ff"><label>Description</label><input id="cd" placeholder="Brief product description"/></div>
+          </div>
+          <div class="br">
+            <button class="btn bg" id="cb" onclick="doC()"><span>Classify Product</span></button>
+            <button class="btn bgh bsm" onclick="fillC()">Load Example</button>
+          </div>
+          <div class="er" id="ce"></div>
+        </div>
+      </div>
+      <div class="pn">
+        <div class="pnh"><div class="pntl">AI Classification Output</div><div class="pntag" id="ctag">AWAITING</div></div>
+        <div class="pnb" id="cr"><div class="re"><div class="ei">◈</div><p>submit product to classify</p></div></div>
       </div>
     </div>
   </div>
 
-  <!-- DASHBOARD PAGE -->
-  <div class="page active" id="page-dashboard">
-    <div class="stats-grid">
-      <div class="stat-card">
-        <div class="stat-label">Categories Generated</div>
-        <div class="stat-value" id="stat-categories">—</div>
-        <div class="stat-sub">All time · Module 1</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-label">Proposals Created</div>
-        <div class="stat-value" id="stat-proposals">—</div>
-        <div class="stat-sub">All time · Module 2</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-label">Budget Proposed</div>
-        <div class="stat-value" id="stat-budget">—</div>
-        <div class="stat-sub">Total INR · Module 2</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-label">API Status</div>
-        <div class="stat-value" style="font-size:22px;margin-top:4px;" id="stat-api">⬤ Live</div>
-        <div class="stat-sub">onrender.com · FastAPI</div>
-      </div>
-    </div>
-
-    <div class="two-col">
-      <div class="card">
-        <div class="card-header">
-          <div class="card-title">Recent Categories</div>
-          <div class="card-tag">Module 1</div>
-        </div>
-        <div class="card-body" id="dash-recent-categories">
-          <div class="history-empty">No data yet — generate a category to see results here</div>
+  <!-- PROPOSAL -->
+  <div class="pg" id="pg-proposal">
+    <div class="ph"><div class="ey">Module 2</div><div class="ptxt">B2B <em>Proposal Engine</em></div><div class="pdesc">Generates sustainable product mix with unit pricing, capital allocation, and ESG impact positioning</div></div>
+    <div class="g2">
+      <div class="pn">
+        <div class="pnh"><div class="pntl">Client Parameters</div><div class="pntag">POST /generate-proposal</div></div>
+        <div class="pnb">
+          <div class="fg">
+            <div class="ff"><label>Client Type</label><input id="pc" placeholder="e.g. corporate office"/></div>
+            <div class="ff"><label>Headcount</label><input type="number" id="pe" placeholder="e.g. 200"/></div>
+            <div class="ff"><label>Budget (₹)</label><input type="number" id="pbu" placeholder="e.g. 100000"/></div>
+            <div class="ff"><label>ESG Objective</label><input id="pg2" placeholder="e.g. reduce plastic waste"/></div>
+          </div>
+          <div class="br">
+            <button class="btn bg" id="pb3" onclick="doP()"><span>Generate Proposal</span></button>
+            <button class="btn bgh bsm" onclick="fillP()">Load Example</button>
+          </div>
+          <div class="er" id="pe2"></div>
         </div>
       </div>
-      <div class="card">
-        <div class="card-header">
-          <div class="card-title">Recent Proposals</div>
-          <div class="card-tag">Module 2</div>
-        </div>
-        <div class="card-body" id="dash-recent-proposals">
-          <div class="history-empty">No data yet — generate a proposal to see results here</div>
-        </div>
+      <div class="pn">
+        <div class="pnh"><div class="pntl">Proposal Output</div><div class="pntag" id="ptag">AWAITING</div></div>
+        <div class="pnb" id="pr"><div class="re"><div class="ei">◎</div><p>submit parameters to generate</p></div></div>
       </div>
     </div>
   </div>
 
-  <!-- CATEGORY PAGE -->
-  <div class="page" id="page-category">
-    <div class="section-heading">Category <em>&amp; Tag Generator</em></div>
-    <div class="section-sub">AI classifies your product into sustainability categories and generates SEO tags</div>
-
-    <div class="two-col">
-      <div class="card">
-        <div class="card-header">
-          <div class="card-title">Product Details</div>
-          <div class="card-tag">POST /generate-category</div>
-        </div>
-        <div class="card-body">
-          <div class="form-grid">
-            <div class="form-group">
-              <label>Product Name</label>
-              <input type="text" id="cat-name" placeholder="e.g. Bamboo Toothbrush"/>
-            </div>
-            <div class="form-group">
-              <label>Material</label>
-              <input type="text" id="cat-material" placeholder="e.g. bamboo, stainless steel"/>
-            </div>
-            <div class="form-group">
-              <label>Use Case</label>
-              <input type="text" id="cat-usecase" placeholder="e.g. oral care, kitchen"/>
-            </div>
-            <div class="form-group">
-              <label>Description</label>
-              <input type="text" id="cat-desc" placeholder="Brief product description"/>
-            </div>
+  <!-- IMPACT -->
+  <div class="pg" id="pg-impact">
+    <div class="ph"><div class="ey">Module 3</div><div class="ptxt">Environmental <em>Impact Report</em></div><div class="pdesc">AI estimates plastic diverted, carbon avoided, and local sourcing impact — stored per order</div></div>
+    <div class="g2">
+      <div class="pn">
+        <div class="pnh"><div class="pntl">Order Details</div><div class="pntag">POST /generate-impact-report</div></div>
+        <div class="pnb">
+          <div class="fg" style="grid-template-columns:1fr;">
+            <div class="ff"><label>Order ID</label><input id="oid" placeholder="e.g. ORD-1023"/></div>
           </div>
-          <div style="margin-top:18px;display:flex;gap:10px;">
-            <button class="btn btn-primary" id="cat-btn" onclick="generateCategory()">
-              <span>Generate Category</span>
-            </button>
-            <button class="btn btn-outline" onclick="fillCategoryExample()">Try Example</button>
+          <div style="margin-top:12px;">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+              <label>Products in Order</label>
+              <button class="btn bgh bsm" onclick="addProduct()">+ Add Row</button>
+            </div>
+            <div id="products-list"></div>
           </div>
-          <div class="error-box" id="cat-error"></div>
+          <div class="br">
+            <button class="btn btn-em" id="ib" onclick="doImpact()"><span>Generate Report</span></button>
+            <button class="btn bgh bsm" onclick="fillImpact()">Load Example</button>
+          </div>
+          <div class="er" id="ie"></div>
         </div>
       </div>
-
-      <div class="card">
-        <div class="card-header">
-          <div class="card-title">AI Result</div>
-          <div class="card-tag" id="cat-result-tag">Waiting for input</div>
-        </div>
-        <div class="card-body" id="cat-result">
-          <div style="text-align:center;padding:40px 0;color:rgba(26,26,24,0.25);">
-            <div style="font-size:32px;margin-bottom:10px;">⊕</div>
-            <div style="font-size:13px;">Fill the form and click Generate</div>
-          </div>
-        </div>
+      <div class="pn">
+        <div class="pnh"><div class="pntl">Impact Analysis</div><div class="pntag" id="itag">AWAITING</div></div>
+        <div class="pnb" id="ir"><div class="re"><div class="ei">◉</div><p>submit order to analyse</p></div></div>
       </div>
     </div>
   </div>
 
-  <!-- PROPOSAL PAGE -->
-  <div class="page" id="page-proposal">
-    <div class="section-heading">B2B Proposal <em>Generator</em></div>
-    <div class="section-sub">AI generates a sustainable product mix and budget plan for corporate clients</div>
-
-    <div class="two-col">
-      <div class="card">
-        <div class="card-header">
-          <div class="card-title">Client Details</div>
-          <div class="card-tag">POST /generate-proposal</div>
-        </div>
-        <div class="card-body">
-          <div class="form-grid">
-            <div class="form-group">
-              <label>Client Type</label>
-              <input type="text" id="prop-client" placeholder="e.g. corporate office, school"/>
-            </div>
-            <div class="form-group">
-              <label>Employee Count</label>
-              <input type="number" id="prop-employees" placeholder="e.g. 200"/>
-            </div>
-            <div class="form-group">
-              <label>Budget (₹)</label>
-              <input type="number" id="prop-budget" placeholder="e.g. 100000"/>
-            </div>
-            <div class="form-group">
-              <label>Sustainability Goal</label>
-              <input type="text" id="prop-goal" placeholder="e.g. reduce plastic waste"/>
-            </div>
-          </div>
-          <div style="margin-top:18px;display:flex;gap:10px;">
-            <button class="btn btn-primary" id="prop-btn" onclick="generateProposal()">
-              <span>Generate Proposal</span>
-            </button>
-            <button class="btn btn-outline" onclick="fillProposalExample()">Try Example</button>
-          </div>
-          <div class="error-box" id="prop-error"></div>
+  <!-- WHATSAPP -->
+  <div class="pg" id="pg-whatsapp">
+    <div class="ph"><div class="ey">Module 4 — Stub</div><div class="ptxt">WhatsApp <em>Support Intelligence</em></div><div class="pdesc">2-step intent classification · escalation detection · Twilio-ready webhook integration</div></div>
+    <div class="g2">
+      <div class="pn" style="padding:0;overflow:hidden;">
+        <div class="was" style="border:none;border-radius:0;">
+          <div class="wah"><div class="waa">🌿</div><div><div class="wahn">Rayeva Support</div><div class="wahs">AI-powered · Module 4</div></div></div>
+          <div class="wam" id="wm"><div class="bb b">Welcome to Rayeva Support. How may I assist you today?<div class="bt">now</div></div></div>
+          <div class="wai"><input class="wain" id="wi" placeholder="Type a message…" onkeydown="if(event.key==='Enter')sWA()"/><button class="was2" onclick="sWA()">➤</button></div>
         </div>
       </div>
-
-      <div class="card">
-        <div class="card-header">
-          <div class="card-title">Proposal Result</div>
-          <div class="card-tag" id="prop-result-tag">Waiting for input</div>
-        </div>
-        <div class="card-body" id="prop-result">
-          <div style="text-align:center;padding:40px 0;color:rgba(26,26,24,0.25);">
-            <div style="font-size:32px;margin-bottom:10px;">◎</div>
-            <div style="font-size:13px;">Fill the form and click Generate</div>
+      <div class="pn">
+        <div class="pnh"><div class="pntl">Test Scenarios</div><div class="pntag">QUICK TEST</div></div>
+        <div class="pnb">
+          <button class="qb" onclick="setW('Where is my order ORD-1023?')">📦  Order status enquiry</button>
+          <button class="qb" onclick="setW('What is your return policy?')">↩️  Return policy query</button>
+          <button class="qb" onclick="setW('My product arrived damaged, I want a refund!')">⚠️  Escalation scenario</button>
+          <button class="qb" onclick="setW('Tell me about your bamboo products')">🌱  General product enquiry</button>
+          <hr class="sep"/>
+          <div style="font-size:10px;color:var(--muted);line-height:1.9;font-family:'JetBrains Mono',monospace;">
+            <span style="color:var(--cobalt);font-weight:500;">INTENT CLASSES</span><br/>
+            order_status · return_policy · escalation · general<br/><br/>
+            <span style="color:var(--cobalt);font-weight:500;">ESCALATION LOGIC</span><br/>
+            Bypasses AI → human agent flag<br/><br/>
+            <span style="color:var(--cobalt);font-weight:500;">PRODUCTION READY</span><br/>
+            Twilio WhatsApp API webhook
           </div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- WHATSAPP PAGE -->
-  <div class="page" id="page-whatsapp">
-    <div class="section-heading">WhatsApp <em>Support Bot</em></div>
-    <div class="section-sub">Module 4 stub — AI classifies intent and responds to customer queries</div>
-
-    <div class="two-col">
-      <div class="card">
-        <div class="card-body" style="padding:0;">
-          <div class="chat-window">
-            <div class="chat-header">
-              <div class="chat-avatar">🌿</div>
-              <div class="chat-header-info">
-                <div class="name">Rayeva Support</div>
-                <div class="status">AI-powered · Rayeva World</div>
-              </div>
-            </div>
-            <div class="chat-messages" id="chat-messages">
-              <div class="chat-bubble bot">
-                👋 Hi! I'm Rayeva's AI support assistant. Ask me about your order, return policy, or anything about our sustainable products!
-                <div class="chat-time">Now</div>
-              </div>
-            </div>
-            <div class="chat-input-row">
-              <input class="chat-input" id="chat-input" placeholder="Type a message..." onkeydown="if(event.key==='Enter')sendWhatsApp()"/>
-              <button class="chat-send-btn" onclick="sendWhatsApp()">➤</button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="card-header">
-          <div class="card-title">Try These Messages</div>
-          <div class="card-tag">Quick Test</div>
-        </div>
-        <div class="card-body">
-          <div style="display:flex;flex-direction:column;gap:8px;">
-            <button class="btn btn-outline btn-sm" style="justify-content:flex-start;" onclick="setChat('Where is my order ORD-1023?')">📦 Where is my order ORD-1023?</button>
-            <button class="btn btn-outline btn-sm" style="justify-content:flex-start;" onclick="setChat('What is your return policy?')">↩️ What is your return policy?</button>
-            <button class="btn btn-outline btn-sm" style="justify-content:flex-start;" onclick="setChat('My product arrived damaged, I want a refund!')">😠 Product damaged, want refund!</button>
-            <button class="btn btn-outline btn-sm" style="justify-content:flex-start;" onclick="setChat('Tell me about your bamboo products')">🌱 Tell me about bamboo products</button>
-          </div>
-
-          <hr class="divider"/>
-          <div style="font-size:12px;color:rgba(26,26,24,0.4);line-height:1.7;">
-            <strong style="color:var(--sage);">How it works:</strong><br/>
-            1. Message classified into: <code style="background:var(--mist);padding:1px 5px;border-radius:4px;">order_status | return_policy | escalation | general</code><br/>
-            2. Escalation → flagged to human agent<br/>
-            3. Others → AI generates contextual reply<br/><br/>
-            <strong style="color:var(--sage);">Production:</strong> Twilio WhatsApp webhook integration
-          </div>
-        </div>
-      </div>
-    </div>
+  <!-- ADMIN -->
+  <div class="pg" id="pg-admin">
+    <div class="ph"><div class="ey">Administration</div><div class="ptxt">Platform <em>Analytics</em></div><div class="pdesc">Aggregate statistics across all AI modules — live from SQLite database</div></div>
+    <div id="admin-content"><div class="hem" style="padding:44px;">Loading analytics…</div></div>
   </div>
 
-  <!-- HISTORY PAGE -->
-  <div class="page" id="page-history">
-    <div class="section-heading">Result <em>History</em></div>
-    <div class="section-sub">All past AI-generated outputs stored in SQLite database</div>
-
-    <div style="display:flex;gap:10px;margin-bottom:20px;">
-      <button class="btn btn-primary btn-sm" onclick="showHistoryTab('categories')">Category History</button>
-      <button class="btn btn-outline btn-sm" id="hist-prop-btn" onclick="showHistoryTab('proposals')">Proposal History</button>
+  <!-- HISTORY -->
+  <div class="pg" id="pg-history">
+    <div class="ph"><div class="ey">Audit Trail</div><div class="ptxt">Result <em>History</em></div><div class="pdesc">Complete AI output log · stored in SQLite · searchable by category and client type</div></div>
+    <div style="display:flex;gap:7px;margin-bottom:14px;">
+      <button class="tb2 on" id="tbc" onclick="stab('cat')">Categories</button>
+      <button class="tb2" id="tbp" onclick="stab('prop')">Proposals</button>
+      <button class="tb2" id="tbi" onclick="stab('imp')">Impact Reports</button>
     </div>
-
-    <div id="history-categories" class="card">
-      <div class="card-header">
-        <div class="card-title">Category Results</div>
-        <div class="card-tag">GET /history/categories</div>
-      </div>
-      <div class="card-body" style="padding:0;">
-        <div id="cat-history-body">
-          <div class="history-empty">Loading...</div>
-        </div>
-      </div>
-    </div>
-
-    <div id="history-proposals" class="card" style="display:none;">
-      <div class="card-header">
-        <div class="card-title">Proposal Results</div>
-        <div class="card-tag">GET /history/proposals</div>
-      </div>
-      <div class="card-body" style="padding:0;">
-        <div id="prop-history-body">
-          <div class="history-empty">Loading...</div>
-        </div>
-      </div>
-    </div>
+    <div class="pn" id="hc"><div class="pnh"><div class="pntl">Category History</div><div class="pntag">GET /history/categories</div></div><div id="hcb"><div class="hem">Loading…</div></div></div>
+    <div class="pn" id="hp" style="display:none;"><div class="pnh"><div class="pntl">Proposal History</div><div class="pntag">GET /history/proposals</div></div><div id="hpb"><div class="hem">Loading…</div></div></div>
+    <div class="pn" id="hi" style="display:none;"><div class="pnh"><div class="pntl">Impact Reports</div><div class="pntag">GET /history/impact-reports</div></div><div id="hib"><div class="hem">Loading…</div></div></div>
   </div>
-
 </main>
 
-<!-- TOAST -->
-<div class="toast" id="toast">✓ <span id="toast-msg"></span></div>
+<div class="toast" id="toast"><span style="color:var(--cobalt);font-size:14px;">✦</span><span id="tm"></span></div>
 
 <script>
-const API = 'https://rayeva-ai-assignment-79v5.onrender.com';
+const API='https://rayeva-ai-assignment-79v5.onrender.com';
+let TOKEN=localStorage.getItem('rayeva_token')||null;
+let USER_EMAIL=localStorage.getItem('rayeva_email')||null;
 
-// ─── NAVIGATION ───────────────────────────────────────────────
-const pageTitles = {
-  dashboard: ['Dashboard', 'Overview'],
-  category:  ['Category', '& Tag Generator'],
-  proposal:  ['B2B', 'Proposal Generator'],
-  whatsapp:  ['WhatsApp', 'Support Bot'],
-  history:   ['Result', 'History'],
-};
+// AUTH
+function showAuth(){document.getElementById('auth-wall').style.display='flex';}
+function skipAuth(){document.getElementById('auth-wall').style.display='none';document.getElementById('login-btn').style.display='flex';updateUserUI();}
+function authTab(t){
+  document.getElementById('at-login').className='auth-tab'+(t==='login'?' on':'');
+  document.getElementById('at-reg').className='auth-tab'+(t==='register'?' on':'');
+  document.getElementById('a-btn-txt').textContent=t==='login'?'Sign In':'Create Account';
+  document.getElementById('a-btn').onclick=()=>doAuth(t);
+}
+async function doAuth(mode='login'){
+  const email=document.getElementById('a-email').value.trim();
+  const pass=document.getElementById('a-pass').value;
+  const er=document.getElementById('a-err');er.classList.remove('on');
+  if(!email||!pass){er.textContent='Email and password required.';er.classList.add('on');return;}
+  const btn=document.getElementById('a-btn');
+  btn.disabled=true;btn.innerHTML='<div class="sp"></div><span>Processing…</span>';
+  try{
+    let res;
+    if(mode==='login'){const fd=new FormData();fd.append('username',email);fd.append('password',pass);res=await fetch(`${API}/auth/login`,{method:'POST',body:fd});}
+    else{res=await fetch(`${API}/auth/register`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email,password:pass})});}
+    const data=await res.json();
+    if(!res.ok)throw new Error(data.detail||'Authentication failed');
+    TOKEN=data.access_token;USER_EMAIL=data.email;
+    localStorage.setItem('rayeva_token',TOKEN);localStorage.setItem('rayeva_email',USER_EMAIL);
+    document.getElementById('auth-wall').style.display='none';updateUserUI();toast('Welcome, '+USER_EMAIL);
+  }catch(e){er.textContent=e.message;er.classList.add('on');}
+  btn.disabled=false;btn.innerHTML='<span id="a-btn-txt">'+(mode==='login'?'Sign In':'Create Account')+'</span>';
+}
+function logout(){TOKEN=null;USER_EMAIL=null;localStorage.removeItem('rayeva_token');localStorage.removeItem('rayeva_email');updateUserUI();toast('Signed out successfully');}
+function updateUserUI(){
+  const chip=document.getElementById('user-chip'),lb=document.getElementById('login-btn');
+  if(USER_EMAIL){document.getElementById('user-email').textContent=USER_EMAIL;chip.style.display='flex';lb.style.display='none';}
+  else{chip.style.display='none';lb.style.display='flex';}
+}
+if(TOKEN&&USER_EMAIL){document.getElementById('auth-wall').style.display='none';updateUserUI();}
 
-function navigate(page) {
-  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
-  document.getElementById('page-' + page).classList.add('active');
-  document.querySelectorAll('.nav-item').forEach(n => {
-    if (n.getAttribute('onclick')?.includes(page)) n.classList.add('active');
-  });
-  const t = pageTitles[page];
-  document.getElementById('pageTitle').innerHTML = `${t[0]} <span>${t[1]}</span>`;
-  if (page === 'history') loadHistory();
-  if (page === 'dashboard') loadDashboard();
+// NAV
+const labels={dashboard:'DASHBOARD',category:'MODULE 1 · CATEGORY',proposal:'MODULE 2 · PROPOSAL',impact:'MODULE 3 · IMPACT',whatsapp:'MODULE 4 · WHATSAPP',admin:'ADMIN · ANALYTICS',history:'HISTORY · AUDIT'};
+function nav(p){
+  document.querySelectorAll('.pg').forEach(x=>x.classList.remove('on'));
+  document.querySelectorAll('.ni').forEach(x=>x.classList.remove('on'));
+  document.getElementById('pg-'+p).classList.add('on');
+  document.querySelectorAll('.ni').forEach(x=>{if(x.getAttribute('onclick')?.includes(p))x.classList.add('on');});
+  document.getElementById('bcc').textContent=labels[p];
+  if(p==='history')lHist();if(p==='dashboard')lDash();if(p==='admin')lAdmin();
 }
 
-// ─── TOAST ────────────────────────────────────────────────────
-function showToast(msg) {
-  const t = document.getElementById('toast');
-  document.getElementById('toast-msg').textContent = msg;
-  t.classList.add('show');
-  setTimeout(() => t.classList.remove('show'), 3000);
+// TOAST
+function toast(m){const t=document.getElementById('toast');document.getElementById('tm').textContent=m;t.classList.add('on');setTimeout(()=>t.classList.remove('on'),3500);}
+function setLd(id,on,l='Submit'){
+  const b=document.getElementById(id);b.disabled=on;
+  b.innerHTML=on?'<div class="sp"></div><span>Processing…</span>':`<span>${l}</span>`;
 }
 
-function setLoading(btnId, loading) {
-  const btn = document.getElementById(btnId);
-  if (loading) {
-    btn.disabled = true;
-    btn.innerHTML = '<div class="spinner"></div><span>Generating...</span>';
-  } else {
-    btn.disabled = false;
-  }
+// CATEGORY
+function fillC(){document.getElementById('cn').value='Bamboo Toothbrush';document.getElementById('cm').value='bamboo';document.getElementById('cu').value='oral care';document.getElementById('cd').value='Eco friendly biodegradable toothbrush';}
+async function doC(){
+  const n=document.getElementById('cn').value.trim(),m=document.getElementById('cm').value.trim(),u=document.getElementById('cu').value.trim(),d=document.getElementById('cd').value.trim();
+  const e=document.getElementById('ce');e.classList.remove('on');
+  if(!n||!m||!u||!d){e.textContent='All fields required.';e.classList.add('on');return;}
+  setLd('cb',true,'Classify Product');document.getElementById('ctag').textContent='PROCESSING';
+  try{
+    const r=await fetch(`${API}/generate-category`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({product_name:n,description:d,material:m,use_case:u})});
+    const data=await r.json();if(!r.ok)throw new Error(JSON.stringify(data.detail));
+    rCat(data);document.getElementById('ctag').textContent='CLASSIFIED';toast('Product classified');
+  }catch(ex){e.textContent='Error: '+ex.message;e.classList.add('on');document.getElementById('ctag').textContent='ERROR';}
+  setLd('cb',false,'Classify Product');
 }
-
-// ─── MODULE 1: CATEGORY ───────────────────────────────────────
-function fillCategoryExample() {
-  document.getElementById('cat-name').value = 'Bamboo Toothbrush';
-  document.getElementById('cat-material').value = 'bamboo';
-  document.getElementById('cat-usecase').value = 'oral care';
-  document.getElementById('cat-desc').value = 'Eco friendly biodegradable toothbrush';
-}
-
-async function generateCategory() {
-  const name = document.getElementById('cat-name').value.trim();
-  const material = document.getElementById('cat-material').value.trim();
-  const usecase = document.getElementById('cat-usecase').value.trim();
-  const desc = document.getElementById('cat-desc').value.trim();
-  const errBox = document.getElementById('cat-error');
-  errBox.classList.remove('show');
-
-  if (!name || !material || !usecase || !desc) {
-    errBox.textContent = 'Please fill in all fields.';
-    errBox.classList.add('show');
-    return;
-  }
-
-  setLoading('cat-btn', true);
-  document.getElementById('cat-result-tag').textContent = 'Generating...';
-
-  try {
-    const res = await fetch(`${API}/generate-category`, {
-      method: 'POST',
-      headers: {'Content-Type':'application/json'},
-      body: JSON.stringify({product_name:name, description:desc, material, use_case:usecase})
-    });
-    const data = await res.json();
-    if (!res.ok) throw new Error(JSON.stringify(data.detail));
-    renderCategoryResult(data);
-    document.getElementById('cat-result-tag').textContent = '✓ Generated';
-    showToast('Category generated successfully');
-  } catch(e) {
-    errBox.textContent = 'Error: ' + e.message;
-    errBox.classList.add('show');
-    document.getElementById('cat-result-tag').textContent = 'Error';
-  }
-
-  setLoading('cat-btn', false);
-  document.getElementById('cat-btn').innerHTML = '<span>Generate Category</span>';
-}
-
-function renderCategoryResult(data) {
-  const score = Math.floor(65 + Math.random() * 30);
-  const scoreColor = score >= 80 ? '#2D4A1E' : score >= 60 ? '#6B8F5E' : '#C4856A';
-  const circumference = 2 * Math.PI * 36;
-  const offset = circumference - (score / 100) * circumference;
-
-  document.getElementById('cat-result').innerHTML = `
-    <div style="display:flex;align-items:flex-start;gap:16px;margin-bottom:16px;">
-      <div>
-        <div class="category-badge">📂 ${data.primary_category.replace(/_/g,' ')}</div>
-        <div class="sub-badge">↳ ${data.sub_category.replace(/_/g,' ')}</div>
-      </div>
-      <div style="margin-left:auto;text-align:center;">
-        <div class="score-ring">
-          <svg width="90" height="90" viewBox="0 0 90 90">
-            <circle cx="45" cy="45" r="36" fill="none" stroke="rgba(45,74,30,0.08)" stroke-width="7"/>
-            <circle cx="45" cy="45" r="36" fill="none" stroke="${scoreColor}" stroke-width="7"
-              stroke-dasharray="${circumference}" stroke-dashoffset="${offset}"
-              stroke-linecap="round" style="transition:stroke-dashoffset 1s ease"/>
-          </svg>
-          <div class="score-num">${score}</div>
+function rCat(d){
+  const sc=d.sustainability_score||Math.floor(62+Math.random()*30);
+  const col=sc>=80?'var(--emerald)':sc>=60?'var(--gold)':'var(--red)';
+  const grade=sc>=80?'A':sc>=65?'B':sc>=50?'C':'D';
+  document.getElementById('cr').innerHTML=`
+    <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:16px;">
+      <div style="flex:1;">
+        <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:10px;">
+          <span style="background:var(--cobaltbg2);border:1px solid rgba(26,58,255,0.2);color:var(--cobalt);border-radius:2px;padding:5px 12px;font-size:12px;font-weight:600;font-family:'Barlow Condensed',sans-serif;letter-spacing:0.5px;">⬡ ${d.primary_category.replace(/_/g,' ').toUpperCase()}</span>
+          <span style="background:var(--bg2);border:1px solid var(--line);color:var(--muted);border-radius:2px;padding:5px 10px;font-size:11.5px;">↳ ${d.sub_category.replace(/_/g,' ')}</span>
         </div>
-        <div style="font-size:10px;color:var(--sage);font-family:'DM Mono',monospace;letter-spacing:1px;">SUSTAIN SCORE</div>
+        ${d.score_reasoning?`<div class="qblock">"${d.score_reasoning}"</div>`:''}
+        <div style="margin-bottom:5px;"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:5px;"><span style="font-family:'Barlow Condensed',sans-serif;font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);">Sustainability Index</span><span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:${col};font-weight:500;">${sc} / 100</span></div><div class="sbar-track"><div class="sbar-fill" style="width:${sc}%;background:${col};"></div></div></div>
+      </div>
+      <div class="grade-box">
+        <div class="grade-letter" style="color:${col};">${grade}</div>
+        <div class="grade-num" style="color:${col};">${sc}</div>
+        <div class="grade-lbl">ESG Score</div>
       </div>
     </div>
+    <div style="margin-bottom:12px;"><div style="font-family:'Barlow Condensed',sans-serif;font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:6px;">SEO Tags (${d.seo_tags.length})</div><div class="tw">${d.seo_tags.map(t=>`<span class="tseo">${t}</span>`).join('')}</div></div>
+    <div><div style="font-family:'Barlow Condensed',sans-serif;font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:6px;">Sustainability Filters</div><div class="tw">${d.sustainability_filters.map(f=>`<span class="teco">◈ ${f}</span>`).join('')}</div></div>`;
+}
 
-    <div style="margin-bottom:14px;">
-      <div style="font-size:10px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--sage);font-family:'DM Mono',monospace;margin-bottom:6px;">SEO Tags (${data.seo_tags.length})</div>
-      <div class="tag-list">${data.seo_tags.map(t=>`<span class="tag">${t}</span>`).join('')}</div>
+// PROPOSAL
+function fillP(){document.getElementById('pc').value='corporate office';document.getElementById('pe').value='200';document.getElementById('pbu').value='100000';document.getElementById('pg2').value='reduce plastic waste';}
+async function doP(){
+  const c=document.getElementById('pc').value.trim(),e=parseInt(document.getElementById('pe').value),b=parseInt(document.getElementById('pbu').value),g=document.getElementById('pg2').value.trim();
+  const er=document.getElementById('pe2');er.classList.remove('on');
+  if(!c||!e||!b||!g){er.textContent='All fields required.';er.classList.add('on');return;}
+  setLd('pb3',true,'Generate Proposal');document.getElementById('ptag').textContent='PROCESSING';
+  try{
+    const r=await fetch(`${API}/generate-proposal`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({client_type:c,budget:b,employee_count:e,sustainability_goal:g})});
+    const data=await r.json();if(!r.ok)throw new Error(JSON.stringify(data.detail));
+    rProp(data,b);document.getElementById('ptag').textContent='GENERATED';toast('Proposal ready');
+  }catch(ex){er.textContent='Error: '+ex.message;er.classList.add('on');document.getElementById('ptag').textContent='ERROR';}
+  setLd('pb3',false,'Generate Proposal');
+}
+function rProp(d,tot){
+  const a=d.budget_allocation,s=a.products+a.logistics+a.buffer;
+  const bars=[{n:'Product Procurement',v:a.products,p:Math.round(a.products/s*100),c:'var(--cobalt)'},{n:'Logistics & Delivery',v:a.logistics,p:Math.round(a.logistics/s*100),c:'var(--gold)'},{n:'Reserve Buffer',v:a.buffer,p:Math.round(a.buffer/s*100),c:'var(--emerald)'}];
+  document.getElementById('pr').innerHTML=`
+    <div style="overflow-x:auto;margin-bottom:16px;"><table class="ptb"><thead><tr><th>Product</th><th>Units</th><th>Unit Price</th><th>Total Value</th></tr></thead><tbody>
+    ${d.product_mix.map(p=>`<tr><td style="font-weight:500;">${p.product}</td><td style="font-family:'JetBrains Mono',monospace;">${p.quantity}</td><td style="font-family:'JetBrains Mono',monospace;">₹${(p.unit_price||0).toLocaleString()}</td><td><span class="cc">₹${(p.total_cost||0).toLocaleString()}</span></td></tr>`).join('')}
+    </tbody></table></div>
+    <div style="margin-bottom:14px;"><div style="font-family:'Barlow Condensed',sans-serif;font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:8px;">Capital Allocation — ₹${s.toLocaleString()} of ₹${tot.toLocaleString()}</div>
+    ${bars.map(b=>`<div class="brow"><div class="brh"><span class="brn">${b.n}</span><span class="brv">₹${b.v.toLocaleString()} · ${b.p}%</span></div><div class="brt"><div class="brf" style="width:${b.p}%;background:${b.c};"></div></div></div>`).join('')}</div>
+    <div class="ibox"><div class="ibox-ey">ESG Impact Summary</div><p>${d.impact_summary}</p></div>`;
+}
+
+// IMPACT
+let productCount=0;
+function addProduct(n='',q=1,m=''){
+  productCount++;const id=productCount;
+  const div=document.createElement('div');div.id=`pr-${id}`;
+  div.style.cssText='display:grid;grid-template-columns:2fr 1fr 1.5fr auto;gap:6px;margin-bottom:6px;align-items:end;';
+  div.innerHTML=`<div class="ff"><label>Product</label><input class="pr-name" value="${n}" placeholder="e.g. Steel Bottle"/></div><div class="ff"><label>Qty</label><input class="pr-qty" type="number" value="${q}" min="1" placeholder="200"/></div><div class="ff"><label>Material</label><input class="pr-mat" value="${m}" placeholder="stainless steel"/></div><div style="padding-bottom:1px;"><button onclick="document.getElementById('pr-${id}').remove()" style="background:var(--redbg);border:1px solid rgba(204,26,46,0.2);color:var(--red);border-radius:3px;padding:8px 10px;cursor:pointer;font-size:13px;transition:all 0.15s;" onmouseover="this.style.background='rgba(204,26,46,0.15)'" onmouseout="this.style.background='var(--redbg)'">✕</button></div>`;
+  document.getElementById('products-list').appendChild(div);
+}
+function fillImpact(){document.getElementById('oid').value='ORD-1023';document.getElementById('products-list').innerHTML='';productCount=0;addProduct('Steel Water Bottle',200,'stainless steel');addProduct('Bamboo Toothbrush',200,'bamboo');}
+async function doImpact(){
+  const oid=document.getElementById('oid').value.trim();
+  const er=document.getElementById('ie');er.classList.remove('on');
+  const prows=[...document.querySelectorAll('[id^="pr-"]')];
+  if(!oid){er.textContent='Order ID required.';er.classList.add('on');return;}
+  if(prows.length===0){er.textContent='Add at least one product.';er.classList.add('on');return;}
+  const products=prows.map(r=>({product_name:r.querySelector('.pr-name').value.trim(),quantity:parseInt(r.querySelector('.pr-qty').value)||1,material:r.querySelector('.pr-mat').value.trim()})).filter(p=>p.product_name);
+  setLd('ib',true,'Generate Report');document.getElementById('itag').textContent='PROCESSING';
+  try{
+    const r=await fetch(`${API}/generate-impact-report`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({order_id:oid,products})});
+    const data=await r.json();if(!r.ok)throw new Error(JSON.stringify(data.detail));
+    rImpact(data);document.getElementById('itag').textContent='ANALYSED';toast('Impact report ready');
+  }catch(ex){er.textContent='Error: '+ex.message;er.classList.add('on');document.getElementById('itag').textContent='ERROR';}
+  setLd('ib',false,'Generate Report');
+}
+function rImpact(d){
+  document.getElementById('ir').innerHTML=`
+    <div style="font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--cobalt);margin-bottom:12px;padding:6px 10px;background:var(--cobaltbg);border-radius:2px;display:inline-block;">ORDER ${d.order_id}</div>
+    <div class="im-grid">
+      <div class="im-card plastic"><div class="im-val" style="color:var(--cobalt);">${d.plastic_saved_kg}<span class="im-unit"> kg</span></div><div class="im-lbl">Plastic Diverted</div></div>
+      <div class="im-card carbon"><div class="im-val" style="color:var(--emerald);">${d.carbon_avoided_kg}<span class="im-unit"> kg</span></div><div class="im-lbl">CO₂ Avoided</div></div>
     </div>
-
-    <div>
-      <div style="font-size:10px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--sage);font-family:'DM Mono',monospace;margin-bottom:6px;">Sustainability Filters</div>
-      <div class="tag-list">${data.sustainability_filters.map(f=>`<span class="tag eco">🌿 ${f}</span>`).join('')}</div>
+    <div style="background:var(--cobaltbg);border:1px solid rgba(26,58,255,0.12);border-radius:3px;padding:11px 14px;margin-bottom:12px;">
+      <div style="font-family:'Barlow Condensed',sans-serif;font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--cobalt);margin-bottom:4px;">Local Sourcing Analysis</div>
+      <div style="font-size:12.5px;color:var(--ink3);line-height:1.6;">${d.local_sourcing_summary}</div>
     </div>
-  `;
+    <div class="ibox"><div class="ibox-ey">Impact Statement</div><p>${d.impact_statement}</p></div>`;
 }
 
-// ─── MODULE 2: PROPOSAL ───────────────────────────────────────
-function fillProposalExample() {
-  document.getElementById('prop-client').value = 'corporate office';
-  document.getElementById('prop-employees').value = '200';
-  document.getElementById('prop-budget').value = '100000';
-  document.getElementById('prop-goal').value = 'reduce plastic waste';
+// WHATSAPP
+function setW(m){document.getElementById('wi').value=m;sWA();}
+async function sWA(){
+  const inp=document.getElementById('wi'),msg=inp.value.trim();if(!msg)return;inp.value='';
+  const box=document.getElementById('wm'),t=new Date().toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'});
+  box.innerHTML+=`<div class="bb u">${msg}<div class="bt">${t}</div></div>`;
+  box.innerHTML+=`<div class="bb b" id="wt"><span style="color:var(--muted);font-size:11px;">typing…</span></div>`;
+  box.scrollTop=box.scrollHeight;
+  try{
+    const r=await fetch(`${API}/whatsapp/webhook`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({phone_number:'+91-9999999999',message:msg})});
+    const data=await r.json();document.getElementById('wt')?.remove();
+    const ic=data.intent||'general';
+    box.innerHTML+=`<div class="bb b">${data.escalated?'🚨 ':''}${data.reply}<div><span class="it ${ic}"># ${ic.replace('_',' ')}</span></div><div class="bt">${t}</div></div>`;
+  }catch(ex){document.getElementById('wt')?.remove();box.innerHTML+=`<div class="bb b" style="border-left:2px solid var(--red);">⚠️ API unreachable<div class="bt">${t}</div></div>`;}
+  box.scrollTop=box.scrollHeight;
 }
 
-async function generateProposal() {
-  const client = document.getElementById('prop-client').value.trim();
-  const employees = parseInt(document.getElementById('prop-employees').value);
-  const budget = parseInt(document.getElementById('prop-budget').value);
-  const goal = document.getElementById('prop-goal').value.trim();
-  const errBox = document.getElementById('prop-error');
-  errBox.classList.remove('show');
-
-  if (!client || !employees || !budget || !goal) {
-    errBox.textContent = 'Please fill in all fields.';
-    errBox.classList.add('show');
-    return;
-  }
-
-  setLoading('prop-btn', true);
-  document.getElementById('prop-result-tag').textContent = 'Generating...';
-
-  try {
-    const res = await fetch(`${API}/generate-proposal`, {
-      method: 'POST',
-      headers: {'Content-Type':'application/json'},
-      body: JSON.stringify({client_type:client, budget, employee_count:employees, sustainability_goal:goal})
-    });
-    const data = await res.json();
-    if (!res.ok) throw new Error(JSON.stringify(data.detail));
-    renderProposalResult(data, budget);
-    document.getElementById('prop-result-tag').textContent = '✓ Generated';
-    showToast('Proposal generated successfully');
-  } catch(e) {
-    errBox.textContent = 'Error: ' + e.message;
-    errBox.classList.add('show');
-    document.getElementById('prop-result-tag').textContent = 'Error';
-  }
-
-  setLoading('prop-btn', false);
-  document.getElementById('prop-btn').innerHTML = '<span>Generate Proposal</span>';
-}
-
-function renderProposalResult(data, totalBudget) {
-  const alloc = data.budget_allocation;
-  const total = alloc.products + alloc.logistics + alloc.buffer;
-  const colors = ['#2D4A1E','#6B8F5E','#B8D96B'];
-
-  const rows = data.product_mix.map(p => `
-    <tr>
-      <td>${p.product}</td>
-      <td>${p.quantity}</td>
-      <td>₹${p.unit_price?.toLocaleString() || '—'}</td>
-      <td><span class="cost-chip">₹${(p.total_cost||0).toLocaleString()}</span></td>
-    </tr>`).join('');
-
-  const budgetBars = [
-    {label:'Products', amount:alloc.products, pct:Math.round((alloc.products/total)*100), color:colors[0]},
-    {label:'Logistics', amount:alloc.logistics, pct:Math.round((alloc.logistics/total)*100), color:colors[1]},
-    {label:'Buffer', amount:alloc.buffer, pct:Math.round((alloc.buffer/total)*100), color:colors[2]},
-  ].map(b => `
-    <div class="budget-row">
-      <div class="budget-row-header">
-        <span class="budget-label">${b.label}</span>
-        <span class="budget-amount">₹${b.amount.toLocaleString()} · ${b.pct}%</span>
+// ADMIN
+async function lAdmin(){
+  try{
+    const r=await fetch(`${API}/admin/stats`),d=await r.json();
+    document.getElementById('admin-content').innerHTML=`
+      <div class="admin-grid">
+        <div class="ag green"><div class="ag-label">Total Categories</div><div class="ag-val">${d.categories.total}</div><div class="ag-sub">Avg ESG Score: <strong>${d.categories.avg_sustainability_score||'—'}</strong></div><div class="ag-sub" style="margin-top:2px;">Top category: ${d.categories.most_common_category||'—'}</div></div>
+        <div class="ag blue"><div class="ag-label">Total Proposals</div><div class="ag-val">${d.proposals.total}</div><div class="ag-sub">Capital Proposed: <strong>₹${(d.proposals.total_budget_proposed_inr||0).toLocaleString()}</strong></div></div>
+        <div class="ag gold"><div class="ag-label">Impact Reports</div><div class="ag-val">${d.impact_reports.total}</div><div class="ag-sub">Plastic: <strong>${d.impact_reports.total_plastic_saved_kg} kg</strong></div><div class="ag-sub" style="margin-top:2px;">CO₂: <strong>${d.impact_reports.total_carbon_avoided_kg} kg</strong></div></div>
       </div>
-      <div class="budget-bar-bg">
-        <div class="budget-bar-fill" style="width:${b.pct}%;background:${b.color};"></div>
-      </div>
-    </div>`).join('');
-
-  document.getElementById('prop-result').innerHTML = `
-    <div style="margin-bottom:16px;">
-      <table class="product-table">
-        <thead><tr>
-          <th>Product</th><th>Qty</th><th>Unit Price</th><th>Total Cost</th>
-        </tr></thead>
-        <tbody>${rows}</tbody>
-      </table>
-    </div>
-
-    <div style="margin-bottom:14px;">
-      <div style="font-size:10px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--sage);font-family:'DM Mono',monospace;margin-bottom:10px;">
-        Budget Allocation — ₹${total.toLocaleString()} / ₹${totalBudget.toLocaleString()}
-      </div>
-      <div class="budget-breakdown">${budgetBars}</div>
-    </div>
-
-    <div class="impact-box">
-      <div class="impact-box-label">Impact Summary</div>
-      <p>${data.impact_summary}</p>
-    </div>
-  `;
-}
-
-// ─── MODULE 4: WHATSAPP ───────────────────────────────────────
-function setChat(msg) {
-  document.getElementById('chat-input').value = msg;
-  sendWhatsApp();
-}
-
-async function sendWhatsApp() {
-  const input = document.getElementById('chat-input');
-  const msg = input.value.trim();
-  if (!msg) return;
-  input.value = '';
-
-  const messages = document.getElementById('chat-messages');
-  const now = new Date().toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'});
-
-  // user bubble
-  messages.innerHTML += `
-    <div class="chat-bubble user">${msg}<div class="chat-time">${now}</div></div>`;
-  messages.innerHTML += `
-    <div class="chat-bubble bot" id="typing-indicator">
-      <span style="opacity:0.5">typing...</span>
-    </div>`;
-  messages.scrollTop = messages.scrollHeight;
-
-  try {
-    const res = await fetch(`${API}/whatsapp/webhook`, {
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body: JSON.stringify({phone_number:'+91-9999999999', message:msg})
-    });
-    const data = await res.json();
-
-    document.getElementById('typing-indicator')?.remove();
-
-    const intentColors = {
-      order_status:'order_status',
-      return_policy:'return_policy',
-      escalation:'escalation',
-      general:'general'
-    };
-    const intentClass = intentColors[data.intent] || 'general';
-
-    messages.innerHTML += `
-      <div class="chat-bubble bot">
-        ${data.escalated ? '🚨 ' : ''}${data.reply}
-        <div class="chat-time">${now}</div>
-        <div><span class="intent-chip ${intentClass}"># ${data.intent?.replace('_',' ')}</span></div>
+      <div class="g2">
+        <div class="pn"><div class="pnh"><div class="pntl">ESG Performance Metrics</div><div class="pntag">LIVE</div></div><div class="pnb">
+          <div style="display:flex;flex-direction:column;gap:14px;">
+            <div><div style="display:flex;justify-content:space-between;margin-bottom:4px;"><span style="font-size:12px;font-weight:500;">Avg Sustainability Score</span><span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--emerald);font-weight:500;">${d.categories.avg_sustainability_score||0} / 100</span></div><div class="sbar-track"><div class="sbar-fill" style="width:${d.categories.avg_sustainability_score||0}%;background:var(--emerald);"></div></div></div>
+            <div><div style="display:flex;justify-content:space-between;margin-bottom:4px;"><span style="font-size:12px;font-weight:500;">Plastic Diverted (kg)</span><span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--cobalt);font-weight:500;">${d.impact_reports.total_plastic_saved_kg}</span></div><div class="sbar-track"><div class="sbar-fill" style="width:100%;background:var(--cobalt);"></div></div></div>
+            <div><div style="display:flex;justify-content:space-between;margin-bottom:4px;"><span style="font-size:12px;font-weight:500;">Carbon Avoided (CO₂e kg)</span><span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--gold);font-weight:500;">${d.impact_reports.total_carbon_avoided_kg}</span></div><div class="sbar-track"><div class="sbar-fill" style="width:100%;background:var(--gold);"></div></div></div>
+          </div>
+        </div></div>
+        <div class="pn"><div class="pnh"><div class="pntl">API Reference</div><div class="pntag">v2.0</div></div><div class="pnb">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:10.5px;line-height:2.1;color:var(--muted);">
+            <div><span style="color:var(--emerald);font-weight:500;">POST</span>  /generate-category</div>
+            <div><span style="color:var(--emerald);font-weight:500;">POST</span>  /generate-proposal</div>
+            <div><span style="color:var(--emerald);font-weight:500;">POST</span>  /generate-impact-report</div>
+            <div><span style="color:var(--emerald);font-weight:500;">POST</span>  /whatsapp/webhook</div>
+            <div><span style="color:var(--gold);font-weight:500;">POST</span>  /auth/register · /auth/login</div>
+            <div><span style="color:var(--cobalt);font-weight:500;">GET </span>  /admin/stats</div>
+            <div><span style="color:var(--cobalt);font-weight:500;">GET </span>  /history/categories?category=</div>
+            <div><span style="color:var(--cobalt);font-weight:500;">GET </span>  /history/proposals?client_type=</div>
+            <div><span style="color:var(--cobalt);font-weight:500;">GET </span>  /history/impact-reports</div>
+            <div><span style="color:var(--cobalt);font-weight:500;">GET </span>  /health</div>
+          </div>
+        </div></div>
       </div>`;
-  } catch(e) {
-    document.getElementById('typing-indicator')?.remove();
-    messages.innerHTML += `
-      <div class="chat-bubble bot" style="background:#fee2e2;">
-        ⚠️ Could not connect to API. Please check the server.
-        <div class="chat-time">${now}</div>
-      </div>`;
-  }
-
-  messages.scrollTop = messages.scrollHeight;
+  }catch(e){document.getElementById('admin-content').innerHTML='<div class="hem">Could not load analytics — API may be waking up</div>';}
 }
 
-// ─── HISTORY ──────────────────────────────────────────────────
-function showHistoryTab(tab) {
-  document.getElementById('history-categories').style.display = tab === 'categories' ? 'block' : 'none';
-  document.getElementById('history-proposals').style.display = tab === 'proposals' ? 'block' : 'none';
+// HISTORY
+function stab(t){
+  document.getElementById('hc').style.display=t==='cat'?'block':'none';
+  document.getElementById('hp').style.display=t==='prop'?'block':'none';
+  document.getElementById('hi').style.display=t==='imp'?'block':'none';
+  ['tbc','tbp','tbi'].forEach((id,i)=>document.getElementById(id).className='tb2'+((['cat','prop','imp'][i]===t)?' on':''));
+}
+async function lHist(){
+  try{
+    const r=await fetch(`${API}/history/categories?limit=20`),d=await r.json(),el=document.getElementById('hcb');
+    if(!d.results?.length){el.innerHTML='<div class="hem">No category history yet</div>';return;}
+    const scoreCol=s=>s>=80?'var(--emerald)':s>=60?'var(--gold)':'var(--red)';
+    el.innerHTML=`<table class="ht"><thead><tr><th>Product</th><th>Category</th><th>ESG Score</th><th>SEO Tags</th><th>Date</th></tr></thead><tbody>
+    ${d.results.map(r=>`<tr><td style="font-weight:500;">${r.product_name}</td><td><span class="teco" style="font-size:10.5px;">${r.primary_category}</span></td><td style="font-family:'JetBrains Mono',monospace;font-weight:600;color:${scoreCol(r.sustainability_score||0)};">${r.sustainability_score||'—'}</td><td style="color:var(--muted);font-size:11px;font-family:'JetBrains Mono',monospace;">${r.seo_tags?.slice(0,3).join(', ')||'—'}</td><td style="font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--faint);">${new Date(r.created_at).toLocaleDateString()}</td></tr>`).join('')}
+    </tbody></table>`;
+  }catch(e){document.getElementById('hcb').innerHTML='<div class="hem">Could not load</div>';}
+  try{
+    const r=await fetch(`${API}/history/proposals?limit=20`),d=await r.json(),el=document.getElementById('hpb');
+    if(!d.results?.length){el.innerHTML='<div class="hem">No proposal history yet</div>';return;}
+    el.innerHTML=`<table class="ht"><thead><tr><th>Client</th><th>Budget</th><th>Headcount</th><th>ESG Goal</th><th>Date</th></tr></thead><tbody>
+    ${d.results.map(r=>`<tr><td style="font-weight:500;">${r.client_type}</td><td style="font-family:'JetBrains Mono',monospace;color:var(--cobalt);font-weight:600;">₹${r.budget?.toLocaleString()}</td><td style="font-family:'JetBrains Mono',monospace;">${r.employee_count}</td><td style="color:var(--muted);font-size:11.5px;">${r.sustainability_goal}</td><td style="font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--faint);">${new Date(r.created_at).toLocaleDateString()}</td></tr>`).join('')}
+    </tbody></table>`;
+  }catch(e){document.getElementById('hpb').innerHTML='<div class="hem">Could not load</div>';}
+  try{
+    const r=await fetch(`${API}/history/impact-reports?limit=20`),d=await r.json(),el=document.getElementById('hib');
+    if(!d.results?.length){el.innerHTML='<div class="hem">No impact reports yet</div>';return;}
+    el.innerHTML=`<table class="ht"><thead><tr><th>Order ID</th><th>Plastic Diverted</th><th>CO₂ Avoided</th><th>Date</th></tr></thead><tbody>
+    ${d.results.map(r=>`<tr><td style="font-family:'JetBrains Mono',monospace;font-weight:600;color:var(--cobalt);">${r.order_id}</td><td style="font-family:'JetBrains Mono',monospace;color:var(--cobalt);font-weight:500;">${r.plastic_saved_kg} kg</td><td style="font-family:'JetBrains Mono',monospace;color:var(--emerald);font-weight:500;">${r.carbon_avoided_kg} kg</td><td style="font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--faint);">${new Date(r.created_at).toLocaleDateString()}</td></tr>`).join('')}
+    </tbody></table>`;
+  }catch(e){document.getElementById('hib').innerHTML='<div class="hem">Could not load</div>';}
 }
 
-async function loadHistory() {
-  // Categories
-  try {
-    const res = await fetch(`${API}/history/categories?limit=20`);
-    const data = await res.json();
-    const body = document.getElementById('cat-history-body');
-    if (!data.results?.length) {
-      body.innerHTML = '<div class="history-empty">No category history yet.</div>';
-    } else {
-      body.innerHTML = `<table class="history-table">
-        <thead><tr><th>Product</th><th>Category</th><th>Sub-Category</th><th>Tags</th><th>Date</th></tr></thead>
-        <tbody>${data.results.map(r=>`
-          <tr>
-            <td><strong>${r.product_name}</strong></td>
-            <td><span class="tag">${r.primary_category}</span></td>
-            <td><span style="color:var(--sage);font-size:12px;">${r.sub_category}</span></td>
-            <td style="font-size:11px;color:var(--sage);">${r.seo_tags?.slice(0,3).join(', ')}...</td>
-            <td style="font-family:'DM Mono',monospace;font-size:11px;color:rgba(26,26,24,0.4);">${new Date(r.created_at).toLocaleDateString()}</td>
-          </tr>`).join('')}
-        </tbody>
-      </table>`;
-    }
-  } catch(e) {
-    document.getElementById('cat-history-body').innerHTML = '<div class="history-empty">Could not load history.</div>';
-  }
-
-  // Proposals
-  try {
-    const res = await fetch(`${API}/history/proposals?limit=20`);
-    const data = await res.json();
-    const body = document.getElementById('prop-history-body');
-    if (!data.results?.length) {
-      body.innerHTML = '<div class="history-empty">No proposal history yet.</div>';
-    } else {
-      body.innerHTML = `<table class="history-table">
-        <thead><tr><th>Client</th><th>Budget</th><th>Employees</th><th>Goal</th><th>Date</th></tr></thead>
-        <tbody>${data.results.map(r=>`
-          <tr>
-            <td><strong>${r.client_type}</strong></td>
-            <td style="font-family:'DM Mono',monospace;">₹${r.budget?.toLocaleString()}</td>
-            <td>${r.employee_count}</td>
-            <td style="font-size:12px;color:var(--sage);">${r.sustainability_goal}</td>
-            <td style="font-family:'DM Mono',monospace;font-size:11px;color:rgba(26,26,24,0.4);">${new Date(r.created_at).toLocaleDateString()}</td>
-          </tr>`).join('')}
-        </tbody>
-      </table>`;
-    }
-  } catch(e) {
-    document.getElementById('prop-history-body').innerHTML = '<div class="history-empty">Could not load history.</div>';
-  }
+// DASHBOARD
+async function lDash(){
+  try{const r=await fetch(`${API}/health`);if(r.ok){document.getElementById('s4').innerHTML='<span style="color:var(--emerald);font-size:12px;">⬤</span> LIVE';document.getElementById('af').textContent='API Live';document.getElementById('apt').textContent='CONNECTED';}}
+  catch(e){document.getElementById('s4').innerHTML='<span style="color:var(--red);font-size:12px;">⬤</span> DOWN';document.getElementById('af').textContent='API Offline';}
+  try{const r=await fetch(`${API}/history/categories?limit=5`),d=await r.json();document.getElementById('s1').textContent=d.results?.length??'0';if(d.results?.length)document.getElementById('dc').innerHTML=d.results.map(r=>`<div class="mr"><div><div class="mn">${r.product_name}</div><div class="ms">${r.primary_category} → ${r.sub_category}</div></div><div style="text-align:right;"><div class="mv">${r.sustainability_score||'—'}</div><div class="md">${new Date(r.created_at).toLocaleDateString()}</div></div></div>`).join('');}catch(e){}
+  try{const r=await fetch(`${API}/history/proposals?limit=5`),d=await r.json();document.getElementById('s2').textContent=d.results?.length??'0';if(d.results?.length)document.getElementById('dp').innerHTML=d.results.map(r=>`<div class="mr"><div><div class="mn">${r.client_type}</div><div class="ms">${r.sustainability_goal}</div></div><div style="text-align:right;"><div class="mv">₹${r.budget?.toLocaleString()}</div><div class="md">${r.employee_count} emp</div></div></div>`).join('');}catch(e){}
+  try{const r=await fetch(`${API}/history/impact-reports?limit=5`),d=await r.json();document.getElementById('s3').textContent=d.results?.length??'0';}catch(e){}
 }
 
-// ─── DASHBOARD ────────────────────────────────────────────────
-async function loadDashboard() {
-  // Health check
-  try {
-    const res = await fetch(`${API}/health`);
-    if (res.ok) {
-      document.getElementById('stat-api').innerHTML = '<span style="color:#4ade80">⬤</span> Live';
-      document.getElementById('apiStatusText').textContent = 'API Connected';
-    }
-  } catch(e) {
-    document.getElementById('stat-api').innerHTML = '<span style="color:#f87171">⬤</span> Offline';
-    document.getElementById('apiStatusText').textContent = 'API Offline';
-  }
-
-  // Categories
-  try {
-    const res = await fetch(`${API}/history/categories?limit=3`);
-    const data = await res.json();
-    document.getElementById('stat-categories').textContent = data.count ?? data.results?.length ?? 0;
-
-    if (data.results?.length) {
-      document.getElementById('dash-recent-categories').innerHTML = data.results.map(r => `
-        <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid rgba(45,74,30,0.07);">
-          <div>
-            <div style="font-size:13px;font-weight:600;">${r.product_name}</div>
-            <div style="font-size:11px;color:var(--sage);margin-top:2px;">${r.primary_category} → ${r.sub_category}</div>
-          </div>
-          <div style="font-size:10px;color:rgba(26,26,24,0.3);font-family:'DM Mono',monospace;">${new Date(r.created_at).toLocaleDateString()}</div>
-        </div>`).join('');
-    }
-  } catch(e) {}
-
-  // Proposals
-  try {
-    const res = await fetch(`${API}/history/proposals?limit=3`);
-    const data = await res.json();
-    document.getElementById('stat-proposals').textContent = data.count ?? data.results?.length ?? 0;
-
-    let totalBudget = 0;
-    if (data.results?.length) {
-      data.results.forEach(r => totalBudget += r.budget || 0);
-      document.getElementById('stat-budget').textContent = '₹' + (totalBudget/1000).toFixed(0) + 'k';
-
-      document.getElementById('dash-recent-proposals').innerHTML = data.results.map(r => `
-        <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid rgba(45,74,30,0.07);">
-          <div>
-            <div style="font-size:13px;font-weight:600;">${r.client_type}</div>
-            <div style="font-size:11px;color:var(--sage);margin-top:2px;">${r.sustainability_goal}</div>
-          </div>
-          <div style="text-align:right;">
-            <div style="font-size:12px;font-family:'DM Mono',monospace;color:var(--moss);">₹${r.budget?.toLocaleString()}</div>
-            <div style="font-size:10px;color:rgba(26,26,24,0.3);">${r.employee_count} employees</div>
-          </div>
-        </div>`).join('');
-    }
-  } catch(e) {}
-}
-
-// ─── INIT ─────────────────────────────────────────────────────
-loadDashboard();
+lDash();
+addProduct();
 </script>
 </body>
 </html>

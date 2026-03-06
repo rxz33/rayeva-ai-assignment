@@ -1,7 +1,7 @@
 import json
 from datetime import datetime
 
-from sqlalchemy import Column, DateTime, Integer, String, Text
+from sqlalchemy import Column, DateTime, Float, Integer, String, Text
 
 from app.database.db import Base
 
@@ -16,8 +16,10 @@ class CategoryResult(Base):
     use_case = Column(String, nullable=False)
     primary_category = Column(String, nullable=False)
     sub_category = Column(String, nullable=False)
-    seo_tags = Column(Text, nullable=False)  # stored as JSON string
-    sustainability_filters = Column(Text, nullable=False)  # stored as JSON string
+    seo_tags = Column(Text, nullable=False)
+    sustainability_filters = Column(Text, nullable=False)
+    sustainability_score = Column(Integer, nullable=True)
+    score_reasoning = Column(Text, nullable=True)
     created_at = Column(DateTime, default=datetime.utcnow)
 
     def to_dict(self):
@@ -31,6 +33,8 @@ class CategoryResult(Base):
             "sub_category": self.sub_category,
             "seo_tags": json.loads(self.seo_tags),
             "sustainability_filters": json.loads(self.sustainability_filters),
+            "sustainability_score": self.sustainability_score,
+            "score_reasoning": self.score_reasoning,
             "created_at": self.created_at.isoformat(),
         }
 
@@ -43,8 +47,8 @@ class ProposalResult(Base):
     budget = Column(Integer, nullable=False)
     employee_count = Column(Integer, nullable=False)
     sustainability_goal = Column(Text, nullable=False)
-    product_mix = Column(Text, nullable=False)  # stored as JSON string
-    budget_allocation = Column(Text, nullable=False)  # stored as JSON string
+    product_mix = Column(Text, nullable=False)
+    budget_allocation = Column(Text, nullable=False)
     impact_summary = Column(Text, nullable=False)
     created_at = Column(DateTime, default=datetime.utcnow)
 
@@ -60,3 +64,36 @@ class ProposalResult(Base):
             "impact_summary": self.impact_summary,
             "created_at": self.created_at.isoformat(),
         }
+
+
+class ImpactReport(Base):
+    __tablename__ = "impact_reports"
+
+    id = Column(Integer, primary_key=True, index=True)
+    order_id = Column(String, nullable=False, index=True)
+    plastic_saved_kg = Column(Float, nullable=False)
+    carbon_avoided_kg = Column(Float, nullable=False)
+    local_sourcing_summary = Column(Text, nullable=False)
+    impact_statement = Column(Text, nullable=False)
+    created_at = Column(DateTime, default=datetime.utcnow)
+
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "order_id": self.order_id,
+            "plastic_saved_kg": self.plastic_saved_kg,
+            "carbon_avoided_kg": self.carbon_avoided_kg,
+            "local_sourcing_summary": self.local_sourcing_summary,
+            "impact_statement": self.impact_statement,
+            "created_at": self.created_at.isoformat(),
+        }
+
+
+class User(Base):
+    __tablename__ = "users"
+
+    id = Column(Integer, primary_key=True, index=True)
+    email = Column(String, nullable=False, unique=True, index=True)
+    hashed_password = Column(String, nullable=False)
+    is_active = Column(Integer, default=1)
+    created_at = Column(DateTime, default=datetime.utcnow)

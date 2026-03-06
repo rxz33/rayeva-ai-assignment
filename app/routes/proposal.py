@@ -12,32 +12,20 @@ from app.validators.proposal_validator import validate_proposal_output
 router = APIRouter()
 
 
-@router.post(
-    "/generate-proposal",
-    response_model=ProposalOutput,
-    tags=["Module 2: AI B2B Proposal Generator"],
-)
+@router.post("/generate-proposal", response_model=ProposalOutput, tags=["Module 2: AI B2B Proposal Generator"])
 def proposal_generator(data: ProposalInput, db: Session = Depends(get_db)):
-
     try:
         result = generate_b2b_proposal(data)
     except Exception as e:
-        raise HTTPException(
-            status_code=status.HTTP_502_BAD_GATEWAY,
-            detail=f"AI service failed: {str(e)}",
-        )
+        raise HTTPException(status_code=status.HTTP_502_BAD_GATEWAY, detail=f"AI service failed: {str(e)}")
 
     try:
         parsed_json = json.loads(result)
     except json.JSONDecodeError as e:
-        raise HTTPException(
-            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-            detail=f"AI returned invalid JSON: {str(e)}",
-        )
+        raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=f"AI returned invalid JSON: {str(e)}")
 
     validate_proposal_output(parsed_json, data.budget)
 
-    # store result in database
     db_record = ProposalResult(
         client_type=data.client_type,
         budget=data.budget,
@@ -49,20 +37,13 @@ def proposal_generator(data: ProposalInput, db: Session = Depends(get_db)):
     )
     db.add(db_record)
     db.commit()
-
     return parsed_json
 
 
-@router.get(
-    "/history/proposals",
-    tags=["Module 2: AI B2B Proposal Generator"],
-    summary="Retrieve past proposal generation results",
-)
-def get_proposal_history(limit: int = 20, db: Session = Depends(get_db)):
-    records = (
-        db.query(ProposalResult)
-        .order_by(ProposalResult.created_at.desc())
-        .limit(limit)
-        .all()
-    )
+@router.get("/history/proposals", tags=["Module 2: AI B2B Proposal Generator"])
+def get_proposal_history(limit: int = 20, client_type: str = None, db: Session = Depends(get_db)):
+    query = db.query(ProposalResult)
+    if client_type:
+        query = query.filter(ProposalResult.client_type.ilike(f"%{client_type}%"))
+    records = query.order_by(ProposalResult.created_at.desc()).limit(limit).all()
     return {"count": len(records), "results": [r.to_dict() for r in records]}

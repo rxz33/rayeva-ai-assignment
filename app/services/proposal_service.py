@@ -3,7 +3,6 @@ from app.utils.logger import log_ai_interaction
 
 
 def generate_b2b_proposal(data):
-
     prompt = f"""
 You are an AI assistant for a sustainability ecommerce platform.
 
@@ -37,7 +36,7 @@ Rules:
 - total_cost = unit_price * quantity for each product
 - budget_allocation.products must equal the sum of all total_cost values
 - total budget allocation (products + logistics + buffer) must NOT exceed the client budget
-- impact_summary should briefly explain the sustainability impact in 1–2 sentences
+- impact_summary: 1–2 sentences on sustainability impact
 
 Client Details:
 Client type: {data.client_type}
@@ -45,7 +44,6 @@ Budget: {data.budget}
 Employees: {data.employee_count}
 Sustainability goal: {data.sustainability_goal}
 """
-
     response = generate_ai_response(prompt)
     log_ai_interaction(module="proposal_generator", prompt=prompt, response=response)
     return response
